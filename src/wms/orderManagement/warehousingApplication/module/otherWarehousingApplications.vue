@@ -103,7 +103,7 @@ export default {
     return {
       colName: 'PoInApplyforother',
       detailColName: 'PoInApplyforMaterialother',
-      apiName: 'receiptorder/OtherOrderGetAll',
+      apiName: 'wasteorder',
       OtherItems,
       Crud,
       OtherBtn,
@@ -192,8 +192,8 @@ export default {
     },
     getDetail(row) {
       this.detailListLoading = true
-      this.detailQuery.OrderId = row.po
-      API.get('receiptorder', this.detailQuery, 'OtherOrderGetAllDetails').then(res => {
+      this.detailQuery.OrderId = row.orderID
+      API.get('wasteorder', this.detailQuery, 'GetDetails').then(res => {
         this.detailTable = res.details
         this.editDetailTable = res.items
       })

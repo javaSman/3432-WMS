@@ -29,7 +29,7 @@
           <td colspan="2" style="border-top: none; border-bottom: none">制单日期:{{ getDate }}</td>
           <td colspan="2" style="border-top: none; border-bottom: none">供应商代码:{{ thead.supplierCode }}</td>
           <!-- <td colspan="3" style="border-top: none; border-bottom: none">退货采购订单:{{ thead.applyType }}</td> -->
-          <td colspan="3" style="border-top: none; border-bottom: none">单号:{{ thead.returnID }}</td>
+          <td colspan="3" style="border-top: none; border-bottom: none">单号:{{ thead.orderID }}</td>
         </tr>
         <!-- <tr class="newTitle">
           <td colspan="3">客户订单号：3310021616</td>

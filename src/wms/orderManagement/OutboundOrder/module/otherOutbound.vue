@@ -133,9 +133,12 @@ export default {
   mixins: [filterContainer, basics, colDesign],
   data() {
     return {
-      colName: 'PoInApplyforreturn',
+      colName: 'OutboundOther',
       detailColName: 'PoInApplyforMaterialreturn',
-      apiName: 'pickorder',
+      apiName: 'outstockorder',
+      listQuery: {
+        OrderType: 'DeteriorationOut'
+      },
       OtherItems,
       OtherCrud,
       OtherBtnItems,

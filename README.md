@@ -1,6 +1,6 @@
 # 项目介绍
 
-​ 本项目基于 vue2+js+element 开发的楚能 WMS web 端
+​ 本项目基于 vue2+js+element 开发的耀宁 WMS web 端
 
 ​
 

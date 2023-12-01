@@ -83,7 +83,7 @@ export const formList = [
   {
     type: 'Input',
     label: '载具编号',
-    prop: 'boxID'
+    prop: 'boxIds'
     // , disabled: true
   },
   {

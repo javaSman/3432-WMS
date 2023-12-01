@@ -83,9 +83,9 @@ export default {
 
       listLoading: true,
       detailListLoading: false,
-      // detailQuery: {
-      //   poNo: null
-      // },
+      detailQuery: {
+        OrderId: null
+      },
       downloadLoading: false,
       exportParams: {},
       totalCol: ['quantity'],
@@ -112,7 +112,7 @@ export default {
       API.getDict('dict', { name: 'StockStatus' }).then(res => {
         this.ProdItems[2].options = res.details
       })
-    }
+    },
     // getList() {
     //   this.listQuery.SkipCount = (this.page - 1) * 10
     //   API.get('InApplyforPo', this.listQuery, 'GetAll').then(res => {
@@ -120,13 +120,14 @@ export default {
     //     this.list = res.items
     //   })
     // },
-    // getDetail(row) {
-    //   this.detailListLoading = true
-    //   this.detailQuery.poNo = row.poNo
-    //   API.get('InApplyforPo', this.detailQuery, 'GetAllDetails').then(res => {
-    //     this.detailTable = res.items
-    //   })
-    // }
+    getDetail(row) {
+      this.detailListLoading = true
+      this.detailQuery.OrderId = row.orderID
+      API.get('instockorder', this.detailQuery, 'GetDetails').then(res => {
+        this.detailTable = res.details
+        this.detailListLoading = false
+      })
+    }
   }
 }
 </script>

@@ -189,7 +189,9 @@ export default {
       FormData: {}
     }
   },
-  created() {},
+  created() {
+    this.getDict()
+  },
   updated() {
     // 解决合计行不显示及高度不渲染
     this.$nextTick(() => {
@@ -197,6 +199,17 @@ export default {
     })
   },
   methods: {
+    getDict() {
+      // 获取单据类型
+      API.getDict('dict', { name: 'OutOtherType' }).then(res => {
+        this.OtherItems[1].options = res.details
+        this.OuterList[1].options = res.details
+      })
+      // 单据状态
+      API.getDict('dict', { name: 'OrderStatus' }).then(res => {
+        this.OtherItems[2].options = res.details
+      })
+    },
     getDetail(row) {
       this.detailListLoading = true
       this.detailQuery.pickID = row.pickID

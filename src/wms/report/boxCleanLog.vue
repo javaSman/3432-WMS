@@ -5,17 +5,17 @@
     </div>
     <div class="content-container">
       <CrudOperation
-        :permission-crud="Crud"
         :selection="multipleSelection"
         :button-items="BtnItems"
         :download-loading.sync="downloadLoading"
-        @toDownload="handleExport()"
+        @toDownload="handleDownloadPast()"
       />
       <ColDesign :col-list="column" :table-show.sync="tableShow" @resetCol="resetCol" />
       <Table
         v-if="tableShow"
         ref="table"
         v-loading="listLoading"
+        :has-selection="true"
         :height="-1"
         :data-list="list"
         :column="column"
@@ -25,7 +25,6 @@
         :limit.sync="listQuery.MaxResultCount"
         :is-sort="true"
         :sorting.sync="listQuery.Sorting"
-        :dict-gather="dictGather"
         @pagination="getList"
         @tableSort="getList"
       />
@@ -34,47 +33,42 @@
 </template>
 <script>
 import Table from '@/components/Table'
-import CrudOperation from '@/components/Crud/CRUD.operation'
-// import { API } from '@/api/generalAPI'
 import colDesign from '@/mixins/colDesign'
 import filterContainer from '@/mixins/filterContainer'
 import basics from '@/mixins'
-import { formList, queryItems, Crud, BtnItems } from './config'
-import { API } from '@/api/generalAPI'
-
+import combogrid from '@/mixins/combogrid'
+// import { API } from '@/api/generalAPI'
+import CrudOperation from '@/components/Crud/CRUD.operation'
+import { queryItems, BtnItems } from './config/boxCleanLog'
 export default {
-  name: 'OperationLog',
+  name: 'BoxCleanLog',
   components: { Table, CrudOperation },
-  mixins: [colDesign, filterContainer, basics],
+  mixins: [colDesign, filterContainer, basics, combogrid],
   data() {
     return {
-      colName: 'OperationLog',
-      apiName: 'OperationLog',
-
-      formList,
+      colName: 'BoxCleanLog',
+      apiName: 'boxCleanLog',
       queryItems,
-      Crud,
       BtnItems,
-      tableList: [],
-
       downloadLoading: false,
-      exportParams: {}
+      isEdit: true,
+      exportParams: { IsPage: false },
+      isData: false
     }
   },
-  created() {
-    this.getDict()
-  },
+  created() {},
   methods: {
-    // 获取字典
-    getDict() {
-      // 操作类型
-      API.getDict('dict', { name: 'operationType' }).then(res => {
-        this.queryItems[1].options = res.details
-      })
-    },
-    // 导出
-    handleExport() {
-      this.export(this.apiName, this.exportParams)
+    handleDownloadPast() {
+      let Ids = [] // 选中的id集
+      if (this.multipleSelection.length > 0) {
+        //  如果有选中的数据，就导出选中的数据，否则全部导出或根据搜索条件导出
+        this.multipleSelection.map(item => {
+          Ids.push(item.id)
+        })
+        this.exportPast('boxCleanLog', { Ids: Ids }, 'Export')
+      } else {
+        this.exportPast('boxCleanLog', this.exportParams, 'Export')
+      }
     }
   }
 }

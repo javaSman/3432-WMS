@@ -195,7 +195,13 @@ export default {
       this.detailListLoading = true
       API.get(
         'materialsbarcode',
-        { DeliverynoteID: row.receiptID, IsPage: 'false', materialID: row.materialID, batch: row.batch },
+        {
+          DeliverynoteID: row.receiptID,
+          IsPage: 'false',
+          materialID: row.materialID,
+          batch: row.batch,
+          OrderType: 'CreateLabel'
+        },
         'all'
       ).then(res => {
         this.detailTable = res.items
@@ -244,21 +250,31 @@ export default {
         })
         API.dataPost('materialsbarcode', params, 'DelMaterialsBarcode')
           .then(res => {
-            let data = this.detailTable
-            this.treeSelection.forEach(item => {
-              for (let i = 0; i < data.length; i++) {
-                if (data[i].id === item.id) {
-                  data.splice(i, 1)
+            if (res.success) {
+              let data = this.detailTable
+              this.treeSelection.forEach(item => {
+                for (let i = 0; i < data.length; i++) {
+                  if (data[i].id === item.id) {
+                    data.splice(i, 1)
+                  }
                 }
-              }
-            })
-            this.$notify({
-              title: this.$t('notify.success'), // 成功
-              message: this.$t('notify.delSuccess'), // 返回成功信息
-              type: 'success',
-              druation: 2000
-            })
-            this.getList()
+              })
+              this.$notify({
+                title: this.$t('notify.success'), // 成功
+                message: this.$t('notify.delSuccess'), // 返回成功信息
+                type: 'success',
+                druation: 2000
+              })
+              this.getList()
+            } else {
+              this.$notify({
+                title: this.$t('notify.failure'), // 失败
+                message: res.message, // 返回失败信息
+                type: 'success',
+                druation: 2000
+              })
+              this.getList()
+            }
           })
           .catch(() => {
             this.$message({
@@ -268,47 +284,52 @@ export default {
           })
       })
     },
-    handleGenerateLabel(row) {
-      // debugger
-      if (row.row.total > row.row.remainder) {
-        //  row.total = ''
+    handleGenerateLabel({ row, $index }) {
+      this.$set(this.tableBtn.btnItem[0].btnLoding, $index, true)
+      if (row.total > row.remainder) {
+        row.total = 0
+        row.labelMantelNum = null
+        row.labelNum = null
         this.$message.error('数量合计不能超过待生成标签数量！')
+        this.$set(this.tableBtn.btnItem[0].btnLoding, $index, false)
         return
       }
       this.detailListLoading = true
       let params = {
-        receiptID: row.row.receiptID,
-        receiptItemNo: row.row.receiptItemNo,
-        labelMantelNum: row.row.labelMantelNum,
-        labelNum: row.row.labelNum,
-        receivingDate: row.row.receivingDate,
-        productTime: row.row.productTime,
-        supplierBatch: row.row.supplierBatch,
-        materialID: row.row.materialID,
-        batch: row.row.batch
+        receiptID: row.receiptID,
+        receiptItemNo: row.receiptItemNo,
+        labelMantelNum: row.labelMantelNum,
+        labelNum: row.labelNum,
+        receivingDate: row.receivingDate,
+        productTime: row.productTime,
+        supplierBatch: row.supplierBatch,
+        materialID: row.materialID,
+        batch: row.batch
       }
-      API.dataPost('materialsbarcode', params, 'CreateLabel').then(res => {
-        if (res.success) {
-          API.get('materialsbarcode', { DeliverynoteID: row.row.receiptID }, 'all').then(res => {
-            console.log(this.detailTable)
-            console.log(res.items)
-            if (res) {
-              this.detailTable = res.items
-              this.getList()
-              row.row.total = 0
-            }
-          })
-          this.detailListLoading = false
-        } else {
-          this.detailListLoading = false
-          this.$notify({
-            title: this.$t('notify.failure') /* 失败 */,
-            message: res.message /* 返回失败信息 */,
-            type: 'error',
-            duration: 2000
-          })
-        }
-      })
+      API.dataPost('materialsbarcode', params, 'CreateLabel')
+        .then(res => {
+          if (res.success) {
+            API.get('materialsbarcode', { DeliverynoteID: row.receiptID }, 'all').then(res => {
+              if (res) {
+                this.detailTable = res.items
+                this.getList()
+              }
+            })
+            row.total = 0
+            this.detailListLoading = false
+          } else {
+            this.detailListLoading = false
+            this.$notify({
+              title: this.$t('notify.failure') /* 失败 */,
+              message: res.message /* 返回失败信息 */,
+              type: 'error',
+              duration: 2000
+            })
+          }
+        })
+        .finally(() => {
+          this.$set(this.tableBtn.btnItem[0].btnLoding, $index, false)
+        })
     },
     handleChange() {
       this.changeNum = this.changeNum + 1

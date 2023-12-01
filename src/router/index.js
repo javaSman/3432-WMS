@@ -550,6 +550,18 @@ export const asyncRoutes = [
           icon: 'dict',
           keepAlive: true
         }
+      },
+      // 载具清洗日志
+      {
+        path: 'boxCleanLog',
+        component: () => import('@/wms/report/boxCleanLog'),
+        name: 'BoxCleanLog',
+        meta: {
+          title: 'boxCleanLog',
+          // roles: ['Report.BarcodeLog'],
+          icon: 'dict',
+          keepAlive: true
+        }
       }
     ]
   },

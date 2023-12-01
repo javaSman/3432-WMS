@@ -97,7 +97,7 @@ export const inventoryBtnItems = [
     // permission: 'StocktakingManage.Stocktaking.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-finished'
-  },
+  }
   // {
   //   //过账
   //   langLabel: 'button.Posting',
@@ -134,24 +134,24 @@ export const inventoryBtnItems = [
   //   styleType: 'danger',
   //   icon: 'el-icon-finished'
   // },
-  {
-    // 过账
-    langLabel: 'button.Posting',
-    clickFun: 'toPosting',
-    disabled: 'single',
-    permission: 'OrderManagement.ScrapOrder.Post',
-    styleType: 'danger',
-    icon: 'el-icon-finished'
-  },
-  {
-    // 单据打印
-    langLabel: 'button.PostingPrint',
-    clickFun: 'toPrintReceipt',
-    disabled: 'single',
-    // permission: 'InStock',
-    styleType: 'danger',
-    icon: 'el-icon-finished'
-  }
+  // {
+  //   // 过账
+  //   langLabel: 'button.Posting',
+  //   clickFun: 'toPosting',
+  //   disabled: 'single',
+  //   permission: 'OrderManagement.ScrapOrder.Post',
+  //   styleType: 'danger',
+  //   icon: 'el-icon-finished'
+  // },
+  // {
+  //   // 单据打印
+  //   langLabel: 'button.PostingPrint',
+  //   clickFun: 'toPrintReceipt',
+  //   disabled: 'single',
+  //   // permission: 'InStock',
+  //   styleType: 'danger',
+  //   icon: 'el-icon-finished'
+  // }
 ]
 export const outShelvesForm = [
   {

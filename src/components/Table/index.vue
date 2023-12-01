@@ -404,6 +404,7 @@
                 :round="btn.btnStyle === 'round'"
                 :circle="btn.btnStyle === 'circle'"
                 :size="btn.size || 'mini'"
+                :loading="(btn.btnLoding && btn.btnLoding[scope.$index]) || false"
                 @click="btnClick(btn, scope)"
               >
                 <div v-if="btn.reverse !== undefined && btn.reverse[scope.$index] && !btn.isHide[scope.$index]">

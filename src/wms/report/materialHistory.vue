@@ -69,6 +69,7 @@ export default {
   },
   created() {
     this.getDict()
+    this.getWarehouse()
   },
   methods: {
     handleDownloadPast() {
@@ -88,6 +89,19 @@ export default {
     getDict() {
       API.getDict('dict', { name: 'BLogBussinessType' }).then(res => {
         this.materialHistoryItems[4].options = res.details
+      })
+      API.getDict('dict', { name: 'BarCodestate' }).then(res => {
+        this.MoreQuery[4].options = res.details
+      })
+    },
+    getWarehouse() {
+      API.get('warehouse', { IsPage: false }, 'all').then(res => {
+        res.items.forEach(item => {
+          item.label = item.warehouseName
+          item.value = item.warehouseID
+          item.asign = item.warehouseID
+        })
+        this.MoreQuery[1].options = res.items
       })
     }
   }

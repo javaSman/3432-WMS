@@ -354,6 +354,12 @@ export const navdetails = [
         routerUrl: '/report/inventorySummary',
         noHidden: true,
         roles: ['WarehouseManagement.Box']
+      },
+      {
+        label: '载具清洗日志',
+        routerUrl: '/report/boxCleanLog',
+        noHidden: true,
+        roles: ['WarehouseManagement.Box']
       }
       // {
       //   label: '到货报表',

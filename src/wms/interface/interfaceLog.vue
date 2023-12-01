@@ -47,6 +47,9 @@
         @cancel="cancel"
         @reset="reset"
       />
+      <el-dialog :visible.sync="dialogVisible" title="查看参数">
+        <span style="line-height: 2">{{ parameters }}</span>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -75,6 +78,8 @@ export default {
       tableBtn,
       form: {},
       dialogFormVisible: false,
+      dialogVisible: false,
+      parameters: '',
       formTitle: '',
       isEdit: false,
       layout: { gutter: 10, span: 12, xs: 24, sm: 12, md: 8, xl: 6 },
@@ -151,12 +156,20 @@ export default {
       }
     },
     handleParams(row) {
-      console.log(row)
-      this.$message({
-        message: row.row.parameters,
-        duration: 5 * 1000
-      })
+      console.log(row.row.parameters)
+      // this.$message({
+      //   message: row.row.parameters,
+      //   duration: 5 * 1000
+      // })
+      this.dialogVisible = true
+      this.parameters = row.row.parameters
     }
   }
 }
 </script>
+<style scoped>
+::v-deep .el-dialog__body {
+  height: 600px;
+  overflow: auto;
+}
+</style>

@@ -212,11 +212,22 @@ export default {
       })
     },
     getDetail(row) {
+      console.log(row)
       this.detailListLoading = true
       this.detailQuery.OrderId = row.returnID
-      API.get('returnorder', this.detailQuery, 'GetDetails').then(res => {
-        this.detailTable = res.details
-        this.detailListLoading = false
+      API.get('purchaseorder', { PO: row.po }, 'GetOrderDetails').then(res => {
+        if (res.success) {
+          this.detailTable = res.data.details
+          this.detailListLoading = false
+        } else {
+          this.detailListLoading = false
+          this.$notify({
+            title: this.$t('notify.failure') /* 失败 */,
+            message: res.message /* 返回失败信息 */,
+            type: 'error',
+            duration: 2000
+          })
+        }
       })
     },
     handleOutShelves() {
@@ -296,6 +307,7 @@ export default {
         // API.dataPost('box', Ids, 'UpdatePrint').then(res => {
         //   console.log(111)
         // })
+        console.log(11)
         this.printBegin = true
         this.printData = this.detailTable
         console.log(this.multipleSelection[0])

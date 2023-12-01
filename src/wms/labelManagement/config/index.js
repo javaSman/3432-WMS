@@ -74,7 +74,7 @@ export const TableList = [
   // }
 ]
 export const tableBtn = {
-  width: '80',
+  width: '120',
   // permission: 'Systems.AppVersion.Export',
   btnItem: [
     {
@@ -82,6 +82,7 @@ export const tableBtn = {
       btnType: 'primary',
       clickFun: 'toGenerateLabel',
       isHide: [],
+      btnLoding: [],
       permission: ''
     }
   ]
@@ -187,7 +188,13 @@ export const TagLsitBtn = [
   }
 ]
 export const DeleteFormList = [
-  { type: 'Select', prop: 'BarcodeFlag', label: '条码标识', options: [], rules: [{ required: true, message: '请选择条码标识', trigger: 'blur' }] }
+  {
+    type: 'Select',
+    prop: 'BarcodeFlag',
+    label: '条码标识',
+    options: [],
+    rules: [{ required: true, message: '请选择条码标识', trigger: 'blur' }]
+  }
 ]
 export const formList = [
   { type: 'Input', label: '冻结原因', prop: 'freezeReason', isHide: false },
@@ -275,7 +282,7 @@ export const SolidTableList = [
   // }
 ]
 export const SolidTableBtn = {
-  width: '80',
+  width: '120',
   // permission: 'Systems.AppVersion.Export',
   btnItem: [
     {
@@ -283,6 +290,7 @@ export const SolidTableBtn = {
       btnType: 'primary',
       clickFun: 'toGenerateLabel',
       isHide: [],
+      btnLoding: [],
       permission: ''
     }
   ]

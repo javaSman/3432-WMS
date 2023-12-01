@@ -71,20 +71,9 @@ export default {
       isData: true
     }
   },
-  watch: {
-    // list() {
-    //   // console.log(this.list)
-    //   let arrSums = 0
-    //   this.list.forEach(item => {
-    //     // console.log(item.quantity)
-    //     arrSums += Number(item.quantity.toFixed(2))
-    //   })
-    //   this.arrSum = arrSums.toFixed(2)
-    // }
-  },
   created() {
     this.getDict()
-    // this.getWarehouse()
+    this.getWarehouse()
     // this.getActual()
   },
   methods: {
@@ -99,16 +88,16 @@ export default {
     //     this.arrivalReportItems[13].options = res.items
     //   })
     // },
-    // getWarehouse() {
-    //   API.get('warehouse', { IsPage: false, IsRealWarehouse: false }, 'all').then(res => {
-    //     res.items.forEach(item => {
-    //       item.label = item.warehouseName
-    //       item.value = item.warehouseID
-    //       item.asign = item.warehouseID
-    //     })
-    //     this.arrivalReportItems[6].options = res.items
-    //   })
-    // },
+    getWarehouse() {
+      API.get('warehouse', { IsPage: false }, 'all').then(res => {
+        res.items.forEach(item => {
+          item.label = item.warehouseName
+          item.value = item.warehouseID
+          item.asign = item.warehouseID
+        })
+        this.ArrMoreQuery[1].options = res.items
+      })
+    },
 
     handleDownloadPast() {
       let Ids = [] // 选中的id集

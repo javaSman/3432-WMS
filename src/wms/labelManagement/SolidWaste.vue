@@ -189,6 +189,10 @@ export default {
       this.listLoading = true
       this.listQuery.SkipCount = (this.page - 1) * 10
       API.getData('wasteorder', this.listQuery, 'GetAllDetails').then(res => {
+        // 待生成的标签数=总数-已生成的数
+        res.datas.map(item => {
+          item.remainder = Number(item.quantity) - Number(item.lableNum)
+        })
         this.list = res.datas
         this.totalCount = res.totalCount
         this.listLoading = false
@@ -271,48 +275,49 @@ export default {
           })
       })
     },
-    handleGenerateLabel(row) {
-      // debugger
-      if (row.row.total > row.row.remainder) {
-        //  row.total = ''
+    handleGenerateLabel({ row, $index }) {
+      this.$set(this.SolidTableBtn.btnItem[0].btnLoding, $index, true)
+      if (row.total > row.remainder) {
+        row.total = 0
+        row.labelMantelNum = null
+        row.labelNum = null
         this.$message.error('数量合计不能超过待生成标签数量！')
+        this.$set(this.SolidTableBtn.btnItem[0].btnLoding, $index, false)
         return
       }
       this.detailListLoading = true
       let params = {
-        receiptID: row.row.receiptID,
-        receiptItemNo: row.row.receiptItemNo,
-        labelMantelNum: row.row.labelMantelNum,
-        labelNum: row.row.labelNum,
-        receivingDate: row.row.receivingDate,
-        productTime: row.row.productTime,
-        supplierBatch: row.row.supplierBatch,
-        materialID: row.row.materialID,
-        batch: row.row.batch,
-        Nnum: row.row.Nnum
+        orderID: row.orderID,
+        labelMantelNum: row.labelMantelNum,
+        labelNum: row.labelNum,
+        itemNo: row.itemNo,
+        materialID: row.materialID
       }
-      API.dataPost('materialsbarcode', params, 'CreateWasteLabel').then(res => {
-        if (res.success) {
-          API.get('materialsbarcode', { DeliverynoteID: row.row.receiptID }, 'all').then(res => {
-            console.log(this.detailTable)
-            console.log(res.items)
-            if (res) {
-              this.detailTable = res.items
-              this.getList()
-              row.row.total = 0
-            }
-          })
-          this.detailListLoading = false
-        } else {
-          this.detailListLoading = false
-          this.$notify({
-            title: this.$t('notify.failure') /* 失败 */,
-            message: res.message /* 返回失败信息 */,
-            type: 'error',
-            duration: 2000
-          })
-        }
-      })
+      API.dataPost('materialsbarcode', params, 'CreateWasteLabel')
+        .then(res => {
+          if (res.success) {
+            API.get('materialsbarcode', { DeliverynoteID: row.receiptID }, 'all').then(res => {
+              if (res) {
+                this.detailTable = res.items
+                this.getList()
+              }
+            })
+            row.total = 0
+            this.detailListLoading = false
+          } else {
+            this.$set(this.SolidTableBtn.btnItem[0].btnLoding, $index, false)
+            this.detailListLoading = false
+            this.$notify({
+              title: this.$t('notify.failure') /* 失败 */,
+              message: res.message /* 返回失败信息 */,
+              type: 'error',
+              duration: 2000
+            })
+          }
+        })
+        .finally(() => {
+          this.$set(this.SolidTableBtn.btnItem[0].btnLoding, $index, false)
+        })
     },
     handleChange() {
       this.changeNum = this.changeNum + 1

@@ -18,7 +18,7 @@
 
         <tr>
           <td colspan="11" class="main-title">
-            <img src="../../../static/image/common/Rowlogo.png" class="logo" />
+            <img src="../../../static/image/common/yaoninglogo.jpg" class="logo" />
             领料单
             <span class="top-right">编号:J-S0303.01 </span>
             <div ref="qrcode11111" class="qrcodestyle" />

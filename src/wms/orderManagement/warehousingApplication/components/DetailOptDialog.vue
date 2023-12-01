@@ -94,18 +94,18 @@ export default {
     // })
   },
   mounted() {
-    this.handleSetListQuery()
+    // this.handleSetListQuery()
   },
   methods: {
     // clearMater() {
     //   this.$set(this.listQuery, materialID, 'E105')
     //   this.getList()
     // },
-    handleSetListQuery() {
-      console.log(this.listQuery)
-      this.listQuery.materialID = 'E105'
-      // this.listQuery.IsOnShelf = true
-    },
+    // handleSetListQuery() {
+    //   console.log(this.listQuery)
+    //   this.listQuery.materialID = 'E105'
+    //   // this.listQuery.IsOnShelf = true
+    // },
     reset(val) {
       if (val === 0) {
         // 清空所有查询条件，修改为默认值

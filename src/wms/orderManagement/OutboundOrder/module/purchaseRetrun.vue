@@ -100,7 +100,7 @@ export default {
   mixins: [filterContainer, basics, colDesign],
   data() {
     return {
-      colName: 'PurchaseReturn',
+      colName: 'outboundOrderPurchaseReturn',
       detailColName: 'PurchaseReturnDetails',
       apiName: 'outstockorder',
       PurchItems,
@@ -120,7 +120,7 @@ export default {
         orderID: null
       },
       listQuery: {
-        OrderType: 'ArriveReturn'
+        OrderType: 'ArriveReturn,SourcePreturn,preturn'
       },
       downloadLoading: false,
       exportParams: {},

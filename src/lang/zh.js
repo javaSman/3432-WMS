@@ -121,6 +121,7 @@ export default {
     // InventoryPlan: '盘点计划',
     inventoryOrder: '盘点单管理',
     varianceReport: '差异报表',
+    boxCleanLog: '载具清洗日志',
 
     // 库存管理
     stockAdm: '库存管理',

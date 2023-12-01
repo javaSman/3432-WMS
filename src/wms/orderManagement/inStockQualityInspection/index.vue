@@ -473,7 +473,7 @@ export default {
         return
       }
       let row = this.multipleSelection[0]
-      let res = await API.getData('scraporder', { orderID: row.orderID }, 'GetDetails')
+      let res = await API.getData('recheckorder', { orderID: row.orderID }, 'GetDetails')
       if (res.details.length === 0) {
         this.$message.warning('该单据当前明细为空，请选择其他单据进行打印！')
         return
