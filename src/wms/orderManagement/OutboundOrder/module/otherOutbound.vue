@@ -175,7 +175,7 @@ export default {
     }
   },
   created() {
-    // this.getDict()
+    this.getDict()
   },
   updated() {
     // 解决合计行不显示及高度不渲染
@@ -193,15 +193,15 @@ export default {
         this.detailListLoading = false
       })
     },
-    /* 数据字典未配 */
+    /* 数据字典 */
     getDict() {
-      API.getDict('dict', { name: '' }).then(res => {
-        res.details.forEach(item => {
-          item.label
-          item.value
-        })
+      // 单据类型
+      API.getDict('dict', { name: 'OutOtherType' }).then(res => {
         this.OtherItems[1].options = res.details
-        this.$set(this.listQuery, 'orderType', '')
+      })
+      // 单据状态
+      API.getDict('dict', { name: 'outStockStatus' }).then(res => {
+        this.OtherItems[2].options = res.details
       })
     },
     dialogCancel() {

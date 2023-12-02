@@ -116,7 +116,7 @@ export default {
     cbgFilter: { type: Function, default: () => {} }, //  下拉网格 自定义搜索方法
     cbgRemote: { type: Function, default: () => {} }, // 下拉网格 自定义远程搜索方法
     dialogFormVisible: { type: Boolean }, // 弹窗显示
-    dialogWidth: { type: Number, default: 1800 }, // 弹窗宽度
+    dialogWidth: { type: Number, default: 1400 }, // 弹窗宽度
     formTitle: { type: String, require: true, default: '' }, // 弹窗名称
     isEdit: { type: Boolean }, // 是否为编辑弹窗
     formData: { type: Object, default: () => {} }, // 表单数据
@@ -181,14 +181,6 @@ export default {
             }
             if (this.detailTable.length === 0) {
               this.$message.error('当前废品出入库单明细为空,请新增明细')
-              this.formLoading = false
-              return
-            }
-            if (
-              this.formData.OrderType === 'InStock' &&
-              (this.formData.deptcode === undefined || this.formData.deptname === undefined)
-            ) {
-              this.$message.error('部门编码或部门名称为空，请输入！')
               this.formLoading = false
               return
             }

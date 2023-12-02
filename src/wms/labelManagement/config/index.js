@@ -21,7 +21,7 @@ export const TableList = [
   { label: '收货日期', prop: 'receivingDate', width: 100 },
   { label: '入库批次', prop: 'batch', width: 150 },
   { label: '供应商批次', prop: 'supplierBatch', width: 170 },
-  { label: '创建时间', prop: 'creationTime', width: 150 },
+  { label: '创建时间', prop: 'creationTime', width: 170 },
   { label: '是否免检', prop: 'chkfreeflag' },
   { label: '本次收货数量', prop: 'receivingNum' },
   { label: '已生成标签数量', prop: 'lableNum' },

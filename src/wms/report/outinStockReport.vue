@@ -49,6 +49,7 @@ import colDesign from '@/mixins/colDesign'
 import filterContainer from '@/mixins/filterContainer'
 import basics from '@/mixins'
 import combogrid from '@/mixins/combogrid'
+import { API } from '@/api/generalAPI'
 
 import { queryItems, Crud, OutMoreQuery } from './config'
 export default {
@@ -64,13 +65,42 @@ export default {
       queryItems,
       Crud,
       OutMoreQuery,
-      listQuery: {
-        BussinessType: 'PostInStock,PostOutStock'
-      },
+      // listQuery: {
+      //   BussinessType: 'PostInStock,PostOutStock'
+      // },
       exportParams: {}
     }
   },
-  created() {},
-  methods: {}
+  created() {
+    this.getDict()
+    this.getWarehouse()
+  },
+  methods: {
+    getDict() {
+      // 标签状态
+      API.getDict('dict', { name: 'BarCodestate' }).then(res => {
+        this.OutMoreQuery[4].options = res.details
+      })
+      // 业务类型
+      API.getDict('dict', { name: 'BLogBussinessType' }).then(res => {
+        this.OutMoreQuery[2].options = res.details
+      })
+      // 质检类型
+      API.getDict('dict', { name: 'QcState' }).then(res => {
+        this.OutMoreQuery[3].options = res.details
+      })
+    },
+    /** 获取仓库编码下拉框值 */
+    getWarehouse() {
+      API.get('warehouse', { IsPage: false }, 'all').then(res => {
+        res.items.forEach(item => {
+          item.label = item.warehouseName
+          item.value = item.warehouseID
+          item.asign = item.warehouseID
+        })
+        this.OutMoreQuery[5].options = res.items
+      })
+    }
+  }
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="components-container">
     <el-tabs type="border-card">
-      <el-tab-pane label="领料出库"><material /></el-tab-pane>
-      <el-tab-pane label="销售出库"><salesOutbound /></el-tab-pane>
-      <el-tab-pane label="采购退货出库"><purchase /></el-tab-pane>
-      <el-tab-pane label="其他出库"><otherOutbound /></el-tab-pane>
+      <el-tab-pane label="领料出库申请单"><material /></el-tab-pane>
+      <el-tab-pane label="销售出库申请单"><salesOutbound /></el-tab-pane>
+      <el-tab-pane label="采购退货出库申请单"><purchase /></el-tab-pane>
+      <el-tab-pane label="其他出库申请单"><otherOutbound /></el-tab-pane>
       <el-tab-pane label="取消入库"><cancelReceipt /></el-tab-pane>
     </el-tabs>
   </div>

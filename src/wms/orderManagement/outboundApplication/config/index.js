@@ -57,9 +57,27 @@ export const TabelList = [
   { label: '在库数量', prop: 'quantity' },
   { label: '单位', prop: 'unitName' },
   { label: '仓库', prop: 'warehouseID' },
-  { label: '申请数量', prop: 'pickQuantity', type: 'colType/Input', required: true, rules: [{ required: true, message: '请输入' }] },
-  { label: '供应商代码', prop: 'supplierCode', type: 'colType/Input', required: true, rules: [{ required: true, message: '请输入' }] },
-  { label: '批次号', prop: 'batch', type: 'colType/Input', required: true, rules: [{ required: true, message: '请输入' }] }
+  {
+    label: '申请数量',
+    prop: 'pickQuantity',
+    type: 'colType/Input',
+    required: true,
+    rules: [{ required: true, message: '请输入' }]
+  },
+  {
+    label: '供应商代码',
+    prop: 'supplierCode',
+    type: 'colType/Input',
+    required: true,
+    rules: [{ required: true, message: '请输入' }]
+  },
+  {
+    label: '批次号',
+    prop: 'batch',
+    type: 'colType/Input',
+    required: true,
+    rules: [{ required: true, message: '请输入' }]
+  }
 ]
 export const materialQueryItems = [
   { type: 'Input', label: '物料编码', prop: 'materialID' },
@@ -294,8 +312,8 @@ export const OuterList = [
 export const OtherTabelList = [
   { label: '物料编码', prop: 'materialID' },
   { label: '物料描述', prop: 'materialDesc' },
-  { label: '数量', prop: '1' },
-  { label: '单位', prop: '2' },
+  { label: '数量', prop: 'quality' },
+  { label: '单位', prop: 'unitName' },
   { label: '批次号', prop: 'batch' }
 ]
 export const OuterQueryItems = [

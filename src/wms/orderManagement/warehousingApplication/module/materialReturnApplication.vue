@@ -93,6 +93,7 @@ export default {
   },
   created() {
     // this.getList()
+    this.getDict()
   },
   updated() {
     // 解决合计行不显示及高度不渲染
@@ -114,6 +115,12 @@ export default {
       API.get('returnorder', this.detailQuery, 'GetDetails').then(res => {
         this.detailTable = res.details
         this.detailListLoading = false
+      })
+    },
+    getDict() {
+      // 状态
+      API.getDict('dict', { name: 'ReturnStatus' }).then(res => {
+        this.MaterialItems[4].options = res.details
       })
     }
   }

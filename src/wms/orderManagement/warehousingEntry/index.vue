@@ -1,7 +1,7 @@
 <template>
   <div class="components-container">
     <el-tabs type="border-card">
-      <el-tab-pane label="采购入库">
+      <el-tab-pane label="采购入库单">
         <div class="head-container">
           <filter-container :form-items="QueryItems" :list-query.sync="listQuery" @query="getList" @reset="reset" />
         </div>
@@ -66,9 +66,9 @@
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="生成完工入库"><productionCompletion /></el-tab-pane>
-      <el-tab-pane label="退料入库"><materialReturnApplication /></el-tab-pane>
-      <el-tab-pane label="其他入库"><otherWarehousingApplications /></el-tab-pane>
+      <el-tab-pane label="生成完工入库单"><productionCompletion /></el-tab-pane>
+      <el-tab-pane label="退料入库单"><materialReturnApplication /></el-tab-pane>
+      <el-tab-pane label="其他入库单"><otherWarehousingApplications /></el-tab-pane>
     </el-tabs>
   </div>
 </template>

@@ -5,22 +5,24 @@ export const QueryItems = [
   { type: 'Input', label: '供应商编码', prop: 'SupplierCode' },
   { type: 'Input', label: '物料编码', prop: 'materialID' }
 ]
-export const MoreQuery = [{
-  type: 'DateRangePart',
-  label: '创建时间',
-  // prop: 'registrationEndTime',
-  startProp: 'createStartTime',
-  endProp: 'createEndTime',
-  dateType: 'datetime',
-  valueFormat: 'yyyy-MM-dd HH:mm:ss',
-  labelFormat: 'yyyy-MM-dd HH:mm:ss',
-  startDefaultTime: '08:00:00',
-  endDefaultTime: '20:00:00',
-  formStyle: 'width:240px',
-  rules: [{ required: true, message: '请选择时间', trigger: 'blur' }],
-  // span: 12
-  layout: { span: undefined, xs: 24, sm: 16, md: 12, lg: 8, xl: 8 }
-}]
+export const MoreQuery = [
+  {
+    type: 'DateRangePart',
+    label: '创建时间',
+    // prop: 'registrationEndTime',
+    startProp: 'createStartTime',
+    endProp: 'createEndTime',
+    dateType: 'datetime',
+    valueFormat: 'yyyy-MM-dd HH:mm:ss',
+    labelFormat: 'yyyy-MM-dd HH:mm:ss',
+    startDefaultTime: '08:00:00',
+    endDefaultTime: '20:00:00',
+    formStyle: 'width:240px',
+    rules: [{ required: true, message: '请选择时间', trigger: 'blur' }],
+    // span: 12
+    layout: { span: undefined, xs: 24, sm: 16, md: 12, lg: 8, xl: 8 }
+  }
+]
 export const Crud = {}
 
 // 非标按钮
@@ -102,7 +104,7 @@ export const MaterialItems = [
   { type: 'Input', label: '物料编码', prop: 'materialID' },
   { type: 'Input', label: '物料描述', prop: 'materialDesc' },
   { type: 'Input', label: '退料人', prop: 'controlPeopleName' },
-  { type: 'Select', label: '申请类型', prop: 'inApplyforType', options: [] },
+  // { type: 'Select', label: '申请类型', prop: 'inApplyforType', options: [] },
   { type: 'Select', label: '状态', prop: 'inApplyforHeadState', options: [] }
 ]
 

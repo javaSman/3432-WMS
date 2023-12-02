@@ -150,8 +150,14 @@ export default {
         }
       }
     })
+    // 单据类型
     API.getDict('dict', { name: 'ScrapInOutType' }).then(res => {
       this.FormList[0].options = res.details
+      this.OtherItems[1].options = res.details
+    })
+    // 单据状态
+    API.getDict('dict', { name: 'OrderStatus' }).then(res => {
+      this.OtherItems[2].options = res.details
     })
   },
   updated() {
@@ -196,6 +202,7 @@ export default {
       API.get('wasteorder', this.detailQuery, 'GetDetails').then(res => {
         this.detailTable = res.details
         this.editDetailTable = res.items
+        this.detailListLoading = false
       })
     },
     handleDelete() {

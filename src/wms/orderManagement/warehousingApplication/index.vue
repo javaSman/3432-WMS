@@ -85,9 +85,9 @@
           />
         </div>
       </el-tab-pane>
-      <el-tab-pane label="生产完工申请单"><productionCompletion /></el-tab-pane>
-      <el-tab-pane label="退料申请单"><materialReturnApplication /></el-tab-pane>
-      <el-tab-pane label="其它入库申请单"><otherWarehousingApplications /></el-tab-pane>
+      <el-tab-pane label="生产完工入库申请单"><productionCompletion /></el-tab-pane>
+      <el-tab-pane label="退料入库申请单"><materialReturnApplication /></el-tab-pane>
+      <el-tab-pane label="其他入库申请单"><otherWarehousingApplications /></el-tab-pane>
     </el-tabs>
   </div>
 </template>

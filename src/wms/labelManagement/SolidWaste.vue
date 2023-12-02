@@ -192,7 +192,10 @@ export default {
         // 待生成的标签数=总数-已生成的数
         res.datas.map(item => {
           item.remainder = Number(item.quantity) - Number(item.lableNum)
+          // 转换时间格式
+          item.creationTime = item.creationTime.split('T')[0] + ' ' + item.creationTime.split('T')[1]
         })
+
         this.list = res.datas
         this.totalCount = res.totalCount
         this.listLoading = false

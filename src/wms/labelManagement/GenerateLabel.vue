@@ -186,6 +186,10 @@ export default {
       this.listLoading = true
       this.listQuery.SkipCount = (this.page - 1) * 10
       API.getData('receiptorder', this.listQuery, 'GetGenerateLabelList').then(res => {
+        // 转换时间格式
+        res.items.map(item => {
+          item.creationTime = item.creationTime.split('T')[0] + ' ' + item.creationTime.split('T')[1]
+        })
         this.list = res.items
         this.totalCount = res.totalCount
         this.listLoading = false
