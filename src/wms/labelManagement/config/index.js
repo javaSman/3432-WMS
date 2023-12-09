@@ -51,13 +51,13 @@ export const TableList = [
     width: '150px',
     rules: [{ required: true, message: '请输入数量合计' }]
   },
-  {
-    label: '生产日期',
-    prop: 'productTime',
-    type: 'colType/Date',
-    width: '150px',
-    rules: [{ required: true, message: '请输入生产日期' }]
-  },
+  // {
+  //   label: '生产日期',
+  //   prop: 'productTime',
+  //   type: 'colType/Date',
+  //   width: '150px',
+  //   rules: [{ required: true, message: '请输入生产日期' }]
+  // },
   {
     label: '生产地',
     prop: 'productPlace',
@@ -113,7 +113,7 @@ export const TagListQueryItems = [
   { type: 'BatchInput', label: '标签条码', prop: 'barcode' },
   { type: 'BatchInput', label: '物料编码', prop: 'materialID' },
   { type: 'BatchInput', label: '物料描述', prop: 'materialDesc' },
-  { type: 'BatchInput', label: '标签状态', prop: 'materialStatus' },
+  { type: 'Select', label: '标签状态', prop: 'materialStatus', options: [] },
   {
     type: 'DateRangePart',
     label: '创建时间',
@@ -133,9 +133,9 @@ export const TagListQueryItems = [
 ]
 export const MoreQuery = [
   { type: 'Input', label: '单号', prop: 'PO' },
-  { type: 'Select', label: '单据类型', prop: 'State', options: [] },
-  { type: 'Select', label: '供应商', prop: 'SupplierCode', options: [] },
-  { type: 'Input', label: '批次号', prop: 'Batch' },
+  // { type: 'Select', label: '单据类型', prop: 'State', options: [] },
+  { type: 'Input', label: '供应商', prop: 'SupplierCode' },
+  { type: 'Input', label: '供应商批次', prop: 'supplierBatch' },
   { type: 'Input', label: '操作人', prop: 'CreatorId' },
   { type: 'Input', label: '原物料码', prop: 'OriginBarcode' }
 ]
@@ -205,7 +205,7 @@ export const formList = [
 export const SolidQueryItems = [
   { type: 'BatchInput', label: '收账人账号', prop: 'controlPeopleName' },
   // { type: 'BatchInput', label: '收货人姓名', prop: 'controlPeopleName' },
-  { type: 'BatchInput', label: '单号', prop: 'receiptID' },
+  { type: 'BatchInput', label: '单号', prop: 'orderID' },
   // { type: 'BatchInput', label: '供应商编号', prop: 'bianhao' },
   // { type: 'BatchInput', label: '供应商简称', prop: 'jiancheng' },
   { type: 'BatchInput', label: '物料编码', prop: 'materialID' }
@@ -232,7 +232,7 @@ export const SolidTableList = [
     type: 'colType/Number',
     width: '150px',
     required: true,
-    disabled: false,
+    disabled: true,
     rules: [{ required: true, message: '请输入实称数量' }]
   },
   {

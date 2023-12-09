@@ -18,7 +18,7 @@
         @toAdd="handleCreate"
         @toEdit="handleUpdate()"
         @toDelete="handleDelete()"
-        @toExport="handleExport()"
+        @toExport="handleDownloadPast()"
       />
       <ColDesign :col-list="column" :table-show.sync="tableShow" @resetCol="resetCol" />
       <Table
@@ -100,6 +100,20 @@ export default {
         })
         this.OutMoreQuery[5].options = res.items
       })
+    },
+    handleDownloadPast() {
+      let Ids = [] // 选中的id集
+      if (this.multipleSelection.length > 0) {
+        //  如果有选中的数据，就导出选中的数据，否则全部导出或根据搜索条件导出
+        this.multipleSelection.map(item => {
+          Ids.push(item.id)
+        })
+        // this.exportParams.Ids = Ids
+        this.exportPast('barcodeLog', { Ids: Ids }, 'Export')
+      } else {
+        // delete this.exportParams.Ids
+        this.exportPast('barcodeLog', this.exportParams, 'Export')
+      }
     }
   }
 }

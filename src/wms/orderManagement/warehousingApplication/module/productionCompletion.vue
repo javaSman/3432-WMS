@@ -115,7 +115,7 @@ export default {
     // },
     getDetail(row) {
       this.detailListLoading = true
-      this.detailQuery.OrderId = row.po
+      this.detailQuery.OrderId = row.productOrderID
       API.get('productorder', this.detailQuery, 'GetDetails').then(res => {
         this.detailTable = res.details
       })

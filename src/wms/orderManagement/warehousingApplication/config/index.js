@@ -105,12 +105,12 @@ export const MaterialItems = [
   { type: 'Input', label: '物料描述', prop: 'materialDesc' },
   { type: 'Input', label: '退料人', prop: 'controlPeopleName' },
   // { type: 'Select', label: '申请类型', prop: 'inApplyforType', options: [] },
-  { type: 'Select', label: '状态', prop: 'inApplyforHeadState', options: [] }
+  { type: 'Select', label: '状态', prop: 'status', options: [] }
 ]
 
 /* 其他入库申请单 */
 export const OtherItems = [
-  { type: 'Input', label: '单号', prop: 'receiptID' },
+  { type: 'Input', label: '单号', prop: 'orderId' },
   { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
   { type: 'Select', label: '单据状态', prop: 'orderStatus', options: [] }
 ]
@@ -167,11 +167,11 @@ export const TableList = [
   { label: '物料描述', prop: 'materialDesc' },
   { type: 'txt', label: '仓库编码', prop: 'warehouseID', options: [] },
   { label: '单位', prop: 'unitName' },
-  {
-    label: '数量',
-    prop: 'quantity',
-    width: '150px'
-  },
+  // {
+  //   label: '数量',
+  //   prop: 'quantity',
+  //   width: '150px'
+  // },
   {
     label: '实称数量',
     prop: 'Nnum',

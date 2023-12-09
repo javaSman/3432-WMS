@@ -81,10 +81,8 @@ export const WarehouseTabelList = [
   {
     label: '供应商代码',
     prop: 'supplierCode'
-    // required: true,
-    // rules: [{ required: true, message: '请输入标签条码' }]
   },
-  { label: '批次', prop: 'batch' }
+  { label: '供应商批次', prop: 'supplierBatch' }
 ]
 export const WarehosueQueryItems = [
   { type: 'Input', label: '批次号', prop: 'batch' },

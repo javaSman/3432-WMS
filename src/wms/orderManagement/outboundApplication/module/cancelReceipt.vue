@@ -81,7 +81,8 @@ export default {
     return {
       colName: 'PoInApplyforreturn',
       detailColName: 'PoInApplyforMaterialreturn',
-      apiName: 'pickorder/GetCancelReceiptOrderAll',
+      apiName: 'pickorder',
+      listQuery: { ApplyType: 'ArriveReturn' },
       CancelReceiptItems,
       CancelReceiptCrud,
       CancelReceiptBtnItems,

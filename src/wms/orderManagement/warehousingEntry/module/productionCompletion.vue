@@ -106,11 +106,11 @@ export default {
   },
   methods: {
     getDict() {
-      API.getDict('dict', { name: 'InStockType' }).then(res => {
-        this.ProdItems[1].options = res.details
-      })
+      // API.getDict('dict', { name: 'InStockType' }).then(res => {
+      //   this.ProdItems[1].options = res.details
+      // })
       API.getDict('dict', { name: 'StockStatus' }).then(res => {
-        this.ProdItems[2].options = res.details
+        this.ProdItems[1].options = res.details
       })
     },
     // getList() {

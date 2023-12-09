@@ -95,11 +95,7 @@
       @reset="reset"
     />
     <div v-if="printBegin" id="salesOutbound" ref="salesOutbound" style="display: none">
-      <StockTransfer
-        :data="salesOutbound"
-        :thead="multipleSelection[0]"
-        :page="salesOutbound.length"
-      />
+      <StockTransfer :data="salesOutbound" :thead="multipleSelection[0]" :page="salesOutbound.length" />
     </div>
   </div>
 </template>
@@ -137,9 +133,10 @@ export default {
   mixins: [filterContainer, basics, colDesign],
   data() {
     return {
-      colName: 'PoInApplyforreturn',
-      detailColName: 'PoInApplyforMaterialreturn',
+      colName: 'ShipmentOrder',
+      detailColName: 'ShipmentOrderDetail',
       apiName: 'pickorder',
+      listQuery: { ApplyType: 'Shipment' },
       SalesItems,
       SalesCrud,
       SalesBtnItems,
@@ -176,7 +173,9 @@ export default {
       salesOutbound: []
     }
   },
-  created() {},
+  created() {
+    this.getDict()
+  },
   updated() {
     // 解决合计行不显示及高度不渲染
     this.$nextTick(() => {
@@ -184,13 +183,22 @@ export default {
     })
   },
   methods: {
+    /* 数据字典 */
+    getDict() {
+      // 状态
+      API.getDict('dict', { name: 'InStockStatus' }).then(res => {
+        this.SalesItems[0].options = res.details
+      })
+      // 发货类型
+      API.getDict('dict', { name: 'ShipmentType' }).then(res => {
+        this.SalesItems[4].options = res.details
+      })
+    },
     getDetail(row) {
       this.detailListLoading = true
       this.detailQuery.pickID = row.pickID
       API.get('pickorder/GetDetails', this.detailQuery, 'all').then(res => {
         this.detailTable = res.details
-        console.log(this.detailTable)
-        console.log(this.multipleSelection[0])
         // this.editDetailTable = res
         this.detailListLoading = false
       })
@@ -276,7 +284,8 @@ export default {
         strStyle += '.top-title td { height: 10mm;border: 1px solid #000; }'
         strStyle +=
           ' .main-title { height: 18mm !important; line-height: 18mm; font-size: 20pt; font-weight: bold;text-align: center !important;border:none !important;border-bottom: 1px solid #000!important;}'
-        strStyle += '.top-right {text-align: left;font-size: 10pt;font-weight: normal;position: absolute;right:19mm;top: 8mm;}'
+        strStyle +=
+          '.top-right {text-align: left;font-size: 10pt;font-weight: normal;position: absolute;right:19mm;top: 8mm;}'
         strStyle += '.qrcodestyle {position: absolute; right: 1mm;top:1mm;}'
         strStyle += '.col_design {height: 0 !important}'
         strStyle += '.col_design td {height: 0;visibility: hidden;border: none;}'

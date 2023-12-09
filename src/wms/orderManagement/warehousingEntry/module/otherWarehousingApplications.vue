@@ -74,7 +74,7 @@ export default {
     return {
       colName: 'OtherStockOrder',
       detailColName: 'OtherStockOrderDetail',
-      apiName: 'receiptorder',
+      apiName: 'InStockOrder',
       OtherItems,
       Crud,
 
@@ -88,11 +88,15 @@ export default {
       },
       downloadLoading: false,
       exportParams: {},
-      totalCol: ['quantity']
+      totalCol: ['quantity'],
+      listQuery: {
+        ordertype: 'InStock,MESIn'
+      }
     }
   },
   created() {
     // this.getList()
+    this.getDict()
   },
   updated() {
     // 解决合计行不显示及高度不渲染
@@ -113,6 +117,11 @@ export default {
       this.detailQuery.InApplyforType = row.InApplyforType
       API.get('po', this.detailQuery, 'GetPoInApplyforMaterialDetails').then(res => {
         this.detailTable = res.items
+      })
+    },
+    getDict() {
+      API.getDict('dict', { name: 'StockStatus' }).then(res => {
+        this.OtherItems[1].options = res.details
       })
     }
   }

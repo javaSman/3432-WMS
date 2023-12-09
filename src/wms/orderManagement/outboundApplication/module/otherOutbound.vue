@@ -151,6 +151,7 @@ export default {
       colName: 'OtherOutbound',
       detailColName: 'OtherOutboundDetail',
       apiName: 'pickorder',
+      listQuery: { ApplyType: 'Waste' },
       OtherItems,
       OtherCrud,
       OtherBtnItems,
@@ -179,7 +180,7 @@ export default {
       listLoading: true,
       detailListLoading: false,
       detailQuery: {
-        pickID: null
+        OrderId: null
       },
       downloadLoading: false,
       exportParams: {},
@@ -191,6 +192,7 @@ export default {
   },
   created() {
     this.getDict()
+    // this.getList()
   },
   updated() {
     // 解决合计行不显示及高度不渲染
@@ -199,6 +201,42 @@ export default {
     })
   },
   methods: {
+    // getList(val) {
+    //   if (val) {
+    //     this.page = val.page
+    //     if (val.limit) {
+    //       this.listQuery.SkipCount = (this.page - 1) * val.limit
+    //     } else {
+    //       this.listQuery.SkipCount = (this.page - 1) * 10
+    //     }
+    //   }
+    //   API.get('wasteorder', this.listQuery, 'all').then(res => {
+    //     this.list = res.items
+    //     this.totalCount = res.totalCount
+    //     this.listLoading = false
+    //   })
+    // },
+    reset(val) {
+      if (val === 0) {
+        // 清空所有查询条件，修改为默认值
+        this.page = 1
+        if (this.$refs.table) {
+          this.$refs.table.$refs.table.clearSort()
+        }
+        this.listQuery = {
+          Sorting: null,
+          SkipCount: 0,
+          orderType: 'OutStock',
+          MaxResultCount: this.listQuery.MaxResultCount
+        }
+      } else if (val === 1) {
+        // 查询条件不修改、仅页码修改为第一页,查询为第一页
+        this.page = 1
+        this.listQuery.SkipCount = 0
+      }
+      // 不传参，保留原有查询条件、页码
+      this.getList()
+    },
     getDict() {
       // 获取单据类型
       API.getDict('dict', { name: 'OutOtherType' }).then(res => {
@@ -212,8 +250,8 @@ export default {
     },
     getDetail(row) {
       this.detailListLoading = true
-      this.detailQuery.pickID = row.pickID
-      API.get('pickorder/GetDetails', this.detailQuery, 'all').then(res => {
+      this.detailQuery.OrderId = row.orderID
+      API.get('wasteorder', this.detailQuery, 'GetDetails').then(res => {
         this.detailTable = res.details
         // this.editDetailTable = res
         this.detailListLoading = false

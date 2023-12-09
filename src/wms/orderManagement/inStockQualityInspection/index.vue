@@ -164,7 +164,7 @@ export default {
       colName: 'InStockInspection',
       detailColName: 'InStockInspectionDetail',
       apiName: 'recheckorder',
-      dialogTitle: this.$t('dialogHeader.scrapInStockChange'), // '盘点单',
+      dialogTitle: '物料重检',
       outShelvesForm,
       queryItems,
       inventoryFormList,

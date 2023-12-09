@@ -133,11 +133,11 @@ export default {
       })
     },
     getDict() {
-      API.getDict('dict', { name: 'InStockType' }).then(res => {
-        this.QueryItems[1].options = res.details
-      })
+      // API.getDict('dict', { name: 'InStockType' }).then(res => {
+      //   this.QueryItems[1].options = res.details
+      // })
       API.getDict('dict', { name: 'StockStatus' }).then(res => {
-        this.QueryItems[2].options = res.details
+        this.QueryItems[1].options = res.details
       })
     },
     handlePosting() {

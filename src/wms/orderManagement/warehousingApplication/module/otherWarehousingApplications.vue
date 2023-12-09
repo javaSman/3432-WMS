@@ -104,10 +104,10 @@ export default {
       colName: 'PoInApplyforother',
       detailColName: 'PoInApplyforMaterialother',
       apiName: 'wasteorder',
+      listQuery: { OrderType: 'InStock,MESIn' },
       OtherItems,
       Crud,
       OtherBtn,
-
       layout: { span: 8 },
       detailTable: [],
 

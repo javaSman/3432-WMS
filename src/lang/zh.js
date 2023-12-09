@@ -450,7 +450,7 @@ export default {
     salesOutboundReturnApplication: '成品出库单明细',
     PurchaseReturnApplication: '退货出库单明细',
     PurchaseRequisition: '退货单',
-    OtherRequisition: '转库单',
+    OtherRequisition: '调拨单',
     OtherReturnApplication: '其他出库单明细',
     CancelReceiptReturnApplication: '单据明细',
     regionManagement: '区域',

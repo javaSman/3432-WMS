@@ -134,10 +134,10 @@ export default {
   data() {
     return {
       colName: 'OutboundOther',
-      detailColName: 'PoInApplyforMaterialreturn',
+      detailColName: 'OutboundOtherDetails',
       apiName: 'outstockorder',
       listQuery: {
-        OrderType: 'DeteriorationOut'
+        OrderType: 'DeteriorationOut,Waste'
       },
       OtherItems,
       OtherCrud,
@@ -166,7 +166,7 @@ export default {
       listLoading: true,
       detailListLoading: false,
       detailQuery: {
-        pickID: null
+        OrderId: null
       },
       downloadLoading: false,
       exportParams: {},
@@ -186,8 +186,8 @@ export default {
   methods: {
     getDetail(row) {
       this.detailListLoading = true
-      this.detailQuery.pickID = row.pickID
-      API.get('pickorder/GetDetails', this.detailQuery, 'all').then(res => {
+      this.detailQuery.OrderId = row.orderID
+      API.get('outstockorder', this.detailQuery, 'GetDetails').then(res => {
         this.detailTable = res.details
         // this.editDetailTable = res
         this.detailListLoading = false

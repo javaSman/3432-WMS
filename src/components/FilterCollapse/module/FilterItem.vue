@@ -46,7 +46,24 @@
     >
       <el-option v-for="op in item.options" :key="op.value" :label="op.label" :value="op.value" />
     </el-select>
-
+    <el-select
+      v-if="item.type === 'SelectNew' && !item.isHide"
+      v-model="listQuery[item.prop]"
+      :style="'width:' + (item.width || '100%')"
+      :readonly="item.readonly || (item.unique && isEdit) || false"
+      :disabled="item.disabled || (item.unique && isEdit) || false"
+      clearable
+      filterable
+      @change="item.change ? item.change(listQuery[item.prop]) : ''"
+      @clear="item.clear ? item.clear(listQuery[item.prop]) : ''"
+      @visible-change="$forceUpdate()"
+    >
+      <el-option v-for="op in item.options" :key="op.value" :label="op.label" :value="op.value">
+        <!-- {{ op.label }} -->
+        <span style="float: left">{{ op.value }}</span>
+        <span style="float: right; color: #8492a6; font-size: 13px">{{ op.label }}</span>
+      </el-option>
+    </el-select>
     <!-- <el-select
       v-if="item.type === 'Selects' && !item.isHide"
       v-model="selects[item.prop]"

@@ -96,11 +96,7 @@
       @reset="reset"
     />
     <div v-if="printBegin" id="storesRequisition" ref="storesRequisition" style="display: none">
-      <StockTransfer
-        :data="storesRequisition"
-        :thead="multipleSelection[0]"
-        :page="storesRequisition.length"
-      />
+      <StockTransfer :data="storesRequisition" :thead="multipleSelection[0]" :page="storesRequisition.length" />
     </div>
   </div>
 </template>
@@ -141,6 +137,7 @@ export default {
       colName: 'PickOrder',
       detailColName: 'PickOrderDetail',
       apiName: 'pickorder',
+      listQuery: { ApplyType: 'MESPick' },
       MaterialItems,
       Crud,
       BtnItems,
@@ -179,6 +176,7 @@ export default {
   },
   created() {
     this.getDict()
+    console.log(basics)
   },
   updated() {
     // 解决合计行不显示及高度不渲染
@@ -296,7 +294,8 @@ export default {
         strStyle += '.top-title td { height: 10mm;border: 1px solid #000; }'
         strStyle +=
           ' .main-title { height: 18mm !important; line-height: 18mm; font-size: 20pt; font-weight: bold;text-align: center !important;border:none !important;border-bottom: 1px solid #000!important;}'
-        strStyle += '.top-right {text-align: left;font-size: 10pt;font-weight: normal;position: absolute;right:19mm;top: 8mm;}'
+        strStyle +=
+          '.top-right {text-align: left;font-size: 10pt;font-weight: normal;position: absolute;right:19mm;top: 8mm;}'
         strStyle += '.qrcodestyle {position: absolute; right: 1mm;top:1mm;}'
         strStyle += '.col_design {height: 0 !important}'
         strStyle += '.col_design td {height: 0;visibility: hidden;border: none;}'

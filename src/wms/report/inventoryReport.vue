@@ -132,9 +132,7 @@ export default {
     },
     getWarehouse() {
       API.get('warehouse', { IsPage: false }, 'all').then(res => {
-        // let arr = []
         res.items.forEach(item => {
-          // arr.push(item.warehouseID)
           item.label = item.warehouseName
           item.value = item.warehouseID
           item.asign = item.warehouseID

@@ -3,7 +3,7 @@
  */
 export const QueryItems = [
   { type: 'Input', label: '入库单号', prop: 'orderID' },
-  { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
+  // { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
   { type: 'Select', label: '过账状态', prop: 'orderStatus', options: [] },
   {
     type: 'DateRangePart',
@@ -60,15 +60,15 @@ export const ButtonItems = [
  */
 export const ProdItems = [
   { type: 'Input', label: '入库单号', prop: 'orderID' },
-  { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
+  // { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
   { type: 'Select', label: '过账状态', prop: 'orderStatus', options: [] },
   { type: 'Input', label: '退单号', prop: '' },
   {
     type: 'DateRangePart',
     label: '创建时间',
     // prop: 'registrationEndTime',
-    startProp: 'createStartTime',
-    endProp: 'createEndTime',
+    startProp: 'CreateBeginDate',
+    endProp: 'CreateEndDate',
     dateType: 'datetime',
     valueFormat: 'yyyy-MM-dd HH:mm:ss',
     labelFormat: 'yyyy-MM-dd HH:mm:ss',
@@ -87,7 +87,7 @@ export const ProdItems = [
  */
 export const MaterialItems = [
   { type: 'Input', label: '入库单号', prop: 'orderID' },
-  { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
+  // { type: 'Select', label: '单据类型', prop: 'orderType', options: [] },
   { type: 'Select', label: '过账状态', prop: 'orderStatus', options: [] },
   {
     type: 'DateRangePart',

@@ -110,8 +110,17 @@ export default {
       FormData: {}
     }
   },
-  created() {},
+  created() {
+    this.getDict()
+  },
   methods: {
+    // 获取字典
+    getDict() {
+      // 标签状态
+      API.getDict('dict', { name: 'BarCodestate' }).then(res => {
+        this.TagListQueryItems[3].options = res.details
+      })
+    },
     handleChange() {
       this.changeNum = this.changeNum + 1
       if (this.changeNum === this.multipleSelection.length) {
@@ -321,26 +330,28 @@ export default {
       this.multipleSelection.forEach(item => {
         array.push(item.barcode)
       })
-      API.dataPost('materialsbarcode', { barcodeFlag: this.FormData.BarcodeFlag, barcodeList: array }, 'UpdateBarcodeFlag').then(
-        res => {
-          if (res.success) {
-            this.$notify({
-              title: this.$t('notify.success') /* 成功 */,
-              message: res.message /* 返回成功信息 */,
-              type: 'success',
-              duration: 2000
-            })
-            this.DeleteDialogFormVisible = false
-          } else {
-            this.$notify({
-              title: this.$t('notify.failure') /* 失败 */,
-              message: res.message /* 返回失败信息 */,
-              type: 'error',
-              duration: 2000
-            })
-          }
+      API.dataPost(
+        'materialsbarcode',
+        { barcodeFlag: this.FormData.BarcodeFlag, barcodeList: array },
+        'UpdateBarcodeFlag'
+      ).then(res => {
+        if (res.success) {
+          this.$notify({
+            title: this.$t('notify.success') /* 成功 */,
+            message: res.message /* 返回成功信息 */,
+            type: 'success',
+            duration: 2000
+          })
+          this.DeleteDialogFormVisible = false
+        } else {
+          this.$notify({
+            title: this.$t('notify.failure') /* 失败 */,
+            message: res.message /* 返回失败信息 */,
+            type: 'error',
+            duration: 2000
+          })
         }
-      )
+      })
       return true
     },
     cancel() {

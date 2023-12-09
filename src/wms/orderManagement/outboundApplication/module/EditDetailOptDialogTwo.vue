@@ -121,7 +121,7 @@ export default {
     tableList: { type: Array, default: () => {} }, // 明细表格字段参数
     detailTable: { type: Array, default: () => [] }, // 表格数据
     apiName: { type: String, default: '' }, // 请求后端的api页面名称
-    apiSuffix: { type: String, default: 'PickOtherOrderEditAll/editAll' }, // 请求后端的api后缀
+    apiSuffix: { type: String, default: 'editall' }, // 请求后端的api后缀
     // 选择明细弹窗
     checkParams: { type: String, require: true, default: '' }, // 去重检验参数
     detailTitle: { type: String, require: true, default: '' }, // 选择明细弹窗 名称
@@ -174,6 +174,7 @@ export default {
               this.formLoading = false
               return // 表单验证完后，若有自定义方法，则执行
             }
+            this.formData['orderType'] = 'OutStock'
             let params = {
               header: this.formData,
               details: this.detailTable

@@ -20,7 +20,7 @@ export const inventoryReportItems = [
 ]
 // 库存报表更多查询
 export const InventoryQuery = [
-  { type: 'Select', label: '仓库', prop: 'WarehouseID', options: [] },
+  { type: 'SelectNew', label: '仓库', prop: 'WarehouseID', options: [] },
   { type: 'Select', label: '冻结状态', prop: 'Freeze', options: [] },
   { type: 'Select', label: '条码状态', prop: 'State', options: [] },
   { type: 'Select', label: '质检状态', prop: 'QcState', options: [] }
@@ -396,7 +396,7 @@ export const ArrMoreQuery = [
   { type: 'Selects', label: '仓库名称', prop: 'WarehouseID', options: [] },
   { type: 'BatchInput', label: '采购订单号', prop: 'po' },
   { type: 'BatchInput', label: '送货单号', prop: 'deliverynoteID' },
-  { type: 'Input', label: '操作人', prop: 'CreatorId' },
+  { type: 'Input', label: '账号/姓名', prop: 'CreatorId' },
   { type: 'Input', label: '临期天数', prop: 'AdventDate' },
   {
     type: 'DateRangePart',
@@ -645,7 +645,7 @@ export const MoreQuery = [
     // prop: 'registrationEndTime',
     startProp: 'CreateStartTime',
     endProp: 'createEndTime',
-    dateType: 'CreateEndTime',
+    dateType: 'datetime',
     valueFormat: 'yyyy-MM-dd HH:mm:ss',
     labelFormat: 'yyyy-MM-dd HH:mm:ss',
     startDefaultTime: '08:00:00',
@@ -707,7 +707,7 @@ export const OutMoreQuery = [
   { type: 'BatchInput', label: '货位', prop: 'Location' },
   { type: 'Select', label: '业务类型', prop: 'BussinessType', options: [] },
   { type: 'Select', label: '质检类型', prop: 'QcType', options: [] },
-  { type: 'Select', label: '标签状态', prop: 'BarcodeState', options: [] },
+  { type: 'Select', label: '标签状态', prop: 'state', options: [] },
   { type: 'Select', label: '仓库名称', prop: 'WarehouseID', options: [] },
   {
     type: 'DateRangePart',

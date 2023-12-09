@@ -115,7 +115,7 @@ export default {
     cbgFilter: { type: Function, default: () => {} }, //  下拉网格 自定义搜索方法
     cbgRemote: { type: Function, default: () => {} }, // 下拉网格 自定义远程搜索方法
     dialogFormVisible: { type: Boolean }, // 弹窗显示
-    dialogWidth: { type: Number, default: 1800 }, // 弹窗宽度
+    dialogWidth: { type: Number, default: 1200 }, // 弹窗宽度
     formTitle: { type: String, require: true, default: '' }, // 弹窗名称
     isEdit: { type: Boolean }, // 是否为编辑弹窗
     formData: { type: Object, default: () => {} }, // 表单数据

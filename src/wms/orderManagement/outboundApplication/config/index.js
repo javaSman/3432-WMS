@@ -6,7 +6,7 @@ export const MaterialItems = [
     prop: 'PickID'
   },
   {
-    type: 'Input',
+    type: 'DateTime',
     label: '申请日期',
     prop: 'BeginApplyDate'
   },
@@ -131,12 +131,11 @@ export const DetailBtn = [
 
 /* 销售出库申请单 */
 export const SalesItems = [
-  { type: 'Select', label: '状态', prop: '', options: [] },
-  { type: 'Input', label: '单号', prop: '' },
-  { type: 'Input', label: '销售部门', prop: '' },
-  { type: 'Input', label: '销售部门', prop: '' },
-  { type: 'Input', label: '业务员', prop: '' },
-  { type: 'Select', label: '发货类型', prop: '', options: [] }
+  { type: 'Select', label: '状态', prop: 'status', options: [] },
+  { type: 'Input', label: '单号', prop: 'shipmentID' },
+  { type: 'Input', label: '销售部门', prop: 'shipmentDept' },
+  { type: 'Input', label: '业务员', prop: 'salesman' },
+  { type: 'Select', label: '发货类型', prop: 'shipmentType', options: [] }
 ]
 export const SalesCrud = {}
 export const SalesBtnItems = [
