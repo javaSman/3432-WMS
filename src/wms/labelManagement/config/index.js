@@ -146,7 +146,7 @@ export const TagLsitBtn = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'LabelManagement.TagList.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -155,7 +155,7 @@ export const TagLsitBtn = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: '',
+    permission: 'LabelManagement.TagList.Export',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -164,7 +164,7 @@ export const TagLsitBtn = [
     langLabel: 'button.frozen',
     clickFun: 'toFrozen',
     disabled: '',
-    permission: '',
+    permission: 'LabelManagement.TagList.Frozen',
     styleType: 'danger',
     icon: ''
   },
@@ -173,7 +173,7 @@ export const TagLsitBtn = [
     langLabel: 'button.thaw',
     clickFun: 'toThaw',
     disabled: '',
-    permission: '',
+    permission: 'LabelManagement.TagList.Thaw',
     styleType: 'danger',
     icon: ''
   },
@@ -182,7 +182,7 @@ export const TagLsitBtn = [
     langLabel: 'button.edit',
     clickFun: 'toEdit',
     disabled: 'multipe',
-    permission: '',
+    permission: 'LabelManagement.TagList.Update',
     styleType: 'danger',
     icon: ''
   }

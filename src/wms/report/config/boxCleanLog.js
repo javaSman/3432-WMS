@@ -8,7 +8,7 @@ export const BtnItems = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: '',
+    permission: 'Report.BoxCleanLog.Export',
     styleType: 'warning',
     icon: 'el-icon-download'
   }

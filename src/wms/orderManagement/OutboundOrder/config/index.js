@@ -116,7 +116,7 @@ export const SalesBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundOrder.Sale.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -129,7 +129,7 @@ export const BtnItems = [
     langLabel: 'button.Posting',
     clickFun: 'totransfer',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundOrder.material.Transfer',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -138,7 +138,7 @@ export const BtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundOrder.material.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -147,7 +147,7 @@ export const BtnItems = [
     langLabel: 'button.signfor',
     clickFun: 'tosignfor',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundOrder.material.Signfor',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -159,7 +159,7 @@ export const PurchBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundOrder.purchase.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -172,7 +172,7 @@ export const OtherBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundOrder.otherOutbound.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }

@@ -55,7 +55,8 @@ export default {
     detailQueryItems: { type: Array, default: () => [] }, // 选择明细弹窗查询条件
     detailColumn: { type: Array, default: () => [] }, // 选择明细弹窗表头参数
     colName: { type: String, require: true, default: '' }, // 选择明细弹窗表头名称
-    apiName: { type: String, require: true, default: '' } // 请求后端的api页面名称
+    apiName: { type: String, require: true, default: '' }, // 请求后端的api页面名称
+    detailListQuery: { type: Object, default: () => {} } // 明细弹窗的查询条件
     // dictGather: { type: Array, default: () => [] } // 数据字典集合
   },
   data() {
@@ -73,7 +74,14 @@ export default {
       }
     }
   },
+  mounted() {
+    this.handleSetListQuery()
+  },
   methods: {
+    // 查询条件
+    handleSetListQuery() {
+      this.listQuery = Object.assign(this.listQuery, this.detailListQuery)
+    },
     /** 选择明细弹窗 关闭事件 */
     cancel() {
       this.$refs.table.$refs.table.clearSelection()

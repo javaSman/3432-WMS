@@ -186,12 +186,13 @@ export const detailtBtnItems = [
     langLabel: 'button.HaState',
     clickFun: 'toHaState',
     disabled: 'multipe',
-    permission: 'WarehouseManagement.ConveyerLine.Update',
+    permission: 'BaseData.ConveyerLineNew.Update',
     styleType: 'primary',
     icon: 'el-icon-top'
-  }]
+  }
+]
 export const DictDetailCrud = {
-  add: 'WarehouseManagement.ConveyerLine.Create',
-  edit: 'WarehouseManagement.ConveyerLine.Update',
-  del: 'WarehouseManagement.ConveyerLine.Delete'
+  add: 'BaseData.ConveyerLineNew.Create',
+  edit: 'BaseData.ConveyerLineNew.Update',
+  del: 'BaseData.ConveyerLineNew.Delete'
 }

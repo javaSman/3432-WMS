@@ -107,7 +107,7 @@
       @cancel="dialogCancel"
     />
     <div v-if="printBegin" id="PurchaseReturns" ref="boxBarcode" style="display: none">
-      <PurchaseReturns :data="printData" :thead="multipleSelection[0]" :page="printData.length" />
+      <SalesOut :data="printData" :thead="multipleSelection[0]" :page="printData.length" />
     </div>
   </div>
 </template>
@@ -123,7 +123,7 @@ import colDesign from '@/mixins/colDesign'
 import basics from '@/mixins'
 // import Functions from '@/utils/functions'
 import { getLodop } from '@/utils/lodop'
-import PurchaseReturns from '@/views/printable-template/PurchaseReturns'
+import SalesOut from '@/views/printable-template/SalesOut'
 import {
   PurchaseItems,
   PurchaseCrud,
@@ -142,7 +142,7 @@ export default {
     EditDetailOptDialog,
     CrudOperation,
     ptintDialog,
-    PurchaseReturns,
+    SalesOut,
     EditForm
   },
   mixins: [filterContainer, basics, colDesign],
@@ -224,7 +224,7 @@ export default {
       this.getList()
     },
     getSupp() {
-      API.getData('Supplier', { IsPage: false }, 'GetAllList').then(res => {
+      API.get('pickorder/GetDetails', this.detailQuery, 'Web').then(res => {
         res.forEach(item => {
           item.label = item.supplierName
           item.value = item.supplierCode
@@ -235,8 +235,8 @@ export default {
     getDetail(row) {
       console.log(row)
       this.detailListLoading = true
-      this.detailQuery.OrderId = row.OrderId
-      API.get('pickorder', { PickID: row.PickID }, 'GetDetails/Web').then(res => {
+      this.detailQuery.pickID = row.pickID
+      API.get('pickorder', this.detailQuery, 'GetDetails/Web').then(res => {
         if (res) {
           this.detailTable = res.details
           this.detailListLoading = false
@@ -337,7 +337,7 @@ export default {
         strStyle += 'html,body {padding: 0;margin: 0;}'
         strStyle += '.logo {width: 40mm;position: absolute;top:2mm}'
         strStyle +=
-          '.page { width: 200mm; height: 539mm; page-break-after: always;position: relative;overflow: hidden;}'
+          '.page { width: 205mm; height: 539mm; page-break-after: always;position: relative;overflow: hidden;margin: 0 10px;}'
         strStyle +=
           'table {position:relative;margin: auto;border-collapse: collapse;font-family: 宋体;font-size: 10pt;table-layout: fixed;word-break: break-all;page-break-after:always;}'
         strStyle += '.table td {text-align: left;height: 10mm;border: 1px solid #000;padding: 0 3px;}'

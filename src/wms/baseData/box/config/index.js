@@ -126,12 +126,12 @@ export const AlleyFormList = [
 ]
 
 export const boxCrud = {
-  add: 'WarehouseManagement.Box.Create',
-  edit: 'WarehouseManagement.Box.Update',
-  // del: 'WarehouseManagement.Box.Delete',
-  import: 'WarehouseManagement.Box.Import'
-  // download: 'WarehouseManagement.Box'
-  // reprint: 'WarehouseManagement.Box'
+  add: 'BaseData.Box.Create',
+  edit: 'BaseData.Box.Update',
+  // del: 'BaseData.Box.Delete',
+  import: 'BaseData.Box.Import'
+  // download: 'BaseData.Box'
+  // reprint: 'BaseData.Box'
 }
 export const ptintFormList = [
   {
@@ -155,7 +155,7 @@ export const boxBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: 'WarehouseManagement.Box.Print',
+    permission: 'BaseData.Box.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -164,7 +164,7 @@ export const boxBtnItems = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: 'WarehouseManagement.Box.Export',
+    permission: 'BaseData.Box.Export',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

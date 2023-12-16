@@ -21,9 +21,9 @@ export const formList = [
 ]
 
 export const configureCrud = {
-  add: 'any',
-  edit: 'any',
-  del: 'any'
+  add: 'InterfaceManagement.InterfaceConfiguration.Create',
+  edit: 'InterfaceManagement.InterfaceConfiguration.Update',
+  del: 'InterfaceManagement.InterfaceConfiguration.Delete'
 }
 export const journalBtnItems = [
   {
@@ -31,7 +31,7 @@ export const journalBtnItems = [
     langLabel: 'button.retransmission',
     clickFun: 'toretransmission',
     disabled: 'single',
-    permission: 'any',
+    permission: 'InterfaceManagement.InterfaceLog.Retransmission',
     styleType: 'danger',
     icon: 'el-icon-finished',
     loading: false
@@ -41,7 +41,7 @@ export const journalBtnItems = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: '',
+    permission: 'InterfaceManagement.InterfaceLog.Export',
     styleType: 'warning',
     icon: 'el-icon-download'
   }
@@ -76,9 +76,9 @@ export const journalFormList = [
 ]
 
 export const journalCrud = {
-  add: 'APIManagement.APILog.Create',
-  edit: 'APIManagement.APILog.Update',
-  del: 'APIManagement.APILog.Delete'
+  add: 'InterfaceManagement.InterfaceLog.Create',
+  edit: 'InterfaceManagement.InterfaceLog.Update',
+  del: 'InterfaceManagement.InterfaceLog.Delete'
 }
 
 export const tableBtn = {

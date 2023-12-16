@@ -4,8 +4,19 @@ export const queryItems = [
   { type: 'Input', label: '区域名称', prop: 'regionName' }
 ]
 export const formList = [
-  { type: 'Input', label: '区域编码', prop: 'regionID', rules: [{ required: true, message: '请输入区域编码', trigger: 'blur' }], unique: true },
-  { type: 'Input', label: '区域名称', prop: 'regionName', rules: [{ required: true, message: '请输入区域名称', trigger: 'blur' }] },
+  {
+    type: 'Input',
+    label: '区域编码',
+    prop: 'regionID',
+    rules: [{ required: true, message: '请输入区域编码', trigger: 'blur' }],
+    unique: true
+  },
+  {
+    type: 'Input',
+    label: '区域名称',
+    prop: 'regionName',
+    rules: [{ required: true, message: '请输入区域名称', trigger: 'blur' }]
+  },
   {
     type: 'Combogrid',
     prop: 'warehouseName',
@@ -31,8 +42,8 @@ export const formList = [
 ]
 
 export const RegionManagementCrud = {
-  add: 'WarehouseManagement.Region.Create',
-  edit: 'WarehouseManagement.Region.Update',
-  del: 'WarehouseManagement.Region.Delete'
-  // download: 'WarehouseManagement.Wharf'
+  add: 'BaseData.RegionManagement.Create',
+  edit: 'BaseData.RegionManagement.Update',
+  del: 'BaseData.RegionManagement.Delete'
+  // download: 'BaseData.RegionManagement.Wharf'
 }

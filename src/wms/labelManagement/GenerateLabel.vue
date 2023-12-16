@@ -358,8 +358,8 @@ export default {
           'table {position:relative;margin: auto;border-collapse: collapse;font-family: 宋体;font-size: 7pt;table-layout: fixed;word-break: break-all;page-break-after:always;  table-layout: fixed;  margin-left: 5mm;}'
         strStyle += '.table td {text-align: left;height: 7mm;border: 1px solid #000;padding: 0 3px;}'
         strStyle += '.td-title td {text-align: center;height: 7mm !important;}'
-        strStyle += '.table tr {height: 7mm;}'
-        strStyle += '.top-title td { height: 7mm;border: none !important;}'
+        strStyle += '.table tr {height: 5mm;}'
+        strStyle += '.top-title td { height: 5mm;border: none !important;}'
         // strStyle +=
         //   ' .main-title { height: 12mm !important; line-height: 12mm; font-size: 16pt; font-weight: bold;text-align: center !important;border:none !important;border-bottom:1px solid}'
         strStyle +=

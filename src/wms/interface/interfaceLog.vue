@@ -48,7 +48,9 @@
         @reset="reset"
       />
       <el-dialog :visible.sync="dialogVisible" title="查看参数">
-        <span style="line-height: 2">{{ parameters }}</span>
+        <span style="line-height: 2">{{
+          rowData.sysCode === 'SAP' ? rowData.parametersJson : rowData.parameters
+        }}</span>
       </el-dialog>
     </div>
   </div>
@@ -79,7 +81,7 @@ export default {
       form: {},
       dialogFormVisible: false,
       dialogVisible: false,
-      parameters: '',
+      rowData: {},
       formTitle: '',
       isEdit: false,
       layout: { gutter: 10, span: 12, xs: 24, sm: 12, md: 8, xl: 6 },
@@ -156,13 +158,12 @@ export default {
       }
     },
     handleParams(row) {
-      console.log(row.row.parameters)
       // this.$message({
       //   message: row.row.parameters,
       //   duration: 5 * 1000
       // })
       this.dialogVisible = true
-      this.parameters = row.row.parameters
+      this.rowData = row.row
     }
   }
 }

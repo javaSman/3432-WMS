@@ -84,7 +84,7 @@ export const inventoryReportBtnItems = [
     langLabel: 'button.openingImport',
     clickFun: 'toopeningImport',
     disabled: '',
-    // permission: 'BusinessPermissions.InventoryReport.ImportInventory',
+    permission: 'Report.InventoryReport.OpeningImport',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -93,7 +93,7 @@ export const inventoryReportBtnItems = [
     langLabel: 'button.generateReturnOrder',
     clickFun: 'toGenerateReturnOrder',
     disabled: 'multipe',
-    permission: '',
+    permission: 'Report.InventoryReport.GenerateReturnOrder',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -128,7 +128,7 @@ export const inventoryReportBtnItems = [
     langLabel: 'button.generateQuality',
     clickFun: 'toGenerateQuality',
     disabled: 'multipe',
-    permission: '',
+    permission: 'Report.InventoryReport.GenerateQuality',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -137,7 +137,7 @@ export const inventoryReportBtnItems = [
     langLabel: 'button.saleOrder',
     clickFun: 'toSaleOrder',
     disabled: 'single',
-    permission: '',
+    permission: 'Report.InventoryReport.SaleOrder',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -170,7 +170,7 @@ export const BtnItems = [
 ]
 // 库存报表权限
 export const inventoryReportCrud = {
-  download: 'Report.InventoryReport'
+  download: 'Report.InventoryReport.Export'
 }
 // 下架 -下料位置选中
 export const outShelvesForm = [
@@ -422,7 +422,7 @@ export const arrivalReportBtnItems = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: '',
+    // permission: 'Report.ArrivalReport.Export',
     styleType: 'warning',
     icon: 'el-icon-download'
   },
@@ -431,7 +431,7 @@ export const arrivalReportBtnItems = [
     langLabel: 'button.generateQuality',
     clickFun: 'toGenerateQuality',
     disabled: 'multipe',
-    permission: '',
+    // permission: 'Report.ArrivalReport.GenerateQuality',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -459,7 +459,7 @@ export const inventorySummaryBtnItems = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: '',
+    permission: 'Report.InventorySummary.Export',
     styleType: 'warning',
     icon: 'el-icon-download'
   }
@@ -662,7 +662,7 @@ export const MaterBtnItems = [
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    permission: '',
+    permission: 'Report.MaterialHistory.Export',
     styleType: 'warning',
     icon: 'el-icon-download'
   }

@@ -76,6 +76,7 @@
       :detail-query-items="detailQueryItems"
       :col-name="colDetailName"
       :api-name="apiDetailName"
+      :detail-list-query="detailListQuery"
       @addDetail="addDetail"
     />
     <!-- :dict-gather="dictGather" -->
@@ -130,7 +131,8 @@ export default {
     colDetailName: { type: String, require: true, default: '' }, // 选择明细弹窗表头名称
     apiDetailName: { type: String, require: true, default: '' }, // 选择明细弹窗 请求后端的api页面名称
     regainDetail: { type: Function, default: () => {} }, // 重写添加明细的数据方法
-    dictGather: { type: Array, default: () => [] } // 数据字典集合
+    dictGather: { type: Array, default: () => [] }, // 数据字典集合
+    detailListQuery: { type: Object, default: () => {} } // 重写添加明细的数据方法
   },
   data() {
     return {
@@ -179,8 +181,9 @@ export default {
               header: this.formData,
               details: this.detailTable
             }
-            API.dataPost(this.apiName, params, this.apiSuffix)
+            API.dataPost('wasteorder', params, 'editall_OutStock')
               .then(res => {
+                console.log(this.apiName, params, this.apiSuffix)
                 this.formLoading = false
                 this.$notify({
                   title: this.$t('notify.success'), // '成功'

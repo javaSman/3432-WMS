@@ -29,7 +29,7 @@ export const BtnItems = [
     langLabel: 'button.Posting',
     clickFun: 'toPosting',
     disabled: '',
-    permission: 'OrderManagement.InStock.Post',
+    permission: 'OrderManagement.WarehousingEntry.InStock.Post',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -38,7 +38,7 @@ export const BtnItems = [
     langLabel: 'button.cancelReceipt',
     clickFun: 'toCancelReceipt',
     disabled: 'multipe',
-    permission: 'OrderManagement.InStock.CancelInStock',
+    permission: 'OrderManagement.WarehousingEntry.InStock.CancelInStock',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -49,7 +49,7 @@ export const ButtonItems = [
     langLabel: 'button.cancelReceipt',
     clickFun: 'toCancelReceipt',
     disabled: 'multipe',
-    permission: 'OrderManagement.InStock.CancelInStock',
+    permission: 'OrderManagement.WarehousingEntry.InStock.CancelInStock',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

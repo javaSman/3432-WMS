@@ -33,30 +33,30 @@ export const formList = [
 ]
 
 export const WarehouseCrud = {
-  add: 'WarehouseManagement.Warehouse.Create',
-  edit: 'WarehouseManagement.Warehouse.Update',
-  del: 'WarehouseManagement.Warehouse.Delete'
+  add: 'BaseData.Warehouse.Create',
+  edit: 'BaseData.Warehouse.Update',
+  del: 'BaseData.Warehouse.Delete'
 }
 export const BtnItems = [
   {
     // ERP对应仓
     langLabel: 'button.ERPwarehouseCorrespond',
     clickFun: 'toERPwarehouseCorrespond',
-    permission: 'WarehouseManagement.Warehouse.Obverse',
+    permission: 'BaseData.Warehouse.Obverse',
     disabled: 'single'
   },
   {
     // 启用
     langLabel: 'button.Enable',
     clickFun: 'toEnable',
-    permission: 'WarehouseManagement.Warehouse.Enable',
+    permission: 'BaseData.Warehouse.Enable',
     disabled: 'single'
   },
   {
     // 禁用
     langLabel: 'button.Disable',
     clickFun: 'toDisable',
-    permission: 'WarehouseManagement.Warehouse.Disable',
+    permission: 'BaseData.Warehouse.Disable',
     disabled: 'single'
   }
 ]

@@ -30,7 +30,7 @@
         <tr>
           <td>数量&单位</td>
           <td>{{ data[0].quantity }}&nbsp;&nbsp;&nbsp;&nbsp;{{ data[0].unitName }}</td>
-          <td colspan="3" rowspan="5">
+          <td colspan="3" rowspan="6">
             <div ref="qrcode11111" class="qrcodestyle" />
             <div class="textSt">{{ data[0].barcode }}</div>
           </td>
@@ -45,12 +45,16 @@
         </tr>
         <tr>
           <td>产地</td>
-          <td>{{ data[0].aaa }}</td>
+          <td>{{ data[0].producer }}</td>
           <!-- 后端未给字段 -->
         </tr>
         <tr>
           <td>批次号</td>
           <td>{{ data[0].supplierBatch }}</td>
+        </tr>
+        <tr>
+          <td>失效日期</td>
+          <td>{{ data[0].invalidTime }}</td>
         </tr>
         <!-- <tr>
           <td>生产日期</td>
@@ -100,7 +104,7 @@ export default {
           '#' +
           this.data[0].supplierBatch +
           '#' +
-          this.data[0].invalidTime +
+          this.data[0].invalidTime.replace(/[-/]/g, '') +
           '#' +
           this.data[0].quantity +
           '#' +

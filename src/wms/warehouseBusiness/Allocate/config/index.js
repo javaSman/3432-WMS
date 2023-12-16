@@ -8,8 +8,8 @@ export const WarehouseItems = [
   { type: 'DateTime', label: '单据日期', prop: 'creationTime' }
 ]
 export const WarehouseCrud = {
-  add: 'any',
-  edit: 'any'
+  add: 'WarehouseBusiness.Allocate.Create'
+  // edit: 'any'
 }
 export const WarehouseBtnItems = [
   {
@@ -17,7 +17,7 @@ export const WarehouseBtnItems = [
     langLabel: 'button.delete',
     clickFun: 'todeleteSing',
     disabled: 'single',
-    permission: '',
+    permission: 'WarehouseBusiness.Allocate.Delete',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -26,7 +26,7 @@ export const WarehouseBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: '',
+    permission: 'WarehouseBusiness.Allocate.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -35,7 +35,7 @@ export const WarehouseBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'single',
-    permission: '',
+    permission: 'WarehouseBusiness.Allocate.Print',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -46,7 +46,7 @@ export const WarehouseDetailBtn = [
     langLabel: 'button.outShelves',
     clickFun: 'toOffShelf',
     disabled: 'multipe',
-    permission: '',
+    permission: 'WarehouseBusiness.Allocate.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

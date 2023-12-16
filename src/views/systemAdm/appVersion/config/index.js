@@ -8,21 +8,21 @@ export const versionQueryItems = [
 /** 公告列表-表格操作按钮 */
 export const tableBtn = {
   width: '200',
-  permission: 'Systems.AppVersion.Export',
+  permission: 'Systems.AppVersion',
   btnItem: [
     {
       btnLabel: '下载',
       btnType: 'primary',
       clickFun: 'toDownload',
       isHide: [],
-      permission: 'Systems.AppVersion.Export'
+      permission: 'Systems.AppVersion.Download'
     },
     {
       btnLabel: '查看二维码',
       btnType: 'primary',
       clickFun: 'toViewCode',
       isHide: [],
-      permission: 'Systems.AppVersion.Export'
+      permission: 'Systems.AppVersion.ViewCode'
     }
   ]
 }

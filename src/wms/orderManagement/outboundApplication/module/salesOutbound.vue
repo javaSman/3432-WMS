@@ -197,7 +197,7 @@ export default {
     getDetail(row) {
       this.detailListLoading = true
       this.detailQuery.pickID = row.pickID
-      API.get('pickorder/GetDetails', this.detailQuery, 'all').then(res => {
+      API.get('pickorder/GetDetails', this.detailQuery, 'web').then(res => {
         this.detailTable = res.details
         // this.editDetailTable = res
         this.detailListLoading = false

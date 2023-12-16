@@ -84,8 +84,8 @@ export const formList = [
 ]
 
 export const deviceCrud = {
-  add: 'WarehouseManagement.Device.Create',
-  edit: 'WarehouseManagement.Device.Update',
-  del: 'WarehouseManagement.Device.Delete',
-  download: 'WarehouseManagement.Wharf'
+  add: 'DeviceManagement.Device.Create',
+  edit: 'DeviceManagement.Device.Update',
+  del: 'DeviceManagement.Device.Delete',
+  download: 'DeviceManagement.Device.Export'
 }

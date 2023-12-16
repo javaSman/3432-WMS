@@ -84,8 +84,8 @@ export default {
 
     // *****业务(各项目不同)****
     // 基础数据
-    baseData: '仓库管理',
-    baseInfo: '基础数据',
+    baseData: '基础数据',
+    // baseInfo: '基础数据',
     materials: '物料管理',
     materialsBarcode: '标签条码',
     materialType: '物料类型',

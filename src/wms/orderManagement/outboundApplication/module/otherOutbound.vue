@@ -77,6 +77,7 @@
       :col-detail-name="colDetailName"
       :api-detail-name="apiDetailName"
       :detail-query-items="OuterQueryItems"
+      :detail-list-query="detailListQuery"
       :check-params="checkParams"
       :dict-gather="dictGather"
       @create="handleCreate"
@@ -173,8 +174,9 @@ export default {
       editDetailTable: [],
       dialogFormVisible: false,
       checkParams: 'materialID',
-      colDetailName: 'inventory',
-      apiDetailName: 'materials',
+      colDetailName: 'InventoryReportDto',
+      apiDetailName: 'inventoryreport', // 二级弹窗接口
+      detailListQuery: { IsPage: true, barcodeType: 'Waste', state: 'OnShelf' },
       ptintFormVisible: false,
       formData: {},
       listLoading: true,
@@ -250,8 +252,8 @@ export default {
     },
     getDetail(row) {
       this.detailListLoading = true
-      this.detailQuery.OrderId = row.orderID
-      API.get('wasteorder', this.detailQuery, 'GetDetails').then(res => {
+      this.detailQuery.pickID = row.pickID
+      API.get('pickorder/GetDetails', this.detailQuery, 'Web').then(res => {
         this.detailTable = res.details
         // this.editDetailTable = res
         this.detailListLoading = false

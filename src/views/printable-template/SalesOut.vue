@@ -36,20 +36,20 @@
           <td colspan="3" style="border: none">单号:{{ thead.pickID }}</td>
         </tr>
         <tr class="td-title">
-          <td colspan="1" style="border-bottom: none !important; width: 8%">序号</td>
-          <td colspan="1" style="border-bottom: none !important; width: 8%">物料编号</td>
-          <td colspan="1" style="border-bottom: none !important; width: auto">物料描述</td>
-          <td colspan="1" style="border-bottom: none !important; width: 8%">条码</td>
+          <td colspan="1" style="border-bottom: none !important; width: 5%">序号</td>
+          <td colspan="1" style="border-bottom: none !important; width: 11%">物料编号</td>
+          <td colspan="1" style="border-bottom: none !important; width: 15%">物料描述</td>
+          <td colspan="1" style="border-bottom: none !important; width: 10%">条码</td>
           <td colspan="1" style="border-bottom: none !important; width: 8%">货位</td>
           <td colspan="1" style="border-bottom: none !important; width: 8%">载具</td>
-          <td colspan="1" style="border-bottom: none !important; width: 8%">单位</td>
+          <td colspan="1" style="border-bottom: none !important; width: 5%">单位</td>
           <!-- <td colspan="1" style="border-bottom: none !important">调出仓库</td> -->
           <!-- <td colspan="1" style="border-bottom: none !important">调入仓库</td> -->
           <td colspan="1" style="border-bottom: none !important; width: 8%">领料数量</td>
           <td colspan="1" style="border-bottom: none !important; width: 8%">仓库</td>
-          <td colspan="1" style="border-bottom: none !important; width: 8%">供应商批次</td>
+          <td colspan="1" style="border-bottom: none !important; width: 10%">供应商批次</td>
           <td colspan="1" style="border-bottom: none !important; width: 8%">档次</td>
-          <td colspan="1" style="border-bottom: none !important; width: 8%">备注</td>
+          <td colspan="1" style="border-bottom: none !important; width: 10%">备注</td>
         </tr>
       </thead>
       <tbody>
@@ -141,7 +141,7 @@ export default {
   }
 }
 </script>
-  <style scoped>
+<style scoped>
 /* 需与打印样式同步 */
 html,
 body {

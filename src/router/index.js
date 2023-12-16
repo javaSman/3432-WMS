@@ -103,6 +103,7 @@ export const constantRoutes = [
  * 需要根据用户角色动态加载的路由
  */
 export const asyncRoutes = [
+  //  系统管理
   {
     path: '/system',
     component: Layout,
@@ -122,8 +123,9 @@ export const asyncRoutes = [
         name: 'User',
         meta: {
           title: 'user',
-          roles: ['AbpIdentity.Users'],
-          icon: 'user'
+          roles: ['Systems.Users'],
+          icon: 'user',
+          keepAlive: true
         }
       },
       // 角色管理
@@ -133,8 +135,9 @@ export const asyncRoutes = [
         name: 'Role',
         meta: {
           title: 'role',
-          roles: ['AbpIdentity.Roles'],
-          icon: 'role'
+          roles: ['Systems.Roles'],
+          icon: 'role',
+          keepAlive: true
         }
       },
       // 数据字典
@@ -157,7 +160,8 @@ export const asyncRoutes = [
         meta: {
           title: 'log',
           roles: ['Systems.AuditLogging'],
-          icon: 'log'
+          icon: 'log',
+          keepAlive: true
         }
       },
       // 列模板
@@ -179,7 +183,7 @@ export const asyncRoutes = [
         name: 'appVersion',
         meta: {
           title: 'appVersionAdm',
-          roles: ['Systems.TableTemplate'],
+          roles: ['Systems.AppVersion'],
           icon: 'appVersion',
           keepAlive: true
         }
@@ -191,7 +195,7 @@ export const asyncRoutes = [
         name: 'codingRulesAdm',
         meta: {
           title: 'codingRules',
-          roles: ['Systems.TableTemplate'],
+          roles: ['Systems.CodingRulesAdm'],
           icon: 'appVersion',
           keepAlive: true
         }
@@ -210,45 +214,6 @@ export const asyncRoutes = [
       }
     ]
   },
-  // 基础信息(基础数据)
-  {
-    path: '/baseInfo',
-    component: Layout,
-    redirect: '/baseInfo/materials',
-    alwaysShow: true,
-    name: 'baseInfo',
-    meta: {
-      title: 'baseInfo',
-      icon: 'baseInfo',
-      roles: ['Basics']
-    },
-    children: [
-      // 物料管理
-      {
-        path: 'materials',
-        component: () => import('@/wms/baseInfo/materials/index'),
-        name: 'Materials',
-        meta: {
-          title: 'materials',
-          roles: ['Basics.Materials'],
-          icon: 'materials',
-          keepAlive: true
-        }
-      },
-      // 供应商管理
-      {
-        path: 'supplier',
-        component: () => import('@/wms/supplier/supplierManage'),
-        name: 'Supplier',
-        meta: {
-          title: 'supplier',
-          roles: ['Basics.Supplier'],
-          icon: 'inShelves',
-          keepAlive: true
-        }
-      }
-    ]
-  },
   // 接口管理
   {
     // 接口
@@ -259,7 +224,7 @@ export const asyncRoutes = [
     name: 'InterfaceManagement',
     meta: {
       title: 'interfaceManagement',
-      // roles: ['APIManagement.APIConfig'],
+      roles: ['InterfaceManagement'],
       icon: 'inShelves',
       keepAlive: true
     },
@@ -271,7 +236,7 @@ export const asyncRoutes = [
         name: 'InterfaceConfiguration',
         meta: {
           title: 'interfaceConfiguration',
-          // roles: ['APIManagement.APIConfig'],
+          roles: ['InterfaceManagement.InterfaceConfiguration'],
           icon: 'inShelves',
           keepAlive: true
         }
@@ -283,7 +248,7 @@ export const asyncRoutes = [
         name: 'InterfaceLog',
         meta: {
           title: 'interfaceLog',
-          // roles: ['APIManagement.APILog'],
+          roles: ['InterfaceManagement.InterfaceLog'],
           icon: 'inShelves',
           keepAlive: true
         }
@@ -300,7 +265,7 @@ export const asyncRoutes = [
     meta: {
       title: 'baseData',
       icon: 'baseData',
-      roles: ['WarehouseManagement'],
+      roles: ['BaseData'],
       keepAlive: true
     },
     children: [
@@ -311,7 +276,7 @@ export const asyncRoutes = [
         name: 'Box',
         meta: {
           title: 'box',
-          roles: ['WarehouseManagement.Box'],
+          roles: ['BaseData.Box'],
           icon: 'box',
           keepAlive: true
         }
@@ -323,7 +288,7 @@ export const asyncRoutes = [
         name: 'Warehouse',
         meta: {
           title: 'warehouse',
-          roles: ['WarehouseManagement.Warehouse'],
+          roles: ['BaseData.Warehouse'],
           icon: 'warehouse',
           keepAlive: true
         }
@@ -335,7 +300,7 @@ export const asyncRoutes = [
         name: 'Locations',
         meta: {
           title: 'locations',
-          roles: ['WarehouseManagement.Locations'],
+          roles: ['BaseData.Locations'],
           icon: 'locations',
           keepAlive: true
         }
@@ -347,32 +312,8 @@ export const asyncRoutes = [
         name: 'Wharf',
         meta: {
           title: 'wharf',
-          roles: ['WarehouseManagement.Wharf'],
+          roles: ['BaseData.Wharf'],
           icon: 'wharf',
-          keepAlive: true
-        }
-      },
-      // 设备管理--设备列表
-      {
-        path: 'device',
-        component: () => import('@/wms/baseData/device/index'),
-        name: 'device',
-        meta: {
-          title: 'device',
-          roles: ['WarehouseManagement.Device'],
-          icon: 'warehouse',
-          keepAlive: true
-        }
-      },
-      // 设备管理---设备报警记录
-      {
-        path: 'logisticsLineAlarm',
-        component: () => import('@/wms/baseData/logisticsLineAlarm/index'),
-        name: 'LogisticsLineAlarm',
-        meta: {
-          title: 'logisticsLineAlarm',
-          roles: ['WarehouseManagement'],
-          icon: 'warehouse',
           keepAlive: true
         }
       },
@@ -383,23 +324,60 @@ export const asyncRoutes = [
         name: 'RegionManagement',
         meta: {
           title: 'regionManagement',
-          roles: ['WarehouseManagement.Region'],
+          roles: ['BaseData.RegionManagement'],
           icon: 'warehouse',
           keepAlive: true
         }
       },
-      // 线体管理New
+      // 线体管理
       {
         path: 'ConveyerLineNew',
         component: () => import('@/wms/baseData/conveyerLineNew/index'),
         name: 'ConveyerLineNew',
         meta: {
           title: 'ConveyerLineNew',
-          roles: ['WarehouseManagement.ConveyerLine'],
+          roles: ['BaseData.ConveyerLineNew'],
           icon: 'warehouse',
           keepAlive: true
         }
+      },
+      // 物料管理
+      {
+        path: 'materials',
+        component: () => import('@/wms/baseData/materials/index'),
+        name: 'Materials',
+        meta: {
+          title: 'materials',
+          roles: ['BaseData.Materials'],
+          icon: 'materials',
+          keepAlive: true
+        }
+      },
+      // 供应商管理
+      {
+        path: 'supplier',
+        component: () => import('@/wms/baseData/supplier/supplierManage'),
+        name: 'Supplier',
+        meta: {
+          title: 'supplier',
+          roles: ['BaseData.Supplier'],
+          icon: 'inShelves',
+          keepAlive: true
+        }
+      },
+      // 采购订单
+      {
+        path: 'PurchaseOrder',
+        component: () => import('@/wms/baseData/PurchaseOrder/index'),
+        name: 'PurchaseOrder',
+        meta: {
+          title: 'PurchaseOrder',
+          roles: ['BaseData.PurchaseOrder'],
+          icon: 'wcsTask',
+          keepAlive: true
+        }
       }
+
       // AGV点位管理
       // {
       //   path: 'pointManagement',
@@ -413,46 +391,7 @@ export const asyncRoutes = [
       // }
     ]
   },
-  // 盘点管理
-  {
-    path: '/inventoryAdm',
-    component: Layout,
-    redirect: '/inventoryAdm/inventoryOrder',
-    alwaysShow: true,
-    name: 'InventoryAdm',
-    meta: {
-      title: 'inventoryAdm',
-      icon: 'inventoryAdm',
-      keepAlive: true
-      // roles: ['StocktakingManage']
-    },
-    children: [
-      // 盘点单
-      {
-        path: 'inventoryOrder',
-        component: () => import('@/wms/inventoryAdm/inventoryOrder'),
-        name: 'InventoryOrder',
-        meta: {
-          title: 'inventoryOrder',
-          icon: 'inventoryOrder',
-          keepAlive: true
-          // roles: ['StocktakingManage.Stocktaking']
-        }
-      },
-      // 差异报表
-      {
-        path: 'varianceReport',
-        component: () => import('@/wms/inventoryAdm/varianceReport'),
-        name: 'VarianceReport',
-        meta: {
-          title: 'varianceReport',
-          icon: 'inventoryOrder',
-          keepAlive: true
-          // roles: ['StocktakingManage.StocktakingReport']
-        }
-      }
-    ]
-  },
+
   // 报表管理
   {
     path: '/report',
@@ -462,7 +401,7 @@ export const asyncRoutes = [
     name: 'report',
     meta: {
       title: 'report',
-      roles: ['WarehouseManagement.Box'],
+      roles: ['Report'],
       icon: 'inShelves',
       keepAlive: true
     },
@@ -486,7 +425,7 @@ export const asyncRoutes = [
         name: 'MaterialHistory',
         meta: {
           title: 'materialHistory',
-          // roles: ['WarehouseManagement.Box'],
+          roles: ['Report.MaterialHistory'],
           icon: 'dict',
           keepAlive: true
         }
@@ -498,7 +437,7 @@ export const asyncRoutes = [
         name: 'ArrivalReport',
         meta: {
           title: 'arrivalReport',
-          roles: ['WarehouseManagement.Box'],
+          roles: ['Report.ArrivalReport'],
           icon: 'inStockAdm',
           keepAlive: true
         }
@@ -510,7 +449,7 @@ export const asyncRoutes = [
         name: 'InventorySummary',
         meta: {
           title: 'inventorySummary',
-          roles: ['WarehouseManagement.Box'],
+          roles: ['Report.InventorySummary'],
           icon: 'inStockAdm',
           keepAlive: true
         }
@@ -522,7 +461,7 @@ export const asyncRoutes = [
         name: 'SafetyStockAlertReport',
         meta: {
           title: 'safetyStockAlertReport',
-          roles: ['WarehouseManagement.Box'],
+          roles: ['Report.SafetyStockAlertReport'],
           icon: 'dict',
           keepAlive: true
         }
@@ -534,7 +473,7 @@ export const asyncRoutes = [
         name: 'StockAgeReport',
         meta: {
           title: 'stockAgeReport',
-          roles: ['WarehouseManagement.Box'],
+          roles: ['Report.StockAgeReport'],
           icon: 'dict',
           keepAlive: true
         }
@@ -546,7 +485,7 @@ export const asyncRoutes = [
         name: 'OutinStockReport',
         meta: {
           title: 'outinStockReport',
-          // roles: ['Report.BarcodeLog'],
+          roles: ['Report.OutinStockReport'],
           icon: 'dict',
           keepAlive: true
         }
@@ -558,7 +497,7 @@ export const asyncRoutes = [
         name: 'BoxCleanLog',
         meta: {
           title: 'boxCleanLog',
-          // roles: ['Report.BarcodeLog'],
+          roles: ['Report.BoxCleanLog'],
           icon: 'dict',
           keepAlive: true
         }
@@ -566,33 +505,6 @@ export const asyncRoutes = [
     ]
   },
 
-  // 订单管理下的上架管理
-  {
-    path: '/inStockAdm',
-    component: Layout,
-    redirect: '/inStockAdm/inShelves',
-    alwaysShow: true,
-    name: 'InStockAdm',
-    meta: {
-      title: 'inStockAdm',
-      roles: ['OrderManagement'],
-      icon: 'inStockAdm'
-    },
-    children: [
-      // 上架管理
-      {
-        path: 'inShelves',
-        component: () => import('@/wms/inStockAdm/inShelves'),
-        name: 'InShelves',
-        meta: {
-          title: 'inShelves',
-          roles: ['OrderManagement.InShelves'],
-          icon: 'inShelves',
-          keepAlive: true
-        }
-      }
-    ]
-  },
   // 出库管理
   {
     path: '/outStockAdm',
@@ -606,18 +518,6 @@ export const asyncRoutes = [
       icon: 'outStockAdm'
     },
     children: [
-      // 下架管理
-      {
-        path: 'outShelves',
-        component: () => import('@/wms/outStockAdm/outShelves'),
-        name: 'OutShelves',
-        meta: {
-          title: 'outShelves',
-          roles: ['OrderManagement.OutShelves'],
-          icon: 'outShelves',
-          keepAlive: true
-        }
-      }
       // {
       //   path: 'agvTask',
       //   component: () => import('@/wms/outStockAdm/agvTask'),
@@ -700,31 +600,17 @@ export const asyncRoutes = [
           icon: 'strategyFlow',
           keepAlive: true
         }
-      }
-    ]
-  },
-  // WCS任务管理
-  {
-    path: '/wcsAdm',
-    component: Layout,
-    redirect: '/wcsAdm/wcsTask',
-    alwaysShow: true,
-    name: 'WCSAdm',
-    meta: {
-      title: 'wcsTaskAdm',
-      roles: ['TaskInfoManage'],
-      icon: 'wcsTask'
-    },
-    children: [
+      },
       // 任务清单
       {
         path: 'wcsTask',
-        component: () => import('@/wms/wcsAdm/wcsTask'),
+        component: () => import('@/wms/strategyAdm/wcsTask'),
         name: 'WCSTask',
         meta: {
           title: 'wcsTask',
-          roles: ['TaskInfoManage.TaskInfo'],
-          icon: 'wcsTask'
+          roles: ['Strategy.WCSTask'],
+          icon: 'wcsTask',
+          keepAlive: true
         }
       }
     ]
@@ -738,7 +624,7 @@ export const asyncRoutes = [
     name: 'OrderManagement',
     meta: {
       title: 'orderManagement',
-      roles: ['WarehouseManagement'],
+      roles: ['OrderManagement'],
       icon: 'wcsTask'
     },
     children: [
@@ -749,7 +635,7 @@ export const asyncRoutes = [
         name: 'WarehousingApplication',
         meta: {
           title: 'warehousingApplication',
-          roles: ['OrderManagement.InStockRequestHeader'],
+          roles: ['OrderManagement.WarehousingApplication'],
           icon: 'wcsTask',
           keepAlive: true
         }
@@ -761,7 +647,7 @@ export const asyncRoutes = [
         name: 'outboundApplication',
         meta: {
           title: 'outboundApplication',
-          roles: ['OrderManagement.OutStockRequestHeader'],
+          roles: ['OrderManagement.OutboundApplication'],
           icon: 'wcsTask',
           keepAlive: true
         }
@@ -773,7 +659,7 @@ export const asyncRoutes = [
         name: 'warehousingEntry',
         meta: {
           title: 'warehousingEntry',
-          roles: ['OrderManagement.InStock'],
+          roles: ['OrderManagement.WarehousingEntry'],
           icon: 'wcsTask',
           keepAlive: true
         }
@@ -785,43 +671,32 @@ export const asyncRoutes = [
         name: 'OutboundOrder',
         meta: {
           title: 'OutboundOrder',
-          roles: ['OrderManagement.OutStock'],
+          roles: ['OrderManagement.OutboundOrder'],
           icon: 'wcsTask',
           keepAlive: true
         }
       },
-      // 采购订单
+      // 上架管理
       {
-        path: 'PurchaseOrder',
-        component: () => import('@/wms/orderManagement/PurchaseOrder'),
-        name: 'PurchaseOrder',
+        path: 'inShelves',
+        component: () => import('@/wms/orderManagement/inStockAdm/inShelves'),
+        name: 'InShelves',
         meta: {
-          title: 'PurchaseOrder',
-          roles: ['OrderManagement.PurchaseOrder'],
-          icon: 'wcsTask',
+          title: 'inShelves',
+          roles: ['OrderManagement.InShelves'],
+          icon: 'inShelves',
           keepAlive: true
         }
       },
-      // 在库报废
+      // 下架管理
       {
-        path: 'scrapInStockChange',
-        component: () => import('@/wms/orderManagement/scrapInStockChange'),
-        name: 'ScrapInStockChange',
+        path: 'outShelves',
+        component: () => import('@/wms/orderManagement/outStockAdm/outShelves'),
+        name: 'OutShelves',
         meta: {
-          title: 'scrapInStockChange',
-          // roles: ['OrderManagement.ScrapOrder'],
-          icon: 'wcsTask',
-          keepAlive: true
-        }
-      },
-      // 物料重检
-      {
-        path: 'inStockQualityInspection',
-        component: () => import('@/wms/orderManagement/inStockQualityInspection'),
-        name: 'InStockQualityInspection',
-        meta: {
-          title: 'inStockQualityInspection',
-          icon: 'wcsTask',
+          title: 'outShelves',
+          roles: ['OrderManagement.OutShelves'],
+          icon: 'outShelves',
           keepAlive: true
         }
       }
@@ -836,7 +711,7 @@ export const asyncRoutes = [
     name: 'LabelManagement',
     meta: {
       title: 'labelManagement',
-      roles: ['Systems'],
+      roles: ['LabelManagement'],
       icon: 'wcsTask'
     },
     children: [
@@ -847,7 +722,7 @@ export const asyncRoutes = [
         name: 'GenerateLabel',
         meta: {
           title: 'generateLabel',
-          roles: ['Systems'],
+          roles: ['LabelManagement.GenerateLabel'],
           keepAlive: true
         }
       },
@@ -858,7 +733,7 @@ export const asyncRoutes = [
         name: 'SolidWaste',
         meta: {
           title: 'solidWaste',
-          roles: ['Systems'],
+          roles: ['LabelManagement.SolidWaste'],
           keepAlive: true
         }
       },
@@ -869,7 +744,46 @@ export const asyncRoutes = [
         name: 'TagList',
         meta: {
           title: 'tagList',
-          roles: ['Systems'],
+          roles: ['LabelManagement.TagList'],
+          keepAlive: true
+        }
+      }
+    ]
+  },
+  // 设备管理
+  {
+    path: '/baseData',
+    component: Layout,
+    redirect: '/labelManagement/GenerateLabel',
+    alwaysShow: true,
+    name: 'device',
+    meta: {
+      title: 'device',
+      roles: ['DeviceManagement'],
+      icon: 'wcsTask'
+    },
+    children: [
+      // 设备管理--设备列表
+      {
+        path: 'device',
+        component: () => import('@/wms/baseData/device/index'),
+        name: 'device',
+        meta: {
+          title: 'device',
+          roles: ['DeviceManagement.Device'],
+          icon: 'warehouse',
+          keepAlive: true
+        }
+      },
+      // 设备管理---设备报警记录
+      {
+        path: 'logisticsLineAlarm',
+        component: () => import('@/wms/baseData/logisticsLineAlarm/index'),
+        name: 'LogisticsLineAlarm',
+        meta: {
+          title: 'logisticsLineAlarm',
+          roles: ['DeviceManagement.LogisticsLineAlarm'],
+          icon: 'warehouse',
           keepAlive: true
         }
       }
@@ -884,7 +798,7 @@ export const asyncRoutes = [
     name: 'WarehouseBusiness',
     meta: {
       title: 'warehouseBusiness',
-      roles: ['Systems'],
+      roles: ['WarehouseBusiness'],
       icon: 'wcsTask'
     },
     children: [
@@ -895,8 +809,56 @@ export const asyncRoutes = [
         name: 'Allocate',
         meta: {
           title: 'allocate',
-          roles: ['Systems'],
+          roles: ['WarehouseBusiness.Allocate'],
           keepAlive: true
+        }
+      },
+      // 在库报废
+      {
+        path: 'scrapInStockChange',
+        component: () => import('@/wms/warehouseBusiness/scrapInStockChange'),
+        name: 'ScrapInStockChange',
+        meta: {
+          title: 'scrapInStockChange',
+          roles: ['WarehouseBusiness.ScrapInStockChange'],
+          icon: 'wcsTask',
+          keepAlive: true
+        }
+      },
+      // 物料重检
+      {
+        path: 'inStockQualityInspection',
+        component: () => import('@/wms/warehouseBusiness/inStockQualityInspection'),
+        name: 'InStockQualityInspection',
+        meta: {
+          title: 'inStockQualityInspection',
+          icon: 'wcsTask',
+          roles: ['WarehouseBusiness.InStockQualityInspection'],
+          keepAlive: true
+        }
+      },
+      // 盘点单
+      {
+        path: 'inventoryOrder',
+        component: () => import('@/wms/warehouseBusiness/inventoryAdm/inventoryOrder'),
+        name: 'InventoryOrder',
+        meta: {
+          title: 'inventoryOrder',
+          icon: 'inventoryOrder',
+          keepAlive: true,
+          roles: ['WarehouseBusiness.InventoryOrder']
+        }
+      },
+      // 差异报表
+      {
+        path: 'varianceReport',
+        component: () => import('@/wms/warehouseBusiness/inventoryAdm/varianceReport'),
+        name: 'VarianceReport',
+        meta: {
+          title: 'varianceReport',
+          icon: 'inventoryOrder',
+          keepAlive: true,
+          roles: ['WarehouseBusiness.VarianceReport']
         }
       }
     ]

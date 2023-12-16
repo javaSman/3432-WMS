@@ -103,7 +103,7 @@ export const BtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: 'OutStockRequestHeader.PickOrder.LowerShelf',
+    permission: 'OrderManagement.OutboundApplication.Material.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -112,7 +112,7 @@ export const BtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Material.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -144,7 +144,7 @@ export const SalesBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Sale.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -153,7 +153,7 @@ export const SalesBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Sale.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -164,7 +164,7 @@ export const SalesDetailBtn = [
     langLabel: 'button.outShelves',
     clickFun: 'toOffShelf',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Sale.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -187,7 +187,7 @@ export const PurchaseBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Purchase.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -196,7 +196,7 @@ export const PurchaseBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Purchase.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -216,7 +216,7 @@ export const PurchaseDetailBtn = [
     langLabel: 'button.outShelves',
     clickFun: 'toOffShelf',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.Purchase.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -269,7 +269,7 @@ export const OtherBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.otherOutbound.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -278,7 +278,7 @@ export const OtherBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.otherOutbound.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -289,7 +289,7 @@ export const OtherDetailBtn = [
     langLabel: 'button.outShelves',
     clickFun: 'toOffShelf',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.otherOutbound.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -311,7 +311,8 @@ export const OuterList = [
 export const OtherTabelList = [
   { label: '物料编码', prop: 'materialID' },
   { label: '物料描述', prop: 'materialDesc' },
-  { label: '数量', prop: 'quality' },
+  { label: '标签条码', prop: 'barcode' },
+  { label: '数量', prop: 'quantity' },
   { label: '单位', prop: 'unitName' },
   { label: '批次号', prop: 'batch' }
 ]
@@ -370,7 +371,7 @@ export const CancelReceiptBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.CancelReceipt.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -381,7 +382,7 @@ export const CancelReceiptDetailBtn = [
     langLabel: 'button.outShelves',
     clickFun: 'toOffShelf',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.OutboundApplication.CancelReceipt.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

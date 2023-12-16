@@ -138,10 +138,10 @@ export const updateFormList = [
 ]
 
 export const UserCrud = {
-  add: 'AbpIdentity.Users.Create',
-  edit: 'AbpIdentity.Users.Update',
-  del: 'AbpIdentity.Users.Delete',
-  RePassword: 'AbpIdentity.Users.ManagePermissions'
+  add: 'Systems.Users.Create',
+  edit: 'Systems.Users.Update',
+  del: 'Systems.Users.Delete',
+  RePassword: 'Systems.Users.ManagePermissions'
 }
 export const BtnItems = [
   {
@@ -149,7 +149,7 @@ export const BtnItems = [
     langLabel: 'button.SynchronizeUser',
     clickFun: 'toSynchronizeUser',
     disabled: '',
-    permission: 'AbpIdentity.Users',
+    permission: 'Systems.Users.SynchronizeUser',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }

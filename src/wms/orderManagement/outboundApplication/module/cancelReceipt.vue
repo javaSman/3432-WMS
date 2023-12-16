@@ -116,7 +116,7 @@ export default {
     getDetail(row) {
       this.detailListLoading = true
       this.detailQuery.OrderID = row.pickID
-      API.get('pickorder', this.detailQuery, 'GetCancelReceiptDetails').then(res => {
+      API.get('pickorder/GetDetails', this.detailQuery, 'Web').then(res => {
         this.detailTable = res.details
         this.detailListLoading = false
       })

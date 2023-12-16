@@ -36,22 +36,22 @@
         <tr class="td-title">
           <td colspan="1" style="border-bottom: none !important; width: 8%">序号</td>
           <td colspan="2" style="border-bottom: none !important; width: 12%">物料编码</td>
-          <td colspan="3" style="border-bottom: none !important; width: 25%">物料描述</td>
-          <td colspan="1" style="border-bottom: none !important; width: 8%">单位</td>
+          <td colspan="4" style="border-bottom: none !important; width: 33%">物料描述</td>
+          <td colspan="1" style="border-bottom: none !important; width: 6%">单位</td>
           <td colspan="1" style="border-bottom: none !important; width: 8%">调拨数量</td>
-          <td colspan="1" style="border-bottom: none !important; width: 12%">供应商批次</td>
-          <td colspan="3" style="border-bottom: none !important; width: auto">备注</td>
+          <td colspan="1" style="border-bottom: none !important; width: 16%">供应商批次</td>
+          <td colspan="2" style="border-bottom: none !important; width: 10%">备注</td>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in data" :key="index">
           <td style="text-align: center">{{ index + 1 }}</td>
           <td colspan="2">{{ item.materialID }}</td>
-          <td colspan="3">{{ item.materialDesc }}</td>
-          <td>{{ item.unitName }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>{{ item.batch }}</td>
-          <td colspan="3">{{ item.remark }}</td>
+          <td colspan="4">{{ item.materialDesc }}</td>
+          <td colspan="1">{{ item.unitName }}</td>
+          <td colspan="1">{{ item.quantity }}</td>
+          <td colspan="1">{{ item.supplierBatch }}</td>
+          <td colspan="2">{{ item.remark }}</td>
         </tr>
       </tbody>
       <tfoot>
@@ -127,7 +127,7 @@ export default {
   }
 }
 </script>
-  <style scoped>
+<style scoped>
 /* 需与打印样式同步 */
 html,
 body {

@@ -64,10 +64,10 @@ export const formList = [
 ]
 
 export const RoleCrud = {
-  add: 'AbpIdentity.Roles.Create',
-  edit: 'AbpIdentity.Roles.Update',
-  del: 'AbpIdentity.Roles.Delete'
+  add: 'Systems.Roles.Create',
+  edit: 'Systems.Roles.Update',
+  del: 'Systems.Roles.Delete'
 }
 export const RolePermissionCrud = {
-  save: 'AbpIdentity.Roles.ManagePermissions'
+  save: 'Systems.Roles.ManagePermissions'
 }

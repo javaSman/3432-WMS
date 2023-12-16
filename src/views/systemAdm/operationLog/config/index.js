@@ -7,5 +7,5 @@ export const queryItems = [
   { type: 'Input', label: '变更内容', prop: 'changeValue' }
 ]
 export const Crud = {
-  download: 'any'
+  download: 'Systems.OperationLog.Export'
 }

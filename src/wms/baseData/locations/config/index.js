@@ -128,11 +128,11 @@ export const formList = [
 export const batchFormList = [{ type: 'Select', prop: 'statusID', label: '状态编号', options: [] }]
 
 export const LocationsCrud = {
-  add: 'WarehouseManagement.Locations.Create',
-  edit: 'WarehouseManagement.Locations.Update',
-  del: 'WarehouseManagement.Locations.Delete',
-  import: 'WarehouseManagement.Locations',
-  download: 'WarehouseManagement.Locations'
+  add: 'BaseData.Locations.Create',
+  edit: 'BaseData.Locations.Update',
+  del: 'BaseData.Locations.Delete',
+  import: 'BaseData.Locations.Import',
+  download: 'BaseData.Locations.Export'
 }
 // locations非标按钮
 export const locationsBtnItems = [
@@ -141,7 +141,7 @@ export const locationsBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: '',
+    permission: 'BaseData.Locations.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },
@@ -150,7 +150,7 @@ export const locationsBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'todownSet',
     disabled: 'multipe',
-    permission: 'WarehouseManagement.Locations.LowerShelf',
+    permission: 'BaseData.Locations.LowerShelf',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }

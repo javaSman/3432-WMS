@@ -41,7 +41,7 @@ export const BtnItems = [
     langLabel: 'button.delete',
     clickFun: 'toDelete',
     disabled: 'multiple',
-    permission: '',
+    permission: 'OrderManagement.WarehousingApplication.Delete',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -62,7 +62,7 @@ export const ButtonItems = [
     langLabel: 'button.delete',
     clickFun: 'toDelete',
     disabled: 'multiple',
-    permission: '',
+    permission: 'OrderManagement.WarehousingApplication.Delete',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -120,7 +120,7 @@ export const OtherBtn = [
     langLabel: 'button.add',
     clickFun: 'toAdd',
     disabled: '',
-    permission: '',
+    permission: 'OrderManagement.WarehousingApplication',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -129,7 +129,7 @@ export const OtherBtn = [
     langLabel: 'button.delete',
     clickFun: 'toDelete',
     disabled: 'multipe',
-    permission: '',
+    permission: 'OrderManagement.WarehousingApplication.Delete',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

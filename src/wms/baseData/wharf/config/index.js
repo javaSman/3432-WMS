@@ -101,8 +101,8 @@ export const formList = [
 ]
 
 export const WharfCrud = {
-  add: 'WarehouseManagement.Wharf.Create',
-  edit: 'WarehouseManagement.Wharf.Update',
-  del: 'WarehouseManagement.Wharf.Delete',
-  download: 'WarehouseManagement.Wharf'
+  add: 'BaseData.Wharf.Create',
+  edit: 'BaseData.Wharf.Update',
+  del: 'BaseData.Wharf.Delete',
+  download: 'BaseData.Wharf.Export'
 }
