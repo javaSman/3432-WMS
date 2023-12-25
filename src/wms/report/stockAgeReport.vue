@@ -6,7 +6,7 @@
     <div class="content-container">
       <CrudOperation
         :selection="multipleSelection"
-        :button-items="arrivalReportBtnItems"
+        :button-items="stockAgeBtnItems"
         :download-loading.sync="downloadLoading"
         @toDownload="handleDownloadPast()"
       />
@@ -39,7 +39,7 @@ import basics from '@/mixins'
 import combogrid from '@/mixins/combogrid'
 // import { API } from '@/api/generalAPI'
 import CrudOperation from '@/components/Crud/CRUD.operation'
-import { stockAgeItems, arrivalReportBtnItems } from './config'
+import { stockAgeItems, stockAgeBtnItems } from './config'
 export default {
   name: 'SafetyStockAlertReport',
   components: { Table, CrudOperation },
@@ -49,7 +49,7 @@ export default {
       colName: 'GetStockReport',
       apiName: 'inventoryreport/GetStockReportAll',
       stockAgeItems,
-      arrivalReportBtnItems,
+      stockAgeBtnItems,
       downloadLoading: false,
       isEdit: true,
       exportParams: { IsPage: false },

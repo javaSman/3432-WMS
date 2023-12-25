@@ -290,6 +290,11 @@ export default {
     },
     handleGenerateLabel({ row, $index }) {
       this.$set(this.tableBtn.btnItem[0].btnLoding, $index, true)
+      if (!row.labelMantelNum || row.labelMantelNum === 0 || !row.labelNum || row.labelNum === 0) {
+        this.$message.error('请输入物料标签数量和标签个数！')
+        this.$set(this.tableBtn.btnItem[0].btnLoding, $index, false)
+        return
+      }
       if (row.total > row.remainder) {
         row.total = 0
         row.labelMantelNum = null
@@ -353,11 +358,11 @@ export default {
       } else {
         let strStyle = '<style>'
         strStyle += 'html,body {padding: 0;margin: 0;}'
-        strStyle += '.page { width: 94mm; height: 69mm; page-break-after: always;position: relative;overflow: hidden;}'
+        strStyle += '.page { width: 94mm; height: 63mm; page-break-after: always;position: relative;overflow: hidden;}'
         strStyle +=
           'table {position:relative;margin: auto;border-collapse: collapse;font-family: 宋体;font-size: 7pt;table-layout: fixed;word-break: break-all;page-break-after:always;  table-layout: fixed;  margin-left: 5mm;}'
-        strStyle += '.table td {text-align: left;height: 7mm;border: 1px solid #000;padding: 0 3px;}'
-        strStyle += '.td-title td {text-align: center;height: 7mm !important;}'
+        strStyle += '.table td {text-align: left;height: 6mm;border: 1px solid #000;padding: 0 3px;}'
+        strStyle += '.td-title td {text-align: center;height: 6mm !important;}'
         strStyle += '.table tr {height: 5mm;}'
         strStyle += '.top-title td { height: 5mm;border: none !important;}'
         // strStyle +=
@@ -369,7 +374,7 @@ export default {
         strStyle += '.newTitle {font-size: 20px;font-weight: 800;text-align: center;}'
         strStyle += '.newText  {height: 7mm;}'
         strStyle += '.qrcodestyle {margin-left: 18px; margin-top: 5px;}'
-        strStyle += '.textSt {margin: 10px 40px;font-size: 12px;}'
+        strStyle += '.textSt {margin: 7px 40px;font-size: 12px;}'
         strStyle +=
           '.ruleStyle {   display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}'
         strStyle += '</style>'

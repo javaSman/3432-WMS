@@ -24,15 +24,15 @@ export const QueryItems = [
   { type: 'Input', label: '创建人', prop: 'operator' }
 ]
 export const BtnItems = [
-  {
-    // 过账
-    langLabel: 'button.Posting',
-    clickFun: 'toPosting',
-    disabled: '',
-    permission: 'OrderManagement.WarehousingEntry.InStock.Post',
-    styleType: 'danger',
-    icon: 'el-icon-download'
-  },
+  // {
+  //   // 过账
+  //   langLabel: 'button.Posting',
+  //   clickFun: 'toPosting',
+  //   disabled: '',
+  //   permission: 'OrderManagement.WarehousingEntry.InStock.Post',
+  //   styleType: 'danger',
+  //   icon: 'el-icon-download'
+  // },
   {
     // 取消入库
     langLabel: 'button.cancelReceipt',

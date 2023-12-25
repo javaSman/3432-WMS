@@ -22,7 +22,7 @@ export const BtnItems = [
     langLabel: 'button.materiallist',
     clickFun: 'toMateriallist',
     disabled: 'single',
-    permission: 'BaseData.PurchaseOrder',
+    permission: 'BaseData.PurchaseOrder.materiallist',
     styleType: 'danger',
     icon: 'el-icon-finished'
   },

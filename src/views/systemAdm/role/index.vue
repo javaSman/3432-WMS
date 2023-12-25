@@ -255,55 +255,35 @@ export default {
         this.permissionsData = []
         this.checkedPermission = []
         this.setTree(res.groups)
+        // this.buildTree(res.groups)
         this.treeLoading = false
       })
     },
     setTree(data) {
       data.forEach(element => {
-        let root = {}
-        root.id = element.name
-        root.name = element.displayName
-        root.disabled = true
-        root.children = []
-        element.permissions.forEach(item => {
-          if (!item.parentName) {
-            let children = {}
-            children.id = item.name
-            children.name = item.displayName
-            children.parentId = item.parentName
-            children.children = []
-            root.children.push(children)
-          } else {
-            let child = {}
-            child.id = item.name
-            child.name = item.displayName
-            child.parentId = item.parentName
-            child.children = []
-            for (const v of root.children) {
-              if (v.id === item.parentName) {
-                v.children.push(child)
+        const root = {
+          id: element.name,
+          name: element.displayName,
+          disabled: true,
+          children: []
+        }
+        const buildTree = (items, parentId = null) => {
+          return items
+            .filter(item => item.parentName === parentId)
+            .map(item => {
+              const node = {
+                id: item.name,
+                name: item.displayName,
+                parentId: item.parentName,
+                children: buildTree(items, item.name)
               }
-            }
-          }
-          if (item.isGranted) {
-            this.checkedPermission.push(item.name)
-          }
-        })
-        root.children.forEach(item2 => {
-          item2.children.forEach(item3 => {
-            element.permissions.forEach(item4 => {
-              if (item4.parentName) {
-                let child2 = {}
-                child2.id = item4.name
-                child2.name = item4.displayName
-                child2.parentId = item4.parentName
-                if (item3.id === item4.parentName) {
-                  item3.children.push(child2)
-                }
+              if (item.isGranted) {
+                this.checkedPermission.push(item.name) // 选中权限
               }
+              return node
             })
-          })
-        })
+        }
+        root.children = buildTree(element.permissions)
         this.permissionsData.push(root)
       })
     },

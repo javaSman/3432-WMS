@@ -17,7 +17,7 @@ export const MaterialItems = [
   }
 ]
 export const Crud = {
-  add: 'any'
+  add: 'OutboundApplication.PickOrder.Create'
 }
 export const MaterialList = [
   {
@@ -103,7 +103,7 @@ export const BtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: 'OrderManagement.OutboundApplication.Material.OutShelves',
+    permission: 'OutboundApplication.PickOrder.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -112,7 +112,7 @@ export const BtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: 'OrderManagement.OutboundApplication.Material.Print',
+    permission: 'OutboundApplication.PickOrder.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -123,7 +123,7 @@ export const DetailBtn = [
     langLabel: 'button.outShelves',
     clickFun: 'toOffShelf',
     disabled: 'multipe',
-    permission: 'OutStockRequestHeader.PickOrder.LowerShelf',
+    permission: 'OutboundApplication.PickOrder.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -144,7 +144,7 @@ export const SalesBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: 'OrderManagement.OutboundApplication.Sale.OutShelves',
+    permission: 'OutboundApplication.OutSale.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -153,7 +153,7 @@ export const SalesBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: 'OrderManagement.OutboundApplication.Sale.Print',
+    permission: 'OutboundApplication.OutSale.Print',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -187,7 +187,7 @@ export const PurchaseBtnItems = [
     langLabel: 'button.outShelves',
     clickFun: 'toOutShelves',
     disabled: 'multipe',
-    permission: 'OrderManagement.OutboundApplication.Purchase.OutShelves',
+    permission: 'OrderManagement.OutboundApplication.OutPurchase.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -196,7 +196,7 @@ export const PurchaseBtnItems = [
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
     disabled: 'multipe',
-    permission: 'OrderManagement.OutboundApplication.Purchase.OutShelves',
+    permission: 'OrderManagement.OutboundApplication.OutPurchase.OutShelves',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }

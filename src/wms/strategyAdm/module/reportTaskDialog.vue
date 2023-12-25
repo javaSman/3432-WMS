@@ -71,7 +71,8 @@ export default {
   },
   data() {
     return {
-      formLoading: false // 确认按钮加载状态
+      formLoading: false, // 确认按钮加载状态
+      API: ''
     }
   },
   computed: {
@@ -101,8 +102,18 @@ export default {
             this.formLoading = false
             return // 表单验证完后，若有自定义方法，则执行
           }
+          console.log(this.formData)
+
+          if (this.formData.warehouseID === '2001' || this.formData.warehouseID === '2003') {
+            this.API = 'webapi'
+            this.apiMethod = 'SetTaskInfoState'
+          } else {
+            this.API = 'Stacker'
+            this.apiMethod = 'SetTaskInfoState'
+          }
+          delete this.formData.warehouseID
           api
-            .dataPost('webapi', this.formData, this.apiMethod)
+            .dataPost(this.API, this.formData, this.apiMethod)
             .then(res => {
               if (res.success) {
                 this.formLoading = false

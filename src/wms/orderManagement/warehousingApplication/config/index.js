@@ -120,7 +120,7 @@ export const OtherBtn = [
     langLabel: 'button.add',
     clickFun: 'toAdd',
     disabled: '',
-    permission: 'OrderManagement.WarehousingApplication',
+    permission: 'OrderManagement.WarehousingApplication.Other.Create',
     styleType: 'danger',
     icon: 'el-icon-download'
   },
@@ -129,7 +129,7 @@ export const OtherBtn = [
     langLabel: 'button.delete',
     clickFun: 'toDelete',
     disabled: 'multipe',
-    permission: 'OrderManagement.WarehousingApplication.Delete',
+    permission: 'OrderManagement.WarehousingApplication.Other.Delete',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

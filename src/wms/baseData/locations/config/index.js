@@ -1,4 +1,4 @@
-import { validateKey } from '@/utils/validate.js'
+// import { validateKey } from '@/utils/validate.js'
 export const queryItems = [
   { type: 'Input', label: '货位编号', prop: 'locationID' },
   { type: 'Selects', label: '货位状态', prop: 'state', options: [] },
@@ -15,8 +15,8 @@ export const formList = [
     prop: 'locationID',
     unique: true,
     rules: [
-      { required: true, message: '请输入货位编号', trigger: 'blur' },
-      { addOnly: true, trigger: 'blur', tableName: 'WH_Locations', validator: validateKey }
+      { required: true, message: '请输入货位编号', trigger: 'blur' }
+      // { addOnly: true, trigger: 'blur', tableName: 'WH_Locations', validator: validateKey }
     ]
   },
   {
@@ -41,7 +41,7 @@ export const formList = [
     tableWidth: 100,
     col: [
       { label: '仓库编码', prop: 'warehouseID' },
-      { label: '名称', prop: 'warehouseName' },
+      { label: '名称', prop: 'warehouseName', width: '170px' },
       { label: '描述', prop: 'warehouseDesc' }
     ],
     rules: [{ required: true, message: '请选择仓库编码', trigger: 'blur' }]
@@ -61,8 +61,8 @@ export const formList = [
     col: [
       { label: '区域编码', prop: 'regionID' },
       { label: '名称', prop: 'regionName' }
-    ],
-    rules: [{ required: true, message: '请选择区域编码', trigger: 'blur' }]
+    ]
+    // rules: [{ required: true, message: '请选择区域编码', trigger: 'blur' }]
   },
   // {
   //   type: 'Combogrid',
@@ -153,5 +153,16 @@ export const locationsBtnItems = [
     permission: 'BaseData.Locations.LowerShelf',
     styleType: 'danger',
     icon: 'el-icon-finished'
+  }
+]
+
+// 下架弹窗表单
+export const downSetFormList = [
+  {
+    type: 'Select',
+    prop: 'destination',
+    label: '码头',
+    options: [],
+    rules: [{ required: true, message: '请选择码头', trigger: 'blur' }]
   }
 ]

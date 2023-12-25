@@ -415,14 +415,14 @@ export const ArrMoreQuery = [
     layout: { span: 24, xs: 24, sm: 16, md: 12, lg: 8, xl: 8 }
   }
 ]
-// 收货非标按钮
+// 到货报表非标按钮
 export const arrivalReportBtnItems = [
   {
     // 导出
     langLabel: 'button.export',
     clickFun: 'toDownload',
     disabled: '',
-    // permission: 'Report.ArrivalReport.Export',
+    permission: 'Report.ArrivalReport.Export',
     styleType: 'warning',
     icon: 'el-icon-download'
   },
@@ -431,7 +431,49 @@ export const arrivalReportBtnItems = [
     langLabel: 'button.generateQuality',
     clickFun: 'toGenerateQuality',
     disabled: 'multipe',
-    // permission: 'Report.ArrivalReport.GenerateQuality',
+    permission: 'Report.ArrivalReport.GenerateQuality',
+    styleType: 'danger',
+    icon: 'el-icon-finished'
+  }
+]
+// 库龄报表非标按钮
+export const stockAgeBtnItems = [
+  {
+    // 导出
+    langLabel: 'button.export',
+    clickFun: 'toDownload',
+    disabled: '',
+    permission: 'Report.StockAgeReport.Export',
+    styleType: 'warning',
+    icon: 'el-icon-download'
+  },
+  {
+    // 生成质检单
+    langLabel: 'button.generateQuality',
+    clickFun: 'toGenerateQuality',
+    disabled: 'multipe',
+    permission: 'Report.StockAgeReport.GenerateQuality',
+    styleType: 'danger',
+    icon: 'el-icon-finished'
+  }
+]
+// 安全库存报表按钮
+export const safetyStockAlertBtnItems = [
+  {
+    // 导出
+    langLabel: 'button.export',
+    clickFun: 'toDownload',
+    disabled: '',
+    permission: 'Report.SafetyStockAlertReport.Export',
+    styleType: 'warning',
+    icon: 'el-icon-download'
+  },
+  {
+    // 生成质检单
+    langLabel: 'button.generateQuality',
+    clickFun: 'toGenerateQuality',
+    disabled: 'multipe',
+    permission: 'Report.SafetyStockAlertReport.GenerateQuality',
     styleType: 'danger',
     icon: 'el-icon-finished'
   }
@@ -516,18 +558,7 @@ export const stockAgeItems = [
   //   layout: { span: undefined, xs: 24, sm: 16, md: 12, lg: 8, xl: 8 }
   // }
 ]
-// 库龄报表非标按钮
-export const stockAgeBtnItems = [
-  // {
-  //   // 导出
-  //   langLabel: 'button.export',
-  //   clickFun: 'toDownload',
-  //   disabled: '',
-  //   permission: '',
-  //   styleType: 'warning',
-  //   icon: 'el-icon-download'
-  // }
-]
+
 export const boxTableList = [
   { label: '物料编号', prop: 'materialID' },
   { label: '物料描述', prop: 'materialDesc' },

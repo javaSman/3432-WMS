@@ -175,7 +175,6 @@ export default {
     /** 报工 */
     handleReportTask() {
       var row = this.multipleSelection[0]
-
       if (row.state === '完成' || row.state === '取消') {
         this.$message({
           message: '取消或完成状态无法报工',
@@ -186,7 +185,8 @@ export default {
           this.form = {
             state: '',
             taskId: res.taskId,
-            remark: res.remark
+            remark: res.remark,
+            warehouseID: res.warehouseID
           }
           this.reportDialogVisible = true
         })

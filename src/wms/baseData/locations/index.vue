@@ -71,6 +71,20 @@
         @reset="reset"
         @cancel="dialogCancel"
       />
+      <!-- 下架弹窗 -->
+      <EditForm
+        :dialog-form-visible="downSetFormVisible"
+        :form-title="formTitle"
+        :form-list="downSetFormList"
+        :form-data="downSetForm"
+        :is-edit="true"
+        :api-name="apiName"
+        :dialog-width="750"
+        :layout="layout"
+        :submit="handleDownSetSave"
+        @cancel="dialogCancel"
+        @reset="reset"
+      />
       <div v-if="printBegin" id="boxBarcode" ref="boxBarcode" style="display: none">
         <boxBarcode v-for="(item, index) in printData" :key="index" :data="item" />
       </div>
@@ -91,7 +105,7 @@ import combogrid from '@/mixins/combogrid'
 import Functions from '@/utils/functions'
 import boxBarcode from '@/views/printable-template/locationsBarcode'
 import { getLodop } from '@/utils/lodop'
-import { formList, batchFormList, queryItems, LocationsCrud, locationsBtnItems } from './config'
+import { formList, batchFormList, queryItems, LocationsCrud, locationsBtnItems, downSetFormList } from './config'
 export default {
   name: 'Locations',
   components: { Table, EditForm, CrudOperation, EditBatchDialog, UploadDialog, boxBarcode },
@@ -107,6 +121,7 @@ export default {
       queryItems,
       batchFormList,
       LocationsCrud,
+      downSetFormList,
 
       tableList: [],
       form: {},
@@ -121,7 +136,10 @@ export default {
       boxcbgAttr: formList[3], // 远程
       warehousecbgAttr: formList[2], // 远程
       printBegin: false,
-      printData: []
+      printData: [],
+      downSetFormVisible: false, // 下架弹窗显示标识
+      downSetForm: {},
+      wharfLocationId: ''
     }
   },
   created() {
@@ -135,36 +153,6 @@ export default {
     formChange() {
       this.formList.forEach(item => {
         switch (item.prop) {
-          // 报名申请反馈-change
-          // case 'locationID': {
-          //   item.blur = row => {
-          //     console.log(row)
-          //     if (row !== undefined) {
-          //       var arrSelect = row.split('-')
-          //       this.$set(this.form, 'alley', arrSelect[0])
-          //       this.$set(this.form, 'row', arrSelect[1])
-          //       this.$set(this.form, 'col', arrSelect[2])
-          //       this.$set(this.form, 'floor', arrSelect[3])
-          //     }
-
-          //     // this.formList[4].disabled = true
-          //   }
-          //   item.change = row => {
-          //     this.$set(this.form, 'floor', '')
-          //     this.$set(this.form, 'alley', '')
-          //     this.$set(this.form, 'row', '')
-          //     this.$set(this.form, 'col', '')
-          //   }
-          //   break
-          // }
-          // case 'boxID': {
-          //   item.change = row => {
-          //     if (!row) {
-          //       this.cbgRemote('boxID')
-          //     }
-          //   }
-          //   break
-          // }
           case 'warehouseID': {
             item.change = row => {
               this.inputWHName(row)
@@ -180,6 +168,9 @@ export default {
       })
       API.getDict('dict', { name: 'LocalType' }).then(res => {
         this.queryItems[4].options = this.formList[9].options = res.details
+      })
+      API.getDict('dict', { name: 'OutWharf' }).then(res => {
+        this.downSetFormList[0].options = res.details
       })
     },
     handleCreate() {
@@ -213,6 +204,7 @@ export default {
     dialogCancel(val) {
       this.uploadDialogVisible = false
       this.batchDialogVisible = false
+      this.downSetFormVisible = false
     },
     inputWHName(val) {
       this.formList[2].options.forEach(item => {
@@ -308,36 +300,52 @@ export default {
         })
       }
     },
+
+    // 下架按钮
     handleDownSet() {
-      this.$confirm('确定执行下架操作吗？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        let row = this.multipleSelection
-        let multipeResult = row.map(item => {
-          return { locationID: item.locationID, warehouseID: item.warehouseID }
+      // 判断是否选中同一个仓库
+      let samewarehouseID = this.multipleSelection.every(
+        item => item.warehouseID === this.multipleSelection[0].warehouseID
+      )
+      if (!samewarehouseID) {
+        this.$message({
+          message: '请选择同一仓库',
+          type: 'warning'
         })
-        API.dataPost('locations', multipeResult, 'CreateOutTask').then(res => {
-          // console.log(res)
-          if (res.success) {
-            this.$notify({
-              title: this.$t('notify.success'), // '成功'
-              message: '下架成功', // '操作成功',
-              type: 'success',
-              duration: 2000
-            })
-            this.getList()
-          } else {
-            this.$notify({
-              title: this.$t('notify.failure'), // '失败'
-              message: this.$t('notify.operateFailure') + ',' + res.message, // '操作失败',
-              type: 'error',
-              duration: 2000
-            })
-          }
-        })
+      } else {
+        this.downSetForm = {}
+        this.downSetFormVisible = true
+      }
+    },
+    // 下架保存
+    handleDownSetSave() {
+      let row = this.multipleSelection
+      let multipeResult = row.map(item => {
+        return { locationID: item.locationID, warehouseID: item.warehouseID }
       })
+      API.dataPost(
+        'locations',
+        { locationList: multipeResult, destination: this.downSetForm.destination },
+        'CreateOutTask'
+      ).then(res => {
+        if (res.success) {
+          this.$notify({
+            title: this.$t('notify.success'), // '成功'
+            message: '下架成功', // '操作成功',
+            type: 'success',
+            duration: 2000
+          })
+          this.getList()
+        } else {
+          this.$notify({
+            title: this.$t('notify.failure'), // '失败'
+            message: this.$t('notify.operateFailure') + ',' + res.message, // '操作失败',
+            type: 'error',
+            duration: 2000
+          })
+        }
+      })
+      return true
     }
   }
 }

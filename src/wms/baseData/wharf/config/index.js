@@ -97,6 +97,16 @@ export const formList = [
     type: 'Input',
     label: '码头库位号',
     prop: 'wharfLocationId'
+  },
+  {
+    type: 'Radio',
+    label: '是否启用',
+    prop: 'enable',
+    radios: [
+      { label: '是', value: true },
+      { label: '否', value: false }
+    ],
+    rules: [{ required: true, message: '请选择', trigger: 'blur' }]
   }
 ]
 

@@ -124,15 +124,15 @@ export const SalesBtnItems = [
 /* 销售出库按钮 */
 export const Crud = {}
 export const BtnItems = [
-  {
-    // 过账
-    langLabel: 'button.Posting',
-    clickFun: 'totransfer',
-    disabled: 'multipe',
-    permission: 'OrderManagement.OutboundOrder.material.Transfer',
-    styleType: 'danger',
-    icon: 'el-icon-finished'
-  },
+  // {
+  //   // 过账
+  //   langLabel: 'button.Posting',
+  //   clickFun: 'totransfer',
+  //   disabled: 'multipe',
+  //   permission: 'OrderManagement.OutboundOrder.material.Transfer',
+  //   styleType: 'danger',
+  //   icon: 'el-icon-finished'
+  // },
   {
     // 打印条码
     langLabel: 'button.print',

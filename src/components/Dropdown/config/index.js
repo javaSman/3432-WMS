@@ -71,12 +71,12 @@ export const navdetails = [
         noHidden: true,
         roles: ['BaseData.Warehouse']
       },
-      {
-        label: '区域管理',
-        routerUrl: '/baseData/regionManagement',
-        noHidden: true,
-        roles: ['BaseData.RegionManagement']
-      },
+      // {
+      //   label: '区域管理',
+      //   routerUrl: '/baseData/regionManagement',
+      //   noHidden: true,
+      //   roles: ['BaseData.RegionManagement']
+      // },
       {
         label: '货位管理',
         routerUrl: '/baseData/locations',
@@ -143,7 +143,7 @@ export const navdetails = [
         label: '出库申请单',
         routerUrl: '/orderManagement/outboundApplication',
         noHidden: true,
-        roles: ['OrderManagement.OutboundApplication']
+        roles: ['OutboundApplication']
       },
       {
         label: '出库单',
@@ -231,12 +231,12 @@ export const navdetails = [
         noHidden: true,
         roles: ['WarehouseBusiness.InStockQualityInspection']
       },
-      {
-        label: '在库报废',
-        routerUrl: '/warehouseBusiness/scrapInStockChange',
-        noHidden: true,
-        roles: ['WarehouseBusiness.ScrapInStockChange']
-      },
+      // {
+      //   label: '在库报废',
+      //   routerUrl: '/warehouseBusiness/scrapInStockChange',
+      //   noHidden: true,
+      //   roles: ['WarehouseBusiness.ScrapInStockChange']
+      // },
       {
         label: '盘点单',
         routerUrl: '/warehouseBusiness/inventoryOrder',
@@ -319,12 +319,12 @@ export const navdetails = [
         noHidden: true,
         roles: ['Report.MaterialHistory']
       },
-      {
-        label: '出入库报表',
-        routerUrl: '/report/outinStockReport',
-        noHidden: true,
-        roles: ['Report.OutinStockReport']
-      },
+      // {
+      //   label: '出入库报表',
+      //   routerUrl: '/report/outinStockReport',
+      //   noHidden: true,
+      //   roles: ['Report.OutinStockReport']
+      // },
       {
         label: '库存报表',
         routerUrl: '/report/inventoryReport',
@@ -467,12 +467,12 @@ export const navdetails = [
         noHidden: true,
         roles: ['Systems.Users']
       },
-      {
-        label: '系统日志',
-        routerUrl: '/system/log',
-        noHidden: true,
-        roles: ['Systems.AuditLogging']
-      },
+      // {
+      //   label: '系统日志',
+      //   routerUrl: '/system/log',
+      //   noHidden: true,
+      //   roles: ['Systems.AuditLogging']
+      // },
       {
         label: 'APP管理',
         routerUrl: '/system/appVersion',
@@ -542,13 +542,13 @@ export const navdetails = [
         routerUrl: '/baseData/device',
         noHidden: true,
         roles: ['DeviceManagement.Device']
-      },
-      {
-        label: '设备报警记录',
-        routerUrl: '/baseData/logisticsLineAlarm',
-        noHidden: true,
-        roles: ['DeviceManagement.LogisticsLineAlarm']
       }
+      // {
+      //   label: '设备报警记录',
+      //   routerUrl: '/baseData/logisticsLineAlarm',
+      //   noHidden: true,
+      //   roles: ['DeviceManagement.LogisticsLineAlarm']
+      // }
     ]
   }
 ]

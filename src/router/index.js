@@ -479,17 +479,17 @@ export const asyncRoutes = [
         }
       },
       // 出入库报表
-      {
-        path: 'outinStockReport',
-        component: () => import('@/wms/report/outinStockReport'),
-        name: 'OutinStockReport',
-        meta: {
-          title: 'outinStockReport',
-          roles: ['Report.OutinStockReport'],
-          icon: 'dict',
-          keepAlive: true
-        }
-      },
+      // {
+      //   path: 'outinStockReport',
+      //   component: () => import('@/wms/report/outinStockReport'),
+      //   name: 'OutinStockReport',
+      //   meta: {
+      //     title: 'outinStockReport',
+      //     roles: ['Report.OutinStockReport'],
+      //     icon: 'dict',
+      //     keepAlive: true
+      //   }
+      // },
       // 载具清洗日志
       {
         path: 'boxCleanLog',
@@ -647,7 +647,7 @@ export const asyncRoutes = [
         name: 'outboundApplication',
         meta: {
           title: 'outboundApplication',
-          roles: ['OrderManagement.OutboundApplication'],
+          roles: ['OutboundApplication'],
           icon: 'wcsTask',
           keepAlive: true
         }

@@ -41,7 +41,7 @@ export const boxFormList = [
   },
   {
     type: 'Input',
-    label: '使用期限',
+    label: '使用期限(天)',
     prop: 'dueTime'
   }
 ]

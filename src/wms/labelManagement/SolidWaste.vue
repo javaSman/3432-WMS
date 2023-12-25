@@ -189,14 +189,14 @@ export default {
       this.listLoading = true
       this.listQuery.SkipCount = (this.page - 1) * 10
       API.getData('wasteorder', this.listQuery, 'GetAllDetails').then(res => {
+        console.log(res)
         // 待生成的标签数=总数-已生成的数
-        res.datas.map(item => {
+        res.items.map(item => {
           item.remainder = Number(item.quantity) - Number(item.lableNum)
           // 转换时间格式
           item.creationTime = item.creationTime.split('T')[0] + ' ' + item.creationTime.split('T')[1]
         })
-
-        this.list = res.datas
+        this.list = res.items
         this.totalCount = res.totalCount
         this.listLoading = false
       })
@@ -280,6 +280,11 @@ export default {
     },
     handleGenerateLabel({ row, $index }) {
       this.$set(this.SolidTableBtn.btnItem[0].btnLoding, $index, true)
+      if (!row.labelMantelNum || row.labelMantelNum === 0 || !row.labelNum || row.labelNum === 0) {
+        this.$message.error('请输入物料标签数量和标签个数！')
+        this.$set(this.SolidTableBtn.btnItem[0].btnLoding, $index, false)
+        return
+      }
       if (row.total > row.remainder) {
         row.total = 0
         row.labelMantelNum = null
@@ -340,13 +345,13 @@ export default {
       } else {
         let strStyle = '<style>'
         strStyle += 'html,body {padding: 0;margin: 0;}'
-        strStyle += '.page { width: 94mm; height: 69mm; page-break-after: always;position: relative;overflow: hidden;}'
+        strStyle += '.page { width: 94mm; height: 63mm; page-break-after: always;position: relative;overflow: hidden;}'
         strStyle +=
           'table {position:relative;margin: auto;border-collapse: collapse;font-family: 宋体;font-size: 7pt;table-layout: fixed;word-break: break-all;page-break-after:always;  table-layout: fixed;  margin-left: 5mm;}'
-        strStyle += '.table td {text-align: left;height: 7mm;border: 1px solid #000;padding: 0 3px;}'
-        strStyle += '.td-title td {text-align: center;height: 7mm !important;}'
-        strStyle += '.table tr {height: 7mm;}'
-        strStyle += '.top-title td { height: 7mm;border: none !important;}'
+        strStyle += '.table td {text-align: left;height: 6mm;border: 1px solid #000;padding: 0 3px;}'
+        strStyle += '.td-title td {text-align: center;height: 6mm !important;}'
+        strStyle += '.table tr {height: 5mm;}'
+        strStyle += '.top-title td { height: 5mm;border: none !important;}'
         // strStyle +=
         //   ' .main-title { height: 12mm !important; line-height: 12mm; font-size: 16pt; font-weight: bold;text-align: center !important;border:none !important;border-bottom:1px solid}'
         strStyle +=
@@ -356,7 +361,7 @@ export default {
         strStyle += '.newTitle {font-size: 20px;font-weight: 800;text-align: center;}'
         strStyle += '.newText  {height: 7mm;}'
         strStyle += '.qrcodestyle {margin-left: 18px; margin-top: 5px;}'
-        strStyle += '.textSt {margin: 10px 40px;font-size: 12px;}'
+        strStyle += '.textSt {margin: 7px 40px;font-size: 12px;}'
         strStyle +=
           '.ruleStyle {   display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}'
         strStyle += '</style>'

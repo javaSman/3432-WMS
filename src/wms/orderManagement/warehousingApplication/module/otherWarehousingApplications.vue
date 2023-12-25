@@ -208,12 +208,12 @@ export default {
     handleDelete() {
       let array = []
       this.multipleSelection.forEach(item => {
-        item.push(item.id)
+        array.push(item.id)
       })
       // '确认删除选中项','提示'
-      this.$confirm(this.$t('dialog.deleteTips'), this.$t('dialog.tip'), {
-        confirmButtonText: this.$t('button.confirm'), // '确认'
-        cancelButtonText: this.$t('button.cancel'), // '取消'
+      this.$confirm('确定删除选中' + this.multipleSelection.length + '条数据？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
         API.dataPost('receiptorder', array, 'OtherOrderDelete')

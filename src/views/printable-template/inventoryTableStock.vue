@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <td>数量&单位</td>
-          <td>{{ data[0].quantity }}&nbsp;&nbsp;&nbsp;&nbsp;{{ data[0].unitName }}</td>
+          <td>{{ data[0].quantity }}&nbsp;&nbsp;&nbsp;&nbsp;{{ data[0].unitID }}</td>
           <td colspan="3" rowspan="6">
             <div ref="qrcode11111" class="qrcodestyle" />
             <div class="textSt">{{ data[0].barcode }}</div>
@@ -108,7 +108,7 @@ export default {
           '#' +
           this.data[0].quantity +
           '#' +
-          this.data[0].unitName +
+          this.data[0].unitID +
           '#' +
           this.data[0].barcode
       }

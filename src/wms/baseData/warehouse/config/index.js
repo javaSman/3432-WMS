@@ -38,27 +38,27 @@ export const WarehouseCrud = {
   del: 'BaseData.Warehouse.Delete'
 }
 export const BtnItems = [
-  {
-    // ERP对应仓
-    langLabel: 'button.ERPwarehouseCorrespond',
-    clickFun: 'toERPwarehouseCorrespond',
-    permission: 'BaseData.Warehouse.Obverse',
-    disabled: 'single'
-  },
-  {
-    // 启用
-    langLabel: 'button.Enable',
-    clickFun: 'toEnable',
-    permission: 'BaseData.Warehouse.Enable',
-    disabled: 'single'
-  },
-  {
-    // 禁用
-    langLabel: 'button.Disable',
-    clickFun: 'toDisable',
-    permission: 'BaseData.Warehouse.Disable',
-    disabled: 'single'
-  }
+  // {
+  //   // ERP对应仓
+  //   langLabel: 'button.ERPwarehouseCorrespond',
+  //   clickFun: 'toERPwarehouseCorrespond',
+  //   permission: 'BaseData.Warehouse.Obverse',
+  //   disabled: 'single'
+  // },
+  // {
+  //   // 启用
+  //   langLabel: 'button.Enable',
+  //   clickFun: 'toEnable',
+  //   permission: 'BaseData.Warehouse.Enable',
+  //   disabled: 'single'
+  // },
+  // {
+  //   // 禁用
+  //   langLabel: 'button.Disable',
+  //   clickFun: 'toDisable',
+  //   permission: 'BaseData.Warehouse.Disable',
+  //   disabled: 'single'
+  // }
 ]
 export const correspondForm = [
   {

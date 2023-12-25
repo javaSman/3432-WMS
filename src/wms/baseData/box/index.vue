@@ -349,9 +349,11 @@ export default {
 
         let strStyle = '<style>'
         strStyle += 'html,body {padding: 0;margin: 0;}'
-        strStyle += '.page { width: 99mm;height: 68mm; page-break-after: always;position: relative;overflow: hidden;}'
         strStyle +=
-          '.barcode {width: 99mm;height: 68mm;border: 1px soild #000; left: 1mm;  top: 14mm; position: absolute;}'
+          '.page { width: 99mm;height: 58mm;text-align: center; page-break-after: always;position: relative;overflow: hidden; margin: 15px 90px;}'
+        strStyle +=
+          '.qrcodestyle {width: 35mm;height: 35mm;border: 1px soild #000; left: 1mm;  top: 5mm; position: absolute;}'
+        strStyle += '.textSt {width: 40mm;height: 40mm; text-align: center;  top: 45mm; position: absolute; }'
         strStyle += '</style>'
         this.$nextTick(() => {
           let strHtml = document.getElementById('boxBarcode').innerHTML
@@ -359,6 +361,7 @@ export default {
           LODOP.SET_PRINT_PAGESIZE(1, '100mm', '70mm') // 1纵向、2横向，纸宽，纸高，A4规格
           let printTemplate = strStyle + '<body>' + strHtml + '</body>'
           LODOP.ADD_PRINT_HTM('0mm', '0mm', '100mm', '68mm', printTemplate) // Top,Left,Width,Height
+          // LODOP.NewPageA() // 强制分页，前面的自动分页，后面的页面会在自动分页的后面添加新页面。
           LODOP.PREVIEW()
           this.printBegin = false
         })

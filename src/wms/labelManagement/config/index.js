@@ -10,17 +10,17 @@ export const queryItems = [
 ]
 export const WarehouseCrud = {}
 export const TableList = [
-  { label: '仓库编码', prop: 'warehouseID', width: 150 },
+  { label: '采购订单', prop: 'po', width: 150, fixed: true },
+  { label: '订单行号', prop: 'poItemNo', width: 80, fixed: true },
+  { label: '收货日期', prop: 'receivingDate', width: 100, fixed: true },
+  { label: '收货人', prop: 'controlPeopleName', width: 70, fixed: true },
+  { label: '供应商批次', prop: 'supplierBatch', width: 170, fixed: true },
+  { label: '物料编码', prop: 'materialID', width: 150, fixed: true },
+  { label: '仓库编码', prop: 'warehouseID', width: 80 },
   { label: '单号', prop: 'receiptID', width: 150 },
   // { label: '单据类型', prop: 'orderType', width: 150 },
-  { label: '采购订单', prop: 'po', width: 150 },
-  { label: '订单行号', prop: 'poItemNo', width: 150 },
-  { label: '物料编码', prop: 'materialID', width: 150 },
   { label: '物料描述', prop: 'materialDesc', width: 250 },
-  { label: '收货人', prop: 'controlPeopleName', width: 150 },
-  { label: '收货日期', prop: 'receivingDate', width: 100 },
   { label: '入库批次', prop: 'batch', width: 150 },
-  { label: '供应商批次', prop: 'supplierBatch', width: 170 },
   { label: '创建时间', prop: 'creationTime', width: 170 },
   { label: '是否免检', prop: 'chkfreeflag' },
   { label: '本次收货数量', prop: 'receivingNum' },
@@ -32,24 +32,21 @@ export const TableList = [
     prop: 'labelMantelNum',
     type: 'colType/Number',
     width: '150px',
-    required: true,
-    rules: [{ required: true, message: '请输入物料标签数量' }]
+    required: true
   },
   {
     label: '标签个数',
     prop: 'labelNum',
     type: 'colType/Number',
     width: '150px',
-    required: true,
-    rules: [{ required: true, message: '请输入标签个数' }]
+    required: true
   },
   {
     label: '数量合计',
     prop: 'total',
     type: 'colType/Number',
     disabled: true,
-    width: '150px',
-    rules: [{ required: true, message: '请输入数量合计' }]
+    width: '150px'
   },
   // {
   //   label: '生产日期',
@@ -62,8 +59,7 @@ export const TableList = [
     label: '生产地',
     prop: 'productPlace',
     type: 'colType/Input',
-    width: '150px',
-    rules: [{ required: true, message: '请输入生产地' }]
+    width: '150px'
   }
   // {
   //   label: '供应商批次',
@@ -92,7 +88,7 @@ export const BtnItems = [
   {
     langLabel: 'button.print',
     clickFun: 'toprintBarcode',
-    disabled: 'single',
+    disabled: 'multipe',
     permission: '',
     styleType: 'danger',
     icon: 'el-icon-finished'
@@ -231,33 +227,28 @@ export const SolidTableList = [
     prop: 'nnum',
     type: 'colType/Number',
     width: '150px',
-    required: true,
-    disabled: true,
-    rules: [{ required: true, message: '请输入实称数量' }]
+    disabled: true
   },
   {
     label: '物料标签数量',
     prop: 'labelMantelNum',
     type: 'colType/Number',
     width: '150px',
-    required: true,
-    rules: [{ required: true, message: '请输入物料标签数量' }]
+    required: true
   },
   {
     label: '标签个数',
     prop: 'labelNum',
     type: 'colType/Number',
     width: '150px',
-    required: true,
-    rules: [{ required: true, message: '请输入标签个数' }]
+    required: true
   },
   {
     label: '数量合计',
     prop: 'total',
     type: 'colType/Number',
     disabled: true,
-    width: '150px',
-    rules: [{ required: true, message: '请输入数量合计' }]
+    width: '150px'
   }
   // {
   //   label: '生产日期',
