@@ -84,9 +84,19 @@
       </div>
       <!-- 页面标签栏 -->
       <div class="tags">
-        <span v-for="(item, index3) in unique" :key="index3" class="tags-item">
-          <router-link :to="item.routerUrl" class="tags-router">{{ item.title }}</router-link>
-          <span class="close"><i class="el-icon-close" @click.stop="handleClose(item, index3)" /></span>
+        <span v-for="(item, index3) in unique" :key="item.routerUrl" class="tags-item">
+          <router-link
+            ref="tag"
+            :key="item.routerUrl"
+            :to="item.routerUrl"
+            class="tags-router"
+            @contextmenu.prevent.native="openMenu(item, $event)"
+          >
+            {{ item.title }}
+          </router-link>
+          <span class="close">
+            <i class="el-icon-close" @click.stop="handleClose(item, index3)" />
+          </span>
         </span>
       </div>
       <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
@@ -135,22 +145,29 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
+      <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
+        <li @click="refreshSelectedTag(selectedTag)">{{ $t('tagsView.refresh') }}</li>
+        <li @click="closeSelectedTag(selectedTag)">{{ $t('tagsView.close') }}</li>
+        <li @click="closeOthersTags(selectedTag)">{{ $t('tagsView.closeOthers') }}</li>
+        <li @click="closeAllTags()">{{ $t('tagsView.closeAll') }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-import { quickAccess, navdetails } from './config'
+import { navdetails } from './config'
 import { mapGetters } from 'vuex'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import LangSelect from '@/components/LangSelect'
 // import Search from '@/components/HeaderSearch'
-import { API } from '@/api/generalAPI'
+// import { API } from '@/api/generalAPI'
 import store from '@/store'
 import Fuse from 'fuse.js'
 import path from 'path'
 import i18n from '@/lang'
+import { mapState } from 'vuex'
 export default {
   components: {
     Screenfull,
@@ -161,7 +178,6 @@ export default {
   data() {
     return {
       roles: store.getters.roles,
-      quickAccess,
       navdetails,
       search: '',
       options: [],
@@ -171,7 +187,11 @@ export default {
       route: [],
       routeArray: [],
       unique: [],
-      details: []
+      details: [],
+      visible: false,
+      top: 0,
+      left: 0,
+      selectedTag: {} // 选中右键的菜单
     }
   },
   computed: {
@@ -184,7 +204,10 @@ export default {
     },
     supportPinyinSearch() {
       return this.$store.state.settings.supportPinyinSearch
-    }
+    },
+    ...mapState({
+      needTagsView: state => state.settings.tagsView
+    })
   },
   watch: {
     lang() {
@@ -199,14 +222,14 @@ export default {
         this.addPinyinField(list)
       }
       this.initFuse(list)
+    },
+    visible(value) {
+      if (value) {
+        document.body.addEventListener('click', this.closeMenu)
+      } else {
+        document.body.removeEventListener('click', this.closeMenu)
+      }
     }
-    // show(value) {
-    //   if (value) {
-    //     document.body.addEventListener('click', this.close)
-    //   } else {
-    //     document.body.removeEventListener('click', this.close)
-    //   }
-    // }
   },
   mounted() {
     document.addEventListener('click', this.bodyCloseNavmenus)
@@ -218,9 +241,7 @@ export default {
   created() {
     this.isShow = !this.isShow
     this.getRoute()
-    // this.getMenu()
     this.unique = JSON.parse(sessionStorage.getItem('router'))
-    // console.log(this.$store.getters.roles, 'roles')
   },
   methods: {
     async addPinyinField(list) {
@@ -240,25 +261,12 @@ export default {
         return list
       }
     },
-    // click() {
-    //   this.show = !this.show
-    //   if (this.show) {
-    //     this.$refs.headerSearchSelect && this.$refs.headerSearchSelect.focus()
-    //   }
-    // },
-    close() {
-      this.$refs.headerSearchSelect && this.$refs.headerSearchSelect.blur()
-      this.options = []
-      this.show = false
-    },
+    // 展开菜单-搜索-选中
     change(val) {
       this.isShow = !this.isShow
       this.$router.push(val.path)
       this.search = ''
       this.options = []
-      // this.$nextTick(() => {
-      //   this.show = false
-      // })
     },
     initFuse(list) {
       this.fuse = new Fuse(list, {
@@ -317,6 +325,7 @@ export default {
       }
       return res
     },
+    // 菜单搜索
     querySearch(query) {
       if (query !== '') {
         this.options = this.fuse.search(query)
@@ -347,12 +356,12 @@ export default {
       this.$router.push({ path: url })
       if (url !== undefined && label !== undefined) {
         if (this.unique) {
-          this.unique.push({ title: label, routerUrl: url })
+          this.unique.push({ title: label, routerUrl: url, meta: { keepAlive: true } })
           this.routeArray = this.unique.filter(
             (obj, index) => this.unique.findIndex(item => item.routerUrl === obj.routerUrl) === index
           )
         } else {
-          this.route.push({ title: label, routerUrl: url })
+          this.route.push({ title: label, routerUrl: url, meta: { keepAlive: true } })
           this.routeArray = this.route.filter(
             (obj, index) => this.route.findIndex(item => item.routerUrl === obj.routerUrl) === index
           )
@@ -362,14 +371,18 @@ export default {
         this.unique = JSON.parse(sessionStorage.getItem('router'))
       }
     },
-    // 关闭标签
-    handleClose(item, index) {
-      // console.log(item, index)
+    // 关闭菜单标签(要关闭的路由信息，下标)
+    handleClose(routeInfo, routeIndex) {
       // 先把长度保存下来后面用来比较做判断条件
       let length = this.unique.length - 1
-      this.closeTab(item)
+      // 找下标，然后用下标的位置对应删除一位。splice：这是数组的删除方法
+      let resultIndex = this.unique.findIndex(item => item.title === routeInfo.title)
+      this.unique.splice(resultIndex, 1)
+      sessionStorage.setItem('router', JSON.stringify(this.unique))
+
+      let index = routeIndex || resultIndex
       // 如果关闭的标签不是当前路由的话，就不跳转
-      if (item.routerUrl !== this.$route.path) {
+      if (routeInfo.routerUrl !== this.$route.path) {
         return
       }
       // 判断：如果index和length是一样的，那就代表都是一样的长度，就是最后一位，那就往左跳转一个
@@ -390,40 +403,56 @@ export default {
         this.$router.push({ path: this.unique[index].routerUrl })
       }
     },
-    closeTab(val) {
-      // 同上，找角标，然后用角标的位置对应删除一位。splice：这是数组的删除方法
-      let result = this.unique.findIndex(item => item.title === val.title)
-      this.unique.splice(result, 1)
-      // this.unique = JSON.parse(sessionStorage.getItem('router')).splice(result, 1)
-      sessionStorage.setItem('router', JSON.stringify(this.unique))
-      this.unique = JSON.parse(sessionStorage.getItem('router'))
-      // console.log(this.unique, 'un')
-      // sessionStorage.removeItem("a");
-    },
-    getMenu() {
-      API.dataGet('MenuManage', { IsPage: false }, 'GetAll')
-        .then(res => {
-          if (res.success === true) {
-            this.$notify({
-              title: '成功',
-              message: '完成',
-              type: 'success',
-              duration: 2000
-            })
-          } else {
-            this.$notify({
-              title: '失败',
-              message: res.message,
-              type: 'error',
-              duration: 2000
-            })
-          }
-        })
-        .catch(() => {})
-    },
+
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    // 菜单右键-刷新
+    refreshSelectedTag(view) {
+      console.log(view, 'view')
+      const { routerUrl } = view
+      this.$nextTick(() => {
+        this.$router.replace({
+          path: '/redirect' + routerUrl
+        })
+      })
+    },
+    // 菜单右键-关闭
+    closeSelectedTag(view) {
+      this.handleClose(view)
+    },
+    // 菜单右键-关闭其他
+    closeOthersTags(view) {
+      this.unique = [view]
+      sessionStorage.setItem('router', JSON.stringify(this.unique))
+      this.$router.push({ path: view.routerUrl })
+    },
+    // 菜单右键-关闭所有
+    closeAllTags() {
+      this.unique = []
+      sessionStorage.setItem('router', JSON.stringify(this.unique))
+      this.$router.push({ path: '/dashboard' })
+    },
+
+    // 打开右键菜单时执行的方法
+    openMenu(tag, e) {
+      const menuMinWidth = 105
+      const offsetLeft = this.$el.getBoundingClientRect().left // container margin left
+      const offsetWidth = this.$el.offsetWidth // container width
+      const maxLeft = offsetWidth - menuMinWidth // left boundary
+      const left = e.clientX - offsetLeft + 15 // 15: margin right
+      if (left > maxLeft) {
+        this.left = maxLeft
+      } else {
+        this.left = left
+      }
+      this.top = e.clientY
+      this.visible = true
+      this.selectedTag = tag // 菜单的路由
+    },
+    closeMenu() {
+      this.visible = false
     }
   }
 }
@@ -555,7 +584,28 @@ export default {
     // // border-radius: 2px;
     // background-color: #368FFF;
   }
-
+  .contextmenu {
+    margin: 0;
+    background: #fff;
+    z-index: 3000;
+    position: absolute;
+    list-style-type: none;
+    padding: 5px 0;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #333;
+    box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+    li {
+      margin: 0;
+      padding: 3px 16px;
+      line-height: 20px;
+      cursor: pointer;
+      &:hover {
+        background: #eee;
+      }
+    }
+  }
   ::-webkit-scrollbar {
     /* 隐藏滚动条 */
     display: none;

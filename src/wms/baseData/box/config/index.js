@@ -40,9 +40,10 @@ export const boxFormList = [
     rules: [{ required: true, message: '请选择装载状态', trigger: 'blur' }]
   },
   {
-    type: 'Input',
+    type: 'Number',
     label: '使用期限(天)',
-    prop: 'dueTime'
+    prop: 'dueTime',
+    min: 0
   }
 ]
 

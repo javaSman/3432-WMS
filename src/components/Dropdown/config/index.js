@@ -459,12 +459,14 @@ export const navdetails = [
         label: '角色管理',
         routerUrl: '/system/role',
         noHidden: true,
+        name: 'Role',
         roles: ['Systems.Roles']
       },
       {
         label: '用户管理',
         routerUrl: '/system/user',
         noHidden: true,
+        name: 'User',
         roles: ['Systems.Users']
       },
       // {

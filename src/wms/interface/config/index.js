@@ -51,7 +51,7 @@ export const journalQueryItems = [
   { type: 'Selects', label: '接口名称', prop: 'APIName', options: [] },
   { type: 'Selects', label: '处理状态', prop: 'IsSuccess', options: [] },
   { type: 'Input', label: '请求参数', prop: 'Parameters' },
-  { type: 'Input', label: '结果', prop: 'Result' },
+  { type: 'Select', label: '结果', prop: 'Result', options: [] },
   { type: 'DateTime', label: '开始时间', prop: 'BeginApplyDate' },
   { type: 'DateTime', label: '结束时间', prop: 'EndApplyDate' }
 

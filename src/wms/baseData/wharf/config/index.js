@@ -4,7 +4,7 @@ export const queryItems = [
   { type: 'Input', label: '码头名称', prop: 'wharfName' },
   { type: 'Input', label: '码头类型', prop: 'wharfType' },
   { type: 'Input', label: '载具编码', prop: 'boxID' },
-  { type: 'Input', label: '仓库编码', prop: 'warehouseID' },
+  { type: 'Select', label: '仓库编码', prop: 'warehouseID', options: [] },
   { type: 'Input', label: '巷道', prop: 'alley' },
   { type: 'Select', label: '状态', prop: 'state', options: [] }
 ]

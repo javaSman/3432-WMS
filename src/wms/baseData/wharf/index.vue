@@ -85,7 +85,9 @@ export default {
     this.getDict()
     this.getWarehouse()
     this.getVehicle()
-    // this.getOpts()
+    this.getNewBox()
+    this.getOpts()
+    this.getNewWarehouse()
     this.formList.forEach(item => {
       switch (item.prop) {
         case 'boxID': {
@@ -123,7 +125,7 @@ export default {
           item.value = item.warehouseID
           item.asign = item.warehouseID
         })
-        this.queryItems[6].options = this.formList[2].options = res.items
+        this.queryItems[4].options = this.formList[2].options = res.items
       })
     },
     getVehicle() {
@@ -165,15 +167,15 @@ export default {
       // this.dialogFormVisible = true
       this.dialogOpen()
       this.form = {}
-      this.getOpts()
-      this.getNewWarehouse()
-      this.getNewBox()
+      // this.getOpts()
+      // this.getNewWarehouse()
+      // this.getNewBox()
     },
     handleUpdate() {
       this.getForm(this.multipleSelection[0].id)
-      this.getNewWarehouse()
-      this.getOpts()
-      this.getNewBox()
+      // this.getNewWarehouse()
+      // this.getOpts()
+      // this.getNewBox()
     },
     // 下拉框获取新的仓库编码options
     getNewWarehouse() {

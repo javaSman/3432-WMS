@@ -9,7 +9,7 @@
         :button-items="boxBtnItems"
         :selection="multipleSelection"
         :download-loading.sync="downloadLoading"
-        @toAdd="handleCreate"
+        @toAdd="handleCreate()"
         @toEdit="handleUpdate()"
         @toDelete="handleDelete()"
         @toBatchOutShelves="handleBatchOutShelves()"
@@ -233,6 +233,7 @@ export default {
       // newAPI
     }
   },
+
   created() {
     this.getDict()
   },
@@ -243,6 +244,11 @@ export default {
     })
   },
   methods: {
+    handleCreate() {
+      this.form = {}
+      this.form.dueTime = 0
+      this.dialogOpen()
+    },
     handleUpdate() {
       this.getForm(this.multipleSelection[0].id)
       this.getDetail(this.multipleSelection[0])

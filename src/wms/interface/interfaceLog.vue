@@ -95,7 +95,7 @@ export default {
   methods: {
     getDict() {
       API.getDict('dict', { name: 'IsSuccess' }).then(res => {
-        this.journalQueryItems[1].options = res.details
+        this.journalQueryItems[1].options = this.journalQueryItems[3].options = res.details
       })
     },
     getinterfaceLog() {

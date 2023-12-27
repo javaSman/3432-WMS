@@ -336,6 +336,7 @@ export default {
             duration: 2000
           })
           this.getList()
+          this.downSetFormVisible = false
         } else {
           this.$notify({
             title: this.$t('notify.failure'), // '失败'
