@@ -1,14 +1,9 @@
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <!-- <keep-alive :include="cachedViews">
+      <keep-alive :include="cachedViews">
         <router-view :key="key" />
-      </keep-alive> -->
-      <!-- <router-view :key="currentRoute" /> -->
-      <keep-alive v-if="$route.meta.keepAlive">
-        <router-view />
       </keep-alive>
-      <router-view v-else />
     </transition>
   </section>
 </template>
@@ -18,9 +13,12 @@ export default {
   name: 'AppMain',
   computed: {
     cachedViews() {
-      return this.$store.state.tagsView.cachedViews
+      return this.$store.state.tags.NoRefreshRouter.length > 0
+        ? this.$store.state.tags.NoRefreshRouter
+        : this.$store.state.tags.OpenRouter
     },
     key() {
+      // console.log(this.$route)
       return this.$route.path
     }
   }

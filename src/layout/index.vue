@@ -6,10 +6,10 @@
     <!-- <sidebar class="sidebar-container" /> -->
     <!-- 内容区域 -->
     <!-- <div :class="{ hasTagsView: needTagsView }" class="main-container"> -->
-    <div class="main-container">
+    <div class="main-container" :class="{ hasTagsView: needTagsView }">
       <div :class="{ 'fixed-header': fixedHeader }">
         <!-- 顶部栏 -->
-        <dropdown />
+        <dropdown v-if="needTagsView" />
         <!-- <navbar /> -->
         <!-- 页面标签栏 -->
         <!-- <tags-view v-if="needTagsView" /> -->

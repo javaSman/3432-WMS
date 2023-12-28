@@ -9,7 +9,7 @@
         :selection="multipleSelection"
         :button-items="OtherBtn"
         :download-loading.sync="downloadLoading"
-        @toAdd="handleCreate"
+        @toAdd="handleCreate()"
         @toDelete="handleDelete"
       />
       <div style="height: 300px">
@@ -204,46 +204,46 @@ export default {
         this.editDetailTable = res.items
         this.detailListLoading = false
       })
-    },
-    handleDelete() {
-      let array = []
-      this.multipleSelection.forEach(item => {
-        array.push(item.id)
-      })
-      // '确认删除选中项','提示'
-      this.$confirm('确定删除选中' + this.multipleSelection.length + '条数据？', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        API.dataPost('wasteorder', array, 'Delete')
-          .then(res => {
-            if (res.success) {
-              this.$notify({
-                title: this.$t('notify.success'),
-                message: res.message,
-                type: 'success',
-                duration: 2000
-              })
-              this.getList()
-            } else {
-              this.$notify({
-                title: this.$t('notify.failure'),
-                message: res.message,
-                type: 'error',
-                duration: 2000
-              })
-            }
-          })
-          .catch(e => {
-            console.log(e)
-            this.$message({
-              type: 'info',
-              message: this.$t('notify.delFailure') // '未删除成功'
-            })
-          })
-      })
     }
+    // handleDelete() {
+    //   let array = []
+    //   this.multipleSelection.forEach(item => {
+    //     array.push(item.id)
+    //   })
+    //   // '确认删除选中项','提示'
+    //   this.$confirm('确定删除选中' + this.multipleSelection.length + '条数据？', '提示', {
+    //     confirmButtonText: '确定',
+    //     cancelButtonText: '取消',
+    //     type: 'warning'
+    //   }).then(() => {
+    //     API.dataPost('wasteorder', array, 'Delete')
+    //       .then(res => {
+    //         if (res.success) {
+    //           this.$notify({
+    //             title: this.$t('notify.success'),
+    //             message: res.message,
+    //             type: 'success',
+    //             duration: 2000
+    //           })
+    //           this.getList()
+    //         } else {
+    //           this.$notify({
+    //             title: this.$t('notify.failure'),
+    //             message: res.message,
+    //             type: 'error',
+    //             duration: 2000
+    //           })
+    //         }
+    //       })
+    //       .catch(e => {
+    //         console.log(e)
+    //         this.$message({
+    //           type: 'info',
+    //           message: this.$t('notify.delFailure') // '未删除成功'
+    //         })
+    //       })
+    //   })
+    // }
   }
 }
 </script>

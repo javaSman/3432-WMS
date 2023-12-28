@@ -90,6 +90,7 @@
             :key="item.routerUrl"
             :to="item.routerUrl"
             class="tags-router"
+            @click.native="routerClick(item)"
             @contextmenu.prevent.native="openMenu(item, $event)"
           >
             {{ item.title }}
@@ -242,6 +243,7 @@ export default {
     this.isShow = !this.isShow
     this.getRoute()
     this.unique = JSON.parse(sessionStorage.getItem('router'))
+    this.$store.dispatch('tags/getOpenRouter', this.unique)
   },
   methods: {
     async addPinyinField(list) {
@@ -260,6 +262,10 @@ export default {
         })
         return list
       }
+    },
+    // 标签菜单点击事件
+    routerClick(item) {
+      this.$store.dispatch('tags/getNoRefreshRouter', '')
     },
     // 展开菜单-搜索-选中
     change(val) {
@@ -347,7 +353,6 @@ export default {
       // this.$emit('update:currentRoute', routeName);
       const { name } = this.$route // 获取当前路由的名称
       const routeMeta = this.$router.meta // 查找路由的meta信息
-
       if (routeMeta) {
         routeMeta.keepAlive = !routeMeta.keepAlive // 切换 keep-alive
         this.$router.replace({ name: name, params: this.$route.params }) // 重新加载当前路由
@@ -356,12 +361,12 @@ export default {
       this.$router.push({ path: url })
       if (url !== undefined && label !== undefined) {
         if (this.unique) {
-          this.unique.push({ title: label, routerUrl: url, meta: { keepAlive: true } })
+          this.unique.push({ title: label, routerUrl: url, name: routeName })
           this.routeArray = this.unique.filter(
             (obj, index) => this.unique.findIndex(item => item.routerUrl === obj.routerUrl) === index
           )
         } else {
-          this.route.push({ title: label, routerUrl: url, meta: { keepAlive: true } })
+          this.route.push({ title: label, routerUrl: url, name: routeName })
           this.routeArray = this.route.filter(
             (obj, index) => this.route.findIndex(item => item.routerUrl === obj.routerUrl) === index
           )
@@ -369,6 +374,7 @@ export default {
         // 存储路由
         sessionStorage.setItem('router', JSON.stringify(this.routeArray))
         this.unique = JSON.parse(sessionStorage.getItem('router'))
+        this.$store.dispatch('tags/getOpenRouter', this.unique)
       }
     },
     // 关闭菜单标签(要关闭的路由信息，下标)
@@ -379,7 +385,7 @@ export default {
       let resultIndex = this.unique.findIndex(item => item.title === routeInfo.title)
       this.unique.splice(resultIndex, 1)
       sessionStorage.setItem('router', JSON.stringify(this.unique))
-
+      this.$store.dispatch('tags/getOpenRouter', this.unique)
       let index = routeIndex || resultIndex
       // 如果关闭的标签不是当前路由的话，就不跳转
       if (routeInfo.routerUrl !== this.$route.path) {
@@ -410,11 +416,12 @@ export default {
     },
     // 菜单右键-刷新
     refreshSelectedTag(view) {
-      console.log(view, 'view')
-      const { routerUrl } = view
-      this.$nextTick(() => {
-        this.$router.replace({
-          path: '/redirect' + routerUrl
+      this.$store.dispatch('tags/getNoRefreshRouter', view).then(() => {
+        const { routerUrl } = view
+        this.$nextTick(() => {
+          this.$router.replace({
+            path: '/redirect' + routerUrl
+          })
         })
       })
     },
@@ -426,12 +433,14 @@ export default {
     closeOthersTags(view) {
       this.unique = [view]
       sessionStorage.setItem('router', JSON.stringify(this.unique))
+      this.$store.dispatch('tags/getOpenRouter', this.unique)
       this.$router.push({ path: view.routerUrl })
     },
     // 菜单右键-关闭所有
     closeAllTags() {
       this.unique = []
       sessionStorage.setItem('router', JSON.stringify(this.unique))
+      this.$store.dispatch('tags/getOpenRouter', this.unique)
       this.$router.push({ path: '/dashboard' })
     },
 

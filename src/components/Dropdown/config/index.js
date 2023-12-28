@@ -1,57 +1,3 @@
-export const quickAccess = [
-  {
-    id: 1,
-    title: '载具管理'
-  },
-  {
-    id: 2,
-    title: '角色管理'
-  },
-  {
-    id: 3,
-    title: '数据字典'
-  },
-  {
-    id: 4,
-    title: '版本管理'
-  },
-  {
-    id: 5,
-    title: '物料管理'
-  },
-  {
-    id: 6,
-    title: '标签管理'
-  },
-  {
-    id: 7,
-    title: '接口配置'
-  },
-  {
-    id: 8,
-    title: '接口日志'
-  },
-  {
-    id: 9,
-    title: '仓库管理'
-  },
-  {
-    id: 10,
-    title: '设备管理'
-  },
-  {
-    id: 10,
-    title: '入库报表'
-  },
-  {
-    id: 11,
-    title: '库存预警'
-  },
-  {
-    id: 12,
-    title: '策略配置'
-  }
-]
 export const navdetails = [
   {
     id: '1',
@@ -63,12 +9,14 @@ export const navdetails = [
         label: '载具管理',
         routerUrl: '/baseData/box',
         noHidden: true,
+        name: 'Box',
         roles: ['BaseData.Box']
       },
       {
         label: '仓库管理',
         routerUrl: '/baseData/warehouse',
         noHidden: true,
+        name: 'Warehouse',
         roles: ['BaseData.Warehouse']
       },
       // {
@@ -81,18 +29,21 @@ export const navdetails = [
         label: '货位管理',
         routerUrl: '/baseData/locations',
         noHidden: true,
+        name: 'Locations',
         roles: ['BaseData.Locations']
       },
       {
         label: '物料管理',
         routerUrl: '/BaseData/materials',
         noHidden: true,
+        name: 'Materials',
         roles: ['BaseData.Materials']
       },
       {
         label: '码头管理',
         routerUrl: '/baseData/wharf',
         noHidden: true,
+        name: 'Wharf',
         roles: ['BaseData.Wharf']
       },
       // {
@@ -105,18 +56,21 @@ export const navdetails = [
         label: '采购订单',
         routerUrl: '/baseData/PurchaseOrder',
         noHidden: true,
+        name: 'PurchaseOrder',
         roles: ['BaseData.PurchaseOrder']
       },
       {
         label: '线体管理',
         routerUrl: '/baseData/conveyerLineNew',
         noHidden: true,
+        name: 'ConveyerLineNew',
         roles: ['BaseData.ConveyerLineNew']
       },
       {
         label: '供应商管理',
         routerUrl: '/baseData/supplier',
         noHidden: true,
+        name: 'Supplier',
         roles: ['BaseData.Supplier']
       }
     ]
@@ -131,36 +85,42 @@ export const navdetails = [
         label: '入库申请单',
         routerUrl: '/orderManagement/warehousingApplication',
         noHidden: true,
+        name: 'WarehousingApplication',
         roles: ['OrderManagement.WarehousingApplication']
       },
       {
         label: '入库单',
         routerUrl: '/orderManagement/warehousingEntry',
         noHidden: true,
+        name: 'WarehousingEntry',
         roles: ['OrderManagement.WarehousingEntry']
       },
       {
         label: '出库申请单',
         routerUrl: '/orderManagement/outboundApplication',
         noHidden: true,
+        name: 'OutboundApplication',
         roles: ['OutboundApplication']
       },
       {
         label: '出库单',
         routerUrl: '/orderManagement/outboundOrder',
         noHidden: true,
+        name: 'OutboundOrder',
         roles: ['OrderManagement.OutboundOrder']
       },
       {
         label: '上架管理',
         routerUrl: '/orderManagement/inShelves',
         noHidden: true,
+        name: 'InShelves',
         roles: ['OrderManagement.InShelves']
       },
       {
         label: '下架管理',
         routerUrl: '/orderManagement/outShelves',
         noHidden: true,
+        name: 'OutShelves',
         roles: ['OrderManagement.OutShelves']
       }
       // {
@@ -223,12 +183,14 @@ export const navdetails = [
         label: '物料调拨',
         routerUrl: '/warehouseBusiness/Allocate',
         noHidden: true,
+        name: 'Allocate',
         roles: ['WarehouseBusiness.Allocate']
       },
       {
         label: '物料重检',
         routerUrl: '/warehouseBusiness/inStockQualityInspection',
         noHidden: true,
+        name: 'InStockQualityInspection',
         roles: ['WarehouseBusiness.InStockQualityInspection']
       },
       // {
@@ -241,12 +203,14 @@ export const navdetails = [
         label: '盘点单',
         routerUrl: '/warehouseBusiness/inventoryOrder',
         noHidden: true,
+        name: 'InventoryOrder',
         roles: ['WarehouseBusiness.InventoryOrder']
       },
       {
         label: '差异报表',
         routerUrl: '/warehouseBusiness/varianceReport',
         noHidden: true,
+        name: 'VarianceReport',
         roles: ['WarehouseBusiness.VarianceReport']
       }
       // {
@@ -273,30 +237,35 @@ export const navdetails = [
         label: '策略配置',
         routerUrl: '/strategyAdm/strategyConfig',
         noHidden: true,
+        name: 'StrategyConfig',
         roles: ['Strategy.StrategyConfig']
       },
       {
         label: '策略明细',
         routerUrl: '/strategyAdm/strategyDetails',
         noHidden: true,
+        name: 'StrategyDetails',
         roles: ['Strategy.StrategyDetails']
       },
       {
         label: '策略流程',
         routerUrl: '/strategyAdm/strategyFlow',
         noHidden: true,
+        name: 'StrategyFlowGather',
         roles: ['Strategy.StrategyFlow']
       },
       {
         label: '策略流程集合',
         routerUrl: '/strategyAdm/strategyFlowGather',
         noHidden: true,
+        name: 'StrategyFlow',
         roles: ['Strategy.StrategyFlowGather']
       },
       {
         label: '任务清单',
         routerUrl: '/strategyAdm/wcsTask',
         noHidden: true,
+        name: 'WCSTask',
         roles: ['Strategy.WCSTask']
       }
     ]
@@ -311,12 +280,14 @@ export const navdetails = [
         label: '到货报表',
         routerUrl: '/report/arrivalReport',
         noHidden: true,
+        name: 'ArrivalReport',
         roles: ['Report.ArrivalReport']
       },
       {
         label: '物料履历',
         routerUrl: '/report/materialHistory',
         noHidden: true,
+        name: 'MaterialHistory',
         roles: ['Report.MaterialHistory']
       },
       // {
@@ -329,18 +300,21 @@ export const navdetails = [
         label: '库存报表',
         routerUrl: '/report/inventoryReport',
         noHidden: true,
+        name: 'InventoryReport',
         roles: ['Report.InventoryReport']
       },
       {
         label: '安全库存报表',
         routerUrl: '/report/safetyStockAlertReport',
         noHidden: true,
+        name: 'SafetyStockAlertReport',
         roles: ['Report.SafetyStockAlertReport']
       },
       {
         label: '库龄报表',
         routerUrl: '/report/stockAgeReport',
         noHidden: true,
+        name: 'StockAgeReport',
         roles: ['Report.StockAgeReport']
       },
       // {
@@ -353,12 +327,14 @@ export const navdetails = [
         label: '库存汇总报表',
         routerUrl: '/report/inventorySummary',
         noHidden: true,
+        name: 'InventorySummary',
         roles: ['Report.InventorySummary']
       },
       {
         label: '载具清洗日志',
         routerUrl: '/report/boxCleanLog',
         noHidden: true,
+        name: 'BoxCleanLog',
         roles: ['Report.BoxCleanLog']
       }
       // {
@@ -421,12 +397,14 @@ export const navdetails = [
         label: '接口配置',
         routerUrl: '/interface/interfaceConfiguration',
         noHidden: true,
+        name: 'InterfaceConfiguration',
         roles: ['InterfaceManagement.InterfaceConfiguration']
       },
       {
         label: '接口日志',
         routerUrl: '/interface/interfaceLog',
         noHidden: true,
+        name: 'InterfaceLog',
         roles: ['InterfaceManagement.InterfaceLog']
       }
       // {
@@ -447,12 +425,14 @@ export const navdetails = [
         label: '数据字典',
         routerUrl: '/system/dict',
         noHidden: true,
+        name: 'Dictionary',
         roles: ['Systems.DataDictionary']
       },
       {
         label: '列表模板',
         routerUrl: '/system/colModel',
         noHidden: true,
+        name: 'ColModel',
         roles: ['Systems.TableTemplate']
       },
       {
@@ -479,6 +459,7 @@ export const navdetails = [
         label: 'APP管理',
         routerUrl: '/system/appVersion',
         noHidden: true,
+        name: 'AppVersion',
         roles: ['Systems.AppVersion']
       },
       // {
@@ -491,6 +472,7 @@ export const navdetails = [
         label: '操作日志',
         routerUrl: '/system/operationLog',
         noHidden: true,
+        name: 'OperationLog',
         roles: ['Systems.OperationLog']
       }
       // {
@@ -517,18 +499,21 @@ export const navdetails = [
         label: '收货标签',
         routerUrl: '/labelManagement/GenerateLabel',
         noHidden: true,
+        name: 'GenerateLabel',
         roles: ['LabelManagement.GenerateLabel']
       },
       {
         label: '固废标签',
         routerUrl: '/labelManagement/SolidWaste',
         noHidden: true,
+        name: 'SolidWaste',
         roles: ['LabelManagement.SolidWaste']
       },
       {
         label: '标签列表',
         routerUrl: '/labelManagement/TagList',
         noHidden: true,
+        name: 'TagList',
         roles: ['LabelManagement.TagList']
       }
     ]
@@ -543,6 +528,7 @@ export const navdetails = [
         label: '设备列表',
         routerUrl: '/baseData/device',
         noHidden: true,
+        name: 'Device',
         roles: ['DeviceManagement.Device']
       }
       // {

@@ -80,7 +80,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      console.log(this.$refs)
+      // console.log(this.$refs)
       this.creatQrCode()
     })
   },
@@ -113,7 +113,7 @@ export default {
           this.data[0].barcode
       }
       qrcode.makeCode(text)
-      console.log(this.data[0].barcode)
+      // console.log(this.data[0].barcode)
       let canvas = document.querySelector('canvas')
       var strDataURI = canvas.toDataURL('image/png')
       canvas.outerHTML = '<img alt="Scan me!" src=' + strDataURI + '>'

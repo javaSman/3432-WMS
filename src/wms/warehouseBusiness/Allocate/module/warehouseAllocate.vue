@@ -127,11 +127,7 @@
       @cancel="cancel"
     />
     <div v-if="printBegin" id="allocate" ref="allocate" style="display: none">
-      <AllocateTransfer
-        :data="allocate"
-        :thead="multipleSelection[0]"
-        :page="allocate.length"
-      />
+      <AllocateTransfer :data="allocate" :thead="multipleSelection[0]" :page="allocate.length" />
     </div>
   </div>
 </template>
@@ -192,7 +188,7 @@ export default {
       editDetailTable: [],
       dialogFormVisible: false,
       checkParams: '',
-      colDetailName: 'GetAllInventory',
+      colDetailName: 'GetAllocateInventory',
       apiDetailName: 'inventoryreport/GetAllInventory',
       listLoading: true,
       detailListLoading: false,
@@ -415,7 +411,8 @@ export default {
         strStyle += '.top-title td { height: 10mm;border: 1px solid #000; }'
         strStyle +=
           ' .main-title { height: 18mm !important; line-height: 18mm; font-size: 20pt; font-weight: bold;text-align: center !important;border:none !important;border-bottom: 1px solid #000!important;}'
-        strStyle += '.top-right {text-align: left;font-size: 10pt;font-weight: normal;position: absolute;right:19mm;top: 8mm;}'
+        strStyle +=
+          '.top-right {text-align: left;font-size: 10pt;font-weight: normal;position: absolute;right:19mm;top: 8mm;}'
         strStyle += '.qrcodestyle {position: absolute; right: 1mm;top:1mm;}'
         strStyle += '.col_design {height: 0 !important}'
         strStyle += '.col_design td {height: 0;visibility: hidden;border: none;}'

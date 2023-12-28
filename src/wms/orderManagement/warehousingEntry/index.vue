@@ -84,7 +84,7 @@ import filterContainer from '@/mixins/filterContainer'
 import basics from '@/mixins'
 import { QueryItems, BtnItems, Crud, ButtonItems, List } from './config'
 export default {
-  name: 'PurchaseReceipt',
+  name: 'WarehousingEntry',
   components: {
     Table,
     CrudOperation,

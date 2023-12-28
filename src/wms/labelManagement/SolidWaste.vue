@@ -100,7 +100,8 @@ export default {
       changeNum: 0,
       printBegin: false,
       printData: [],
-      nNum: []
+      nNum: [],
+      selectData: {} // 保存选中的行
       // Datas: []
     }
   },
@@ -202,6 +203,7 @@ export default {
       })
     },
     getDetail(row) {
+      this.selectData = row
       this.detailListLoading = true
       API.get(
         'materialsbarcode',
@@ -380,6 +382,11 @@ export default {
       let row = this.treeSelection
       this.printBegin = true
       this.printData = Functions.splitArray(row, 1)
+      let barcode = this.treeSelection.map(item => item.barcode).join(',')
+      // 修改打印数量
+      API.dataPost('materialsbarcode', { Barcode: barcode }, 'UpPrint').then(res => {
+        this.getDetail(this.selectData)
+      })
     }
   }
 }

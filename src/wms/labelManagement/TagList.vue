@@ -174,6 +174,11 @@ export default {
       let row = this.multipleSelection
       this.printBegin = true
       this.printData = Functions.splitArray(row, 1)
+      let barcode = this.multipleSelection.map(item => item.barcode).join(',')
+      // 修改打印数量
+      API.dataPost('materialsbarcode', { Barcode: barcode }, 'UpPrint').then(res => {
+        this.getList()
+      })
       // this.print()
       // let row = this.multipleSelection
       // for (let i = 0; i < row.length; i++) {
