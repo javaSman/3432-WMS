@@ -41,7 +41,7 @@ export const BtnItems = [
     langLabel: 'button.delete',
     clickFun: 'toDelete',
     disabled: 'multiple',
-    permission: 'OrderManagement.WarehousingApplication.Delete',
+    permission: 'OrderManagement.WarehousingApplication.InApplyfor.Delete',
     styleType: 'danger',
     icon: 'el-icon-download'
   }
@@ -62,7 +62,7 @@ export const ButtonItems = [
     langLabel: 'button.delete',
     clickFun: 'toDelete',
     disabled: 'multiple',
-    permission: 'OrderManagement.WarehousingApplication.Delete',
+    permission: 'OrderManagement.WarehousingApplication.InApplyfor.Delete',
     styleType: 'danger',
     icon: 'el-icon-download'
   }

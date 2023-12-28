@@ -216,7 +216,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        API.dataPost('receiptorder', array, 'OtherOrderDelete')
+        API.dataPost('wasteorder', array, 'Delete')
           .then(res => {
             if (res.success) {
               this.$notify({

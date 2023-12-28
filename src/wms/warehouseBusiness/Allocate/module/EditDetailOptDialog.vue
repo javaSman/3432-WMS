@@ -170,6 +170,10 @@ export default {
     save() {
       this.$refs.form.$refs.formList.validate(valid => {
         this.$refs.detailTable.$refs.tableForm.validate(async tableValid => {
+          if (this.detailTable.length === 0) {
+            this.$message({ type: 'warning', message: '没有选择要调拨的物料！' })
+            return
+          }
           if (valid && tableValid) {
             this.formLoading = true
             if (await this.submit(this.formData)) {
